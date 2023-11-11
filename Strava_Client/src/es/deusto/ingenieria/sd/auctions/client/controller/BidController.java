@@ -4,8 +4,11 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
+import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ArticleDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.CategoryDTO;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 
 //This class implements Controller pattern.
 public class BidController {
@@ -16,15 +19,34 @@ public class BidController {
 	public BidController(ServiceLocator serviceLocator) {
 		this.serviceLocator = serviceLocator; 
 	}
-
-	public List<CategoryDTO> getCategories() {
+	
+	public List<ChallengeDTO> getChallenges()
+	{
 		try {
-			return this.serviceLocator.getService().getCategories();
+			return this.serviceLocator.getService().getChallenges();
 		} catch (RemoteException e) {
-			System.out.println("# Error getting all categories: " + e);
+			System.out.println("# Error getting all challenges: " + e);
 			return null;
 		}
 	}
+	
+	public List<SessionDTO> getSessions(User user) {
+		try {
+			return this.serviceLocator.getService().getSessions(user);
+		} catch (RemoteException e) {
+			System.out.println("# Error getting articles of a category: " + e);
+			return null;
+		}
+	}
+
+//	public List<CategoryDTO> getCategories() {
+//		try {
+//			return this.serviceLocator.getService().getCategories();
+//		} catch (RemoteException e) {
+//			System.out.println("# Error getting all categories: " + e);
+//			return null;
+//		}
+//	}
 
 	public List<ArticleDTO> getArticles(String category) {
 		try {

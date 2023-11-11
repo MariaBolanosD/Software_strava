@@ -89,7 +89,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public List<SessionDTO> getArticles(User user) throws RemoteException {
+	public List<SessionDTO> getSessions(User user) throws RemoteException {
 		System.out.println(" * RemoteFacade getArticle('" + user.getEmail() + "')");
 
 		//Get Articles using BidAppService

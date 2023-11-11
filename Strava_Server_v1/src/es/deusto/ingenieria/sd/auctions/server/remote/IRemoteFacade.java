@@ -19,7 +19,7 @@ public interface IRemoteFacade extends Remote {
 	
 	public List<ChallengeDTO> getChallenges() throws RemoteException;
 	
-	public List<SessionDTO> getArticles(User user) throws RemoteException;
+	public List<SessionDTO> getSessions(User user) throws RemoteException;
 	
 //	public boolean makeBid(long token, int article, float amount) throws RemoteException;
 

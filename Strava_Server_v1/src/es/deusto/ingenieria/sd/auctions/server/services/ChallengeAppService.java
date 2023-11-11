@@ -1,5 +1,6 @@
 package es.deusto.ingenieria.sd.auctions.server.services;
 
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -100,6 +101,8 @@ public class ChallengeAppService {
 	// TO DO
 	public boolean makeChallenge()
 	{
+		
+		
 		return false;
 	}
 	
