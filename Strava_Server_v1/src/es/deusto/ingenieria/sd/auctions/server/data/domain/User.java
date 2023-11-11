@@ -1,12 +1,19 @@
 package es.deusto.ingenieria.sd.auctions.server.data.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class User {	
 	private String nickname;
 	private String password;
 	private String email;
+	private Date birthDate;
+	private double weight;
+	private double height;
+	private int maxHeartRate;
+	private int restHeartRate;
+	
 	private List<Challenge> challenges = new ArrayList<>();
 	private List<Session> sessions = new ArrayList<>();
 		
@@ -61,6 +68,52 @@ public class User {
 			this.sessions.add(session);
 		}
 	}
+	
+	public Date getBirthDate() {
+		return birthDate;
+	}
+	
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+	
+	public double getWeight() {
+		return weight;
+	}
+	
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	
+	public double getHeight() {
+		return height;
+	}
+	
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	
+	public int getMaxHeartRate() {
+		return maxHeartRate;
+	}
+	
+	public void setMaxHeartRate(int maxHeartRate) {
+		this.maxHeartRate = maxHeartRate;
+	}
+	
+	public int getRestHeartRate() {
+		return restHeartRate;
+	}
+	
+	public void setRestHeartRate(int restHeartRate) {
+		this.restHeartRate = restHeartRate;
+	}
+
+	// TO DO: update challenges with session
+	void UpdateChallenges(Session session)
+	{
+		
+	}
 		
 	@Override
 	public String toString() {
@@ -71,9 +124,9 @@ public class User {
 		result.append(this.email);
 		result.append(" - (");
 		result.append(this.challenges.size());
-		result.append(" articles) - (");
+		result.append(" challenges) - (");
 		result.append(this.sessions.size());
-		result.append(" bids)");
+		result.append(" sessions)");
 		
 		return result.toString();
 	}
@@ -85,13 +138,6 @@ public class User {
 		}
 		
 		return false;
-	}
-	
-	
-	// TO DO: update challenges with session
-	void UpdateChallenges(Session session)
-	{
-		
 	}
 	
 }

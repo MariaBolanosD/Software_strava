@@ -50,7 +50,7 @@ public class BidAppService {
 		
 		catPhone.addArticle(galaxy);
 		galaxy.setCategory(catPhone);
-		user1.addArticle(galaxy);
+		//user1.addArticle(galaxy);
 		galaxy.setOwner(user1);
 		
 		Article iphone = new Article();
@@ -63,7 +63,7 @@ public class BidAppService {
 		
 		catPhone.addArticle(iphone);
 		iphone.setCategory(catPhone);
-		user1.addArticle(iphone);
+		//user1.addArticle(iphone);
 		iphone.setOwner(user1);
 						
 		Article xiaomi = new Article();
@@ -76,7 +76,7 @@ public class BidAppService {
 				
 		catPhone.addArticle(xiaomi);		
 		xiaomi.setCategory(catPhone);
-		user1.addArticle(xiaomi);
+		//user1.addArticle(xiaomi);
 		xiaomi.setOwner(user1);
 		
 		//Add the Category to the local cache.
@@ -122,7 +122,7 @@ public class BidAppService {
 			newBid.setArticle(article);
 			newBid.setUser(user);		
 			article.addBid(newBid);
-			user.addBid(newBid);
+			//user.addBid(newBid);
 
 			//TODO: Save the new bin in the DB using DAO Pattern
 			
