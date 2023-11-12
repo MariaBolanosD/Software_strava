@@ -23,9 +23,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;

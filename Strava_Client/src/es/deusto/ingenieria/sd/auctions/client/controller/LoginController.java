@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.Map;
 
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
+
 
 //This class implements Controller pattern.
 public class LoginController {	
