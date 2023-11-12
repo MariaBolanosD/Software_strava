@@ -3,6 +3,8 @@ package es.deusto.ingenieria.sd.auctions.server.data.dto;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 
@@ -77,33 +79,66 @@ public class ChallengeDTO implements Serializable{
 		this.distance_or_time = distanceorTime;
 	}
 	
-	@Override
-	public String toString() {
-		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MMM-YY - hh:mm");
+	
+	public String Details() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		StringBuffer result = new StringBuffer();
 		
-		result.append("# Challenge name: ");
-		result.append(this.name);
-		result.append("# Initial date: ");
-		result.append(dateFormatter.format(this.start_date));
-		result.append("# End date: ");
-		result.append(dateFormatter.format(this.end_date));
+		result.append("");
+		result.append(this.name+"");
+		result.append("    -    from:   "+ formatter.format(this.start_date));
+		//result.append(dateFormatter.format(this.start_date));
+		result.append(" to:   "+ formatter.format(this.end_date));
+		//result.append(dateFormatter.format(this.end_date));
 		// if true -> distance / false -> time
 		if(distance_or_time == true) 
 		{
-			result.append("# Target in km: ");
-			result.append(this.target);
+			result.append(" -    target distance:  ");
+			result.append(this.target+"km    -    ");
 			
 		}
 		else {
-			result.append("# Target in min: ");
-			result.append(this.target);
+			result.append(" -    target time:  ");
+			result.append(this.target+"min\n    -    ");
 		}
 		result.append("Sport: ");
-		result.append(this.sport);
+		result.append(this.sport+"\n");
 		
 		return result.toString();
 	}
 	
+	@Override
+	public String toString() {
+		
+		
+		return this.getName();
+	}
+//	public String toString() {
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+//		
+//		StringBuffer result = new StringBuffer();
+//		
+//		result.append("# Challenge name: ");
+//		result.append(this.name+"\n");
+//		result.append("# Initial date: \n");
+//		result.append(formatter.format(this.start_date));
+//		result.append("# End date: \n");
+//		result.append(formatter.format(this.end_date));
+//		// if true -> distance / false -> time
+//		if(distance_or_time == true) 
+//		{
+//			result.append("# Target in km: ");
+//			result.append(this.target+"\n");
+//			
+//		}
+//		else {
+//			result.append("# Target in min: ");
+//			result.append(this.target+"\n");
+//		}
+//		result.append("Sport: ");
+//		result.append(this.sport+"\n");
+//		
+//		return result.toString();
+//	}
 }

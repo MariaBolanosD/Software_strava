@@ -22,30 +22,8 @@ public class MainProgram {
 		LoginController loginController = new LoginController(serviceLocator);
 		Controller controller = new Controller(serviceLocator);
 		LoginDialog loginDialog = new LoginDialog(loginController, controller);			
-		//BidController bidController = new BidController(serviceLocator);		
-		//BidWindow bidWindow = new BidWindow(bidController);
-		//create window for challenge and session
-		//AppWindow appWindow = new AppWindow(controller);
+
 			
 		
-		//Login
-		loginDialog.login();		
-		//Get Challenges
-		//List<CategoryDTO> categories = bidWindow.getCategories();
-		List<ChallengeDTO> challenges = controller.getChallenges();
-		//Get Articles of a category (first category is selected)
-		//List<ArticleDTO> articles = bidWindow.getArticles(categories.get(0).getName());
-		// get the sessions of this user
-		List<SessionDTO> sessions = controller.getSessions(loginDialog.getUser());
-		//Convert currency to GBP
-		//bidWindow.currencyToGBP(articles);
-		//Convert currency to USD
-		//bidWindow.currencyToUSD(articles);
-		//Place a bid (first article of the category is selected; the token is stored in the BidController)
-		//bidWindow.makeBid(loginController.getToken(), articles.get(0));
-		//Get Articles to check if the bid has been done
-//		articles = bidWindow.getArticles(categories.get(0).getName());
-		//Logout
-		loginDialog.logout();
 	}
 }

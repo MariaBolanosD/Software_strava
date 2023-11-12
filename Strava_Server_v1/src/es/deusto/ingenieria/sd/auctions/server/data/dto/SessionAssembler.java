@@ -3,7 +3,7 @@ package es.deusto.ingenieria.sd.auctions.server.data.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Category;
+
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 
 public class SessionAssembler {

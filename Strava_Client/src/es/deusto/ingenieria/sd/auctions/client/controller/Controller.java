@@ -5,7 +5,7 @@ import java.util.List;
 
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.ArticleDTO;
+
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 

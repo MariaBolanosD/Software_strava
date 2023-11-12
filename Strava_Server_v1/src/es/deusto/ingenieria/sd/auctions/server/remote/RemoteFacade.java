@@ -9,21 +9,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Article;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Category;
+
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.ArticleAssembler;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.ArticleDTO;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.CategoryAssembler;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.CategoryDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
-import es.deusto.ingenieria.sd.auctions.server.services.BidAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.ChallengeAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.LoginAppService;
 
