@@ -7,9 +7,9 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
-import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
-
+import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 
@@ -22,7 +22,7 @@ public interface IRemoteFacade extends Remote {
 	
 	public List<ChallengeDTO> getChallenges() throws RemoteException;
 	
-	public List<SessionDTO> getSessions(User user) throws RemoteException;
+	public List<SessionDTO> getSessions(UserDTO user) throws RemoteException;
 	
 	public boolean makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime, User user);
 	

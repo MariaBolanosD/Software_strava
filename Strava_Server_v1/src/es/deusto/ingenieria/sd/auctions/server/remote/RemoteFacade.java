@@ -18,6 +18,7 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
 import es.deusto.ingenieria.sd.auctions.server.services.ChallengeAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.LoginAppService;
 
@@ -86,11 +87,12 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public List<SessionDTO> getSessions(User user) throws RemoteException {
+	public List<SessionDTO> getSessions(UserDTO user) throws RemoteException {
 		System.out.println(" * RemoteFacade getArticle('" + user.getEmail() + "')");
 
 		//Get Articles using BidAppService
-		List<Session> sessions = challengeAppService.getSessions(user);
+		
+		List<Session> sessions = challengeAppService.getSessions(challengeAppService.getUsers().get(user.getEmail()));
 		
 		if (sessions != null) {
 			//Convert domain object to DTO

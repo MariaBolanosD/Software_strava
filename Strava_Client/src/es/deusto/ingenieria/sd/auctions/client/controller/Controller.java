@@ -4,8 +4,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
-
+import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 
@@ -27,7 +26,7 @@ public class Controller {
 			}
 		}
 		
-		public List<SessionDTO> getSessions(User user) {
+		public List<SessionDTO> getSessions(UserDTO user) {
 			try {
 				return this.serviceLocator.getService().getSessions(user);
 			} catch (RemoteException e) {

@@ -11,7 +11,7 @@ import javax.swing.*;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
+
 
 public class LoginDialog extends JFrame{	
 	/**
@@ -52,12 +52,7 @@ public class LoginDialog extends JFrame{
 
 	}
 	
-	public User getUser()
-	{
-		User user = this.controller.getUsers().get(email);
-		
-		return user;
-	}
+//	
 	
 	///////////////////////////////////////////////////////////////////////////////
 	

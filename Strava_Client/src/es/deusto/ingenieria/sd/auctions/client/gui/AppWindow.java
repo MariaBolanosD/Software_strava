@@ -28,6 +28,7 @@ import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
 
 public class AppWindow extends JFrame{
 
@@ -61,7 +62,7 @@ public class AppWindow extends JFrame{
 		return challenges;
 	}
 	
-	public List<SessionDTO> getSession(User user)
+	public List<SessionDTO> getSession(UserDTO user)
 	{
 		System.out.println(" - Getting sessions of the user '" + user + "' ...");
 		
@@ -121,7 +122,7 @@ public class AppWindow extends JFrame{
             }
         });
 		
-		JLabel challengeDetails = new JLabel(cycling1.toString());
+		JLabel challengeDetails = new JLabel("Challenge Details [NOT IMPLEMENTED]");
 		frame.add(challengeDetails);
 		
 		
@@ -133,7 +134,7 @@ public class AppWindow extends JFrame{
 		JComboBox sessions = new JComboBox(dsSessionDTO_s.toArray()) ; //controller.getChallenges());
 		frame.add(sessions);
 		
-		JLabel SessionDetails = new JLabel("detalles Session");
+		JLabel SessionDetails = new JLabel("Session Details [NOT IMPLEMENTED]");
 		frame.add(SessionDetails);
 		JButton chalengeButton = new JButton("Create Challenge");
 		chalengeButton.addActionListener(new ActionListener() {

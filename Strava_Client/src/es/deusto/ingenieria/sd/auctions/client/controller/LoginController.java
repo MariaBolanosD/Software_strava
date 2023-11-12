@@ -42,9 +42,9 @@ public class LoginController {
 		return token;
 	}
 	
-	public Map<String, User> getUsers()
-	{
-		return this.serviceLocator.getService().getUsers();
-	}
-	
+//	public Map<String, User> getUsers()
+//	{
+//		return this.serviceLocator.getService().getUsers();
+//	}
+//	
 }
