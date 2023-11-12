@@ -2,6 +2,7 @@ package es.deusto.ingenieria.sd.auctions.client.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -62,15 +63,16 @@ public class LoginDialog extends JFrame{
 	
 	public void VentanaLogin()
 	{		
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
+		
+		JPanel panel = new JPanel(new GridLayout(4, 1));
 		
 		frame = new JFrame();
 		frame.setTitle("LOGIN PAGE");
 		frame.add(panel);
-		frame.setSize(400, 200);
+		frame.setSize(425, 220);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 		
 		
 		// Username label constructor

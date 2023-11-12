@@ -35,4 +35,8 @@ public class Controller {
 			}
 		}
 		
+		public ServiceLocator getServiceLoc() {
+			return this.serviceLocator;
+		}
+					
 	}

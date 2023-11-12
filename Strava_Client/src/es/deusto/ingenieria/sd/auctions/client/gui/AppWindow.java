@@ -8,8 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -80,31 +82,28 @@ public class AppWindow extends JFrame{
 		
 		frame = new JFrame();
 		frame.setTitle("APP PAGE");
-		frame.setSize(400, 200);
+		frame.setSize(425, 220);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setLayout(new GridLayout(4,3));
+		frame.setLocationRelativeTo(null);
 		
 		
 	/////////START - CHECKBOX TEST////////////
 		List<String> dsChallengeDTO_s = new ArrayList<>();
-		
+		List<ChallengeDTO> dsChallengeDTOs = new ArrayList<>();
+		try {
+			dsChallengeDTOs = this.controller.getServiceLoc().getService().getChallenges();
+			for (ChallengeDTO challenge: dsChallengeDTOs ) {
+				dsChallengeDTO_s.add(challenge.getName());
+				
+			}
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		List<String> dsSessionDTO_s = new ArrayList<>();
-		ChallengeDTO cycling1 = new ChallengeDTO();
-		cycling1.setName("Challenge1");
-		cycling1.setStartDate(LocalDate.now());
-		cycling1.setEndDate(LocalDate.now());
-		ChallengeDTO cycling2 = new ChallengeDTO();
-		cycling2.setName("Challenge2");
-		dsChallengeDTO_s.add(cycling1.getName());
-		dsChallengeDTO_s.add(cycling2.getName());
 		
-		SessionDTO session1 = new SessionDTO();
-		SessionDTO session2 = new SessionDTO();
-		session1.setTitle("Session 1");
-		session2.setTitle("Session 2");
-		dsSessionDTO_s.add(session1.getTitle());
-		dsSessionDTO_s.add(session2.getTitle());
 		/////////END - CHECKBOX TEST////////////
 		
 		// Username label constructor
