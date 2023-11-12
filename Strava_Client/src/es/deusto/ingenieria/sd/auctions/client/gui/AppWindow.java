@@ -28,6 +28,7 @@ import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
+import es.deusto.ingenieria.sd.auctions.server.remote.RemoteFacade;
 
 public class AppWindow extends JFrame{
 
@@ -93,7 +94,7 @@ public class AppWindow extends JFrame{
 		List<String> dsChallengeDTO_s = new ArrayList<>();
 		List<ChallengeDTO> dsChallengeDTOs = new ArrayList<>();
 		try {
-			dsChallengeDTOs = this.controller.getServiceLoc().getService().getChallenges();
+			dsChallengeDTOs =((RemoteFacade) (this.controller.getServiceLoc().getService())).getChallenges();
 			for (ChallengeDTO challenge: dsChallengeDTOs ) {
 				dsChallengeDTO_s.add(challenge.getName());
 				
