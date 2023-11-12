@@ -2,9 +2,13 @@ package es.deusto.ingenieria.sd.auctions.server.remote;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
+import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ArticleDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.CategoryDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
@@ -20,6 +24,12 @@ public interface IRemoteFacade extends Remote {
 	public List<ChallengeDTO> getChallenges() throws RemoteException;
 	
 	public List<SessionDTO> getSessions(User user) throws RemoteException;
+	
+	public boolean makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime, User user);
+	
+	public boolean makeSession(User user, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration );
+	
+	public Map<String, User> getUsers();
 	
 //	public boolean makeBid(long token, int article, float amount) throws RemoteException;
 

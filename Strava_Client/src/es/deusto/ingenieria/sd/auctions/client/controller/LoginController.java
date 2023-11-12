@@ -1,8 +1,10 @@
 package es.deusto.ingenieria.sd.auctions.client.controller;
 
 import java.rmi.RemoteException;
+import java.util.Map;
 
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
+import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 
 //This class implements Controller pattern.
 public class LoginController {	
@@ -24,7 +26,7 @@ public class LoginController {
 			System.out.println("# Error during login: " + e);
 			this.token = -1;
 			return false;
-		}
+		} 
 	}
 	
 	public void logout() {
@@ -39,4 +41,10 @@ public class LoginController {
 	public long getToken() {
 		return token;
 	}
+	
+	public Map<String, User> getUsers()
+	{
+		return this.serviceLocator.getService().getUsers();
+	}
+	
 }

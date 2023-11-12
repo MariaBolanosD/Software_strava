@@ -2,6 +2,8 @@ package es.deusto.ingenieria.sd.auctions.server.remote;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Map;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Article;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Category;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
+import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ArticleAssembler;
@@ -101,6 +104,68 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		} else {
 			throw new RemoteException("getArticles() fails!");
 		}
+	}
+
+	@Override
+	public boolean makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
+			boolean distanceorTime, User user) {
+		// TODO Auto-generated method stub
+		
+		Challenge challenge = new Challenge();
+		challenge.setName(name);
+		challenge.setStartDate(startDate);
+		challenge.setEndDate(endDate);
+		challenge.setTarget(target);
+		challenge.setSport(sport);
+		challenge.setDistanceorTime(distanceorTime);
+		
+		if(user != null)
+		{
+			// send email to subscribe challenge to user
+			user.addChallenge(challenge);
+			return true;
+		}
+		else {				
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean makeSession(User user, String title, SportEnum sport, double distance, LocalDate startDate,
+			LocalTime starTime, double duration) {
+		// TODO Auto-generated method stub
+		
+		if(user != null)
+		{
+			
+			Session session = new Session();
+			session.setTitle(title);
+			session.setDistance(distance);
+			session.setSport(sport);
+			session.setDuration(duration);
+			session.setStartDate(startDate);
+			session.setStartTime(starTime);
+			session.setUser(user);
+		
+			user.addSession(session);
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
+	// TO DO
+	public void updateChallenges()
+	{
+		
+	}
+	
+	public Map<String, User> getUsers()
+	{
+		return this.challengeAppService.getUsers();
 	}
 	
 //	@Override

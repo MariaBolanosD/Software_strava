@@ -2,13 +2,12 @@ package es.deusto.ingenieria.sd.auctions.client;
 
 import java.util.List;
 
-import es.deusto.ingenieria.sd.auctions.client.controller.BidController;
+import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
-import es.deusto.ingenieria.sd.auctions.client.gui.BidWindow;
 import es.deusto.ingenieria.sd.auctions.client.gui.LoginDialog;
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.ArticleDTO;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.CategoryDTO;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 
 public class MainProgram {
 
@@ -21,24 +20,31 @@ public class MainProgram {
 		serviceLocator.setService(args[0], args[1], args[2]);
 		
 		LoginController loginController = new LoginController(serviceLocator);
-		LoginDialog loginDialog = new LoginDialog(loginController);			
-		BidController bidController = new BidController(serviceLocator);			
-		BidWindow bidWindow = new BidWindow(bidController);
+		Controller controller = new Controller(serviceLocator);
+		LoginDialog loginDialog = new LoginDialog(loginController, controller);			
+		//BidController bidController = new BidController(serviceLocator);		
+		//BidWindow bidWindow = new BidWindow(bidController);
+		//create window for challenge and session
+		//AppWindow appWindow = new AppWindow(controller);
+			
 		
 		//Login
 		loginDialog.login();		
-		//Get Categories
-		List<CategoryDTO> categories = bidWindow.getCategories();
+		//Get Challenges
+		//List<CategoryDTO> categories = bidWindow.getCategories();
+		List<ChallengeDTO> challenges = controller.getChallenges();
 		//Get Articles of a category (first category is selected)
-		List<ArticleDTO> articles = bidWindow.getArticles(categories.get(0).getName());
+		//List<ArticleDTO> articles = bidWindow.getArticles(categories.get(0).getName());
+		// get the sessions of this user
+		List<SessionDTO> sessions = controller.getSessions(loginDialog.getUser());
 		//Convert currency to GBP
-		bidWindow.currencyToGBP(articles);
+		//bidWindow.currencyToGBP(articles);
 		//Convert currency to USD
-		bidWindow.currencyToUSD(articles);
+		//bidWindow.currencyToUSD(articles);
 		//Place a bid (first article of the category is selected; the token is stored in the BidController)
-		bidWindow.makeBid(loginController.getToken(), articles.get(0));
+		//bidWindow.makeBid(loginController.getToken(), articles.get(0));
 		//Get Articles to check if the bid has been done
-		articles = bidWindow.getArticles(categories.get(0).getName());
+//		articles = bidWindow.getArticles(categories.get(0).getName());
 		//Logout
 		loginDialog.logout();
 	}

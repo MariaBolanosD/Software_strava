@@ -1,14 +1,14 @@
 package es.deusto.ingenieria.sd.auctions.server.data.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class User {	
 	private String nickname;
 	private String password;
 	private String email;
-	private Date birthDate;
+	private LocalDate birthDate;
 	private double weight;
 	private double height;
 	private int maxHeartRate;
@@ -63,17 +63,17 @@ public class User {
 		this.sessions = sessions;
 	}
 	
-	public void addArticle(Session session) {
+	public void addSession(Session session) {
 		if (session != null && !this.sessions.contains(session)) {
 			this.sessions.add(session);
 		}
 	}
 	
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 	
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 	
@@ -109,12 +109,8 @@ public class User {
 		this.restHeartRate = restHeartRate;
 	}
 
-	// TO DO: update challenges with session
-	void UpdateChallenges(Session session)
-	{
-		
-	}
-		
+	
+			
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();

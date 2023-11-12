@@ -1,11 +1,14 @@
 package es.deusto.ingenieria.sd.auctions.server.services;
 
-import java.rmi.RemoteException;
+import java.net.UnknownServiceException;
+import java.security.PublicKey;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
@@ -15,6 +18,7 @@ import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 public class ChallengeAppService {
 
 	private List<Challenge> challenges = new ArrayList<>();
+	private Map<String, User> users = new HashMap<String, User>(); 
 	
 	public ChallengeAppService() {
 		this.initilizeData();
@@ -27,7 +31,7 @@ public class ChallengeAppService {
 		user0.setEmail("thomas.e2001@gmail.com");
 		user0.setNickname("Thomas");
 		user0.setPassword("$!9PhNz,");
-		user0.setBirthDate(new Date(1985, 2, 25 ));
+		user0.setBirthDate(LocalDate.of(1985, 2, 25 ));
 		user0.setWeight(86);
 		user0.setHeight(184.25);
 		user0.setMaxHeartRate(150);
@@ -37,7 +41,7 @@ public class ChallengeAppService {
 		user1.setEmail("sample@gmail.com");
 		user1.setNickname("buyer33");		
 		user1.setPassword("hqc`}3Hb");
-		user0.setBirthDate(new Date(1989, 5, 2 ));
+		user0.setBirthDate(LocalDate.of(1989, 5, 2 ));
 		user0.setWeight(98);
 		user0.setHeight(193.50);
 		user0.setMaxHeartRate(147);
@@ -82,7 +86,17 @@ public class ChallengeAppService {
 		
 		this.challenges.add(running1);
 		this.challenges.add(cycling1);
+		
+		this.users.put(user0.getEmail(), user0);
+		this.users.put(user1.getEmail(), user1);
+		
 	}
+	
+	public Map<String, User> getUsers()
+	{
+		return users;
+	}
+	
 	
 	public List<Challenge> getChallenges() {
 		//TODO: Get all the categories using DAO Pattern		
@@ -99,17 +113,50 @@ public class ChallengeAppService {
 	}
 	
 	// TO DO
-	public boolean makeChallenge()
+	public boolean makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime, User user)
 	{
+		Challenge challenge = new Challenge();
+		challenge.setName(name);
+		challenge.setStartDate(startDate);
+		challenge.setEndDate(endDate);
+		challenge.setTarget(target);
+		challenge.setSport(sport);
+		challenge.setDistanceorTime(distanceorTime);
 		
+		if(user != null)
+		{
+			// send email to subscribe challenge to user
+			user.addChallenge(challenge);
+			return true;
+		}
+		else {				
+			return false;
+		}
+		
+	}
+	
+	// TO DO
+	public boolean makeSession(User user, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration )
+	{
+		if(user != null)
+		{
+			
+			Session session = new Session();
+			session.setTitle(title);
+			session.setDistance(distance);
+			session.setSport(sport);
+			session.setDuration(duration);
+			session.setStartDate(startDate);
+			session.setStartTime(starTime);
+			session.setUser(user);
+		
+			user.addSession(session);
+			
+			return true;
+		}
 		
 		return false;
 	}
 	
-	// TO DO
-	public boolean makeSession(User user)
-	{
-		return false;
-	}
 	
 }

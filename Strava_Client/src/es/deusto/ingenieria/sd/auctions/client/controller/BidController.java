@@ -20,33 +20,15 @@ public class BidController {
 		this.serviceLocator = serviceLocator; 
 	}
 	
-	public List<ChallengeDTO> getChallenges()
-	{
-		try {
-			return this.serviceLocator.getService().getChallenges();
-		} catch (RemoteException e) {
-			System.out.println("# Error getting all challenges: " + e);
-			return null;
-		}
-	}
-	
-	public List<SessionDTO> getSessions(User user) {
-		try {
-			return this.serviceLocator.getService().getSessions(user);
-		} catch (RemoteException e) {
-			System.out.println("# Error getting articles of a category: " + e);
-			return null;
-		}
-	}
 
-//	public List<CategoryDTO> getCategories() {
-//		try {
-//			return this.serviceLocator.getService().getCategories();
-//		} catch (RemoteException e) {
-//			System.out.println("# Error getting all categories: " + e);
-//			return null;
-//		}
-//	}
+	public List<CategoryDTO> getCategories() {
+		try {
+			return this.serviceLocator.getService().getCategories();
+		} catch (RemoteException e) {
+			System.out.println("# Error getting all categories: " + e);
+			return null;
+		}
+	}
 
 	public List<ArticleDTO> getArticles(String category) {
 		try {
