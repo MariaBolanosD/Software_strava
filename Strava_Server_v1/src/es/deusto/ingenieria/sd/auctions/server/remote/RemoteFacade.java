@@ -163,6 +163,24 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	{
 		return this.challengeAppService.getUsers();
 	}
+
+	@Override
+	public boolean register(String email, String password, String name, LocalDate birthdate, float weight, float height,
+			Integer heart_rate_max, Integer heart_rate_rest) {
+		if (email == null || password == null || name == null || birthdate == null || heart_rate_max == null || heart_rate_rest == null) {
+	        return false;
+	    }
+		User usuario = new User();
+		usuario.setEmail(email);
+		usuario.setPassword(password);
+		usuario.setNickname(name);
+		usuario.setBirthDate(birthdate);
+		usuario.setWeight(weight);
+		usuario.setHeight(height);
+		usuario.setMaxHeartRate(heart_rate_max);
+		usuario.setRestHeartRate(heart_rate_rest);
+		return true;
+	}
 	
 //	@Override
 //	public boolean makeBid(long token, int article, float amount) throws RemoteException {		
