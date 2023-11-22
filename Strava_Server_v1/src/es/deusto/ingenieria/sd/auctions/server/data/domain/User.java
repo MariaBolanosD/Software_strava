@@ -4,7 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {	
+public class User {
+	private TipoAutorizacion tipoAut;
 	private String nickname;
 	private String password;
 	private String email;
@@ -17,6 +18,14 @@ public class User {
 	private List<Challenge> challenges = new ArrayList<>();
 	private List<Session> sessions = new ArrayList<>();
 		
+	public TipoAutorizacion getTipoAut() {
+		return tipoAut;
+	}
+
+	public void setTipoAut(TipoAutorizacion tipoAut) {
+		this.tipoAut = tipoAut;
+	}
+	
 	public String getNickname() {
 		return nickname;
 	}
@@ -135,5 +144,6 @@ public class User {
 		
 		return false;
 	}
+
 	
 }
