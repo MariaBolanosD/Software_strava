@@ -15,12 +15,12 @@ import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 
-public class ChallengeAppService {
+public class SportAppService {
 
 	private List<Challenge> challenges = new ArrayList<>();
 	// private Map<String, User> users = new HashMap<String, User>(); 
 	
-	public ChallengeAppService() {
+	public SportAppService() {
 		this.initilizeData();
 	}
 	

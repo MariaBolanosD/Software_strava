@@ -19,8 +19,9 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
-import es.deusto.ingenieria.sd.auctions.server.services.ChallengeAppService;
+import es.deusto.ingenieria.sd.auctions.server.services.SportAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.LoginAppService;
+import es.deusto.ingenieria.sd.auctions.server.services.SportAppService;
 
 public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {	
 	private static final long serialVersionUID = 1L;
@@ -30,7 +31,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	
 	//TODO: Remove this instances when Singleton Pattern is implemented
 	private LoginAppService loginService = new LoginAppService();
-	private ChallengeAppService challengeAppService = new ChallengeAppService();
+	private SportAppService sportAppService = new SportAppService();
 	//private BidAppService bidService = new BidAppService();
 
 	public RemoteFacade() throws RemoteException {
@@ -76,7 +77,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		System.out.println(" * RemoteFacade getChallenges");
 		
 		//Get Categories using BidAppService
-		List<Challenge> challenges = challengeAppService.getChallenges();
+		List<Challenge> challenges = sportAppService.getChallenges();
 		
 		if (challenges != null) {
 			//Convert domain object to DTO
