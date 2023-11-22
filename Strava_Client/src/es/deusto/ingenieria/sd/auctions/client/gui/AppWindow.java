@@ -62,11 +62,11 @@ public class AppWindow extends JFrame{
 		return challenges;
 	}
 	
-	public List<SessionDTO> getSession(UserDTO user)
+	public List<SessionDTO> getSession(long token)
 	{
-		System.out.println(" - Getting sessions of the user '" + user + "' ...");
+		System.out.println(" - Getting sessions of the actual user ");
 		
-		List<SessionDTO> sessions = this.controller.getSessions(user);
+		List<SessionDTO> sessions = this.controller.getSessions(token);
 		
 		for(SessionDTO session : sessions)
 		{

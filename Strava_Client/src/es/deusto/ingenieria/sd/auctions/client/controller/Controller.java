@@ -26,9 +26,9 @@ public class Controller {
 			}
 		}
 		
-		public List<SessionDTO> getSessions(UserDTO user) {
+		public List<SessionDTO> getSessions(long token) {
 			try {
-				return this.serviceLocator.getService().getSessions(user);
+				return this.serviceLocator.getService().getSessions(token);
 			} catch (RemoteException e) {
 				System.out.println("# Error getting sessions of a user: " + e);
 				return null;
