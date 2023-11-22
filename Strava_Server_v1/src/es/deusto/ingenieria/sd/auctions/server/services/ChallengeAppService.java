@@ -18,7 +18,7 @@ import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 public class ChallengeAppService {
 
 	private List<Challenge> challenges = new ArrayList<>();
-	private Map<String, User> users = new HashMap<String, User>(); 
+	// private Map<String, User> users = new HashMap<String, User>(); 
 	
 	public ChallengeAppService() {
 		this.initilizeData();
@@ -87,16 +87,16 @@ public class ChallengeAppService {
 		this.challenges.add(running1);
 		this.challenges.add(cycling1);
 		
-		this.users.put(user0.getEmail(), user0);
-		this.users.put(user1.getEmail(), user1);
+//		this.users.put(user0.getEmail(), user0);
+//		this.users.put(user1.getEmail(), user1);
 		
 	}
 	
-	public Map<String, User> getUsers()
-	{
-		return users;
-	}
-	
+//	public Map<String, User> getUsers()
+//	{
+//		return users;
+//	}
+
 	
 	public List<Challenge> getChallenges() {
 		//TODO: Get all the categories using DAO Pattern		

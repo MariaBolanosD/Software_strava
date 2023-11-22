@@ -9,7 +9,7 @@ import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 
 public class Session {
 	
-	private long token;
+	private User user;
 	private String title;
 	private SportEnum sport;
 	private double distance;
@@ -76,14 +76,9 @@ public class Session {
 		this.duration = duration;
 	}
 	
-	public long getToken() 
+	public void setUser(User user)
 	{
-		return this.token;
-	}
-	
-	public void setToken(long token)
-	{
-		this.token = token;
+		this.user = user;
 	}
 	
 	
@@ -119,7 +114,7 @@ public class Session {
 	@Override
 	public boolean equals(Object obj) {
 		if (this.getClass().getName().equals(obj.getClass().getName())) {
-			return (this.token == ((Session)obj).token) && (this.title == ((Session)obj).title) && (this.start_date == ((Session)obj).start_date) ;
+			return (this.user == ((Session)obj).user) && (this.title == ((Session)obj).title) && (this.start_date == ((Session)obj).start_date) ;
 		}
 		
 		return false;

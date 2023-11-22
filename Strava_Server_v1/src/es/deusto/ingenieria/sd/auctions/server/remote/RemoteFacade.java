@@ -87,12 +87,12 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public List<SessionDTO> getSessions(UserDTO user) throws RemoteException {
-		System.out.println(" * RemoteFacade getArticle('" + user.getEmail() + "')");
+	public List<SessionDTO> getSessions(long token) throws RemoteException {
+		System.out.println(" * RemoteFacade getArticle('" + serverState.get(token).getEmail() + "')");
 
 		//Get Articles using BidAppService
-		
-		List<Session> sessions = challengeAppService.getSessions(challengeAppService.getUsers().get(user.getEmail()));
+
+		List<Session> sessions = serverState.get(token).getSessions();
 		
 		if (sessions != null) {
 			//Convert domain object to DTO
@@ -103,8 +103,8 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
-			boolean distanceorTime, User user) {
+	public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
+			boolean distanceorTime) {
 		// TODO Auto-generated method stub
 		
 		Challenge challenge = new Challenge();
@@ -115,10 +115,10 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		challenge.setSport(sport);
 		challenge.setDistanceorTime(distanceorTime);
 		
-		if(user != null)
+		if(serverState.get(token) != null)
 		{
 			// send email to subscribe challenge to user
-			user.addChallenge(challenge);
+			serverState.get(token).addChallenge(challenge);
 			return true;
 		}
 		else {				
@@ -142,7 +142,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			session.setDuration(duration);
 			session.setStartDate(startDate);
 			session.setStartTime(starTime);
-			session.setToken(token);
+			session.setUser(serverState.get(token));
 			
 			return true;
 		}

@@ -22,11 +22,11 @@ public interface IRemoteFacade extends Remote {
 	
 	public void logout(long token) throws RemoteException; 
 	
-	public List<ChallengeDTO> getChallenges(long token) throws RemoteException;
+	public List<ChallengeDTO> getChallenges() throws RemoteException;
 	
 	public List<SessionDTO> getSessions(long token) throws RemoteException;
 	
-	public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime, User user);
+	public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime);
 	
 	public boolean makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration );
 	
