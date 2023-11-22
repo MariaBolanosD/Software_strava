@@ -1,10 +1,8 @@
 package es.deusto.ingenieria.sd.auctions.server.data.dto;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 

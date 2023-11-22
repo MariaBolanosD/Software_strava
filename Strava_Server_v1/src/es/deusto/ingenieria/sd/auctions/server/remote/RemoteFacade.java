@@ -18,8 +18,6 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
-import es.deusto.ingenieria.sd.auctions.server.services.SportAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.LoginAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.SportAppService;
 

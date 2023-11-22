@@ -1,14 +1,10 @@
 package es.deusto.ingenieria.sd.auctions.server.services;
 
-import java.net.UnknownServiceException;
-import java.security.PublicKey;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
