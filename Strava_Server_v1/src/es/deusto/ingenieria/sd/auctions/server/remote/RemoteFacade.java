@@ -128,11 +128,11 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean makeSession(User user, String title, SportEnum sport, double distance, LocalDate startDate,
+	public boolean makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate,
 			LocalTime starTime, double duration) {
 		// TODO Auto-generated method stub
 		
-		if(user != null)
+		if(token < 0)
 		{
 			
 			Session session = new Session();
@@ -142,9 +142,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			session.setDuration(duration);
 			session.setStartDate(startDate);
 			session.setStartTime(starTime);
-			session.setUser(user);
-		
-			user.addSession(session);
+			session.setToken(token);
 			
 			return true;
 		}

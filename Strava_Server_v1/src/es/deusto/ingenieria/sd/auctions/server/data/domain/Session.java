@@ -8,14 +8,15 @@ import java.time.LocalTime;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 
 public class Session {
-
+	
+	private long token;
 	private String title;
 	private SportEnum sport;
 	private double distance;
 	private LocalDate start_date;
 	private LocalTime start_time;
 	private double duration;
-	private User user;
+	
 	
 	public String getTitle()
 	{
@@ -75,14 +76,14 @@ public class Session {
 		this.duration = duration;
 	}
 	
-	public User getUser() 
+	public long getToken() 
 	{
-		return this.user;
+		return this.token;
 	}
 	
-	public void setUser(User user)
+	public void setToken(long token)
 	{
-		this.user = user;
+		this.token = token;
 	}
 	
 	
@@ -118,7 +119,7 @@ public class Session {
 	@Override
 	public boolean equals(Object obj) {
 		if (this.getClass().getName().equals(obj.getClass().getName())) {
-			return (this.user == ((Session)obj).user) && (this.title == ((Session)obj).title) && (this.start_date == ((Session)obj).start_date) ;
+			return (this.token == ((Session)obj).token) && (this.title == ((Session)obj).title) && (this.start_date == ((Session)obj).start_date) ;
 		}
 		
 		return false;
