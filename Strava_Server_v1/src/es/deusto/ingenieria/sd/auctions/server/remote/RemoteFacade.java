@@ -158,11 +158,6 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	{
 		
 	}
-	
-	public Map<String, User> getUsers()
-	{
-		return this.challengeAppService.getUsers();
-	}
 
 	@Override
 	public boolean register(String email, String password, String name, LocalDate birthdate, float weight, float height,
