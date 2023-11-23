@@ -23,7 +23,12 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 
 public class AppWindow extends JFrame{
 
-	/**
+	/** TONTO EL QUE LO LEA
+	 * 
+	 * Detalles a la derecha del combo box
+	 * 
+	 * Login correcto que pase usuario/token a app window
+	 * para poder sacar challenges del usuario
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
