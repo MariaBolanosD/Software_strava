@@ -8,6 +8,7 @@ import es.deusto.ingenieria.sd.auctions.server.remote.RemoteFacade;
 public class MainProgram {
 
 	public static void main(String[] args) {	
+		
 		//Activate Security Manager. It is needed for RMI.
 		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new SecurityManager());
@@ -28,5 +29,8 @@ public class MainProgram {
 			ex.printStackTrace();
 		}
 	}
+		
+		
 
 }
+	

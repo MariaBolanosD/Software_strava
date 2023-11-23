@@ -4,12 +4,12 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 
 public class Session {
 	
-	private User user;
+	//private User user;
 	private String title;
 	private SportEnum sport;
 	private double distance;
@@ -76,10 +76,10 @@ public class Session {
 		this.duration = duration;
 	}
 	
-	public void setUser(User user)
-	{
-		this.user = user;
-	}
+//	public void setUser(User user)
+//	{
+//		this.user = user;
+//	}
 	
 	
 	//TO DO:: talk to user to update challenge list
@@ -114,7 +114,7 @@ public class Session {
 	@Override
 	public boolean equals(Object obj) {
 		if (this.getClass().getName().equals(obj.getClass().getName())) {
-			return (this.user == ((Session)obj).user) && (this.title == ((Session)obj).title) && (this.start_date == ((Session)obj).start_date) ;
+			return ((this.title == ((Session)obj).title) && (this.start_date == ((Session)obj).start_date)) ;
 		}
 		
 		return false;

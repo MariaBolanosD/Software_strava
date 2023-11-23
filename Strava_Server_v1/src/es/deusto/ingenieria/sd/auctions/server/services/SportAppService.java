@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
 public class SportAppService {
 
@@ -69,7 +69,7 @@ public class SportAppService {
 		sesion1.setStartDate(LocalDate.of(2017, 5, 30 ));
 		sesion1.setStartTime(LocalTime.of(12, 20));
 		sesion1.setDuration(30);
-		sesion1.setUser(user0);
+		
 		
 		Session sesion2 = new Session();
 		sesion2.setTitle("sesion1");
@@ -78,7 +78,7 @@ public class SportAppService {
 		sesion2.setStartDate(LocalDate.of(2017, 5, 30 ));
 		sesion2.setStartTime(LocalTime.of(15, 30));
 		sesion2.setDuration(45);
-		sesion2.setUser(user1);
+		
 		
 		this.challenges.add(running1);
 		this.challenges.add(cycling1);
@@ -109,7 +109,7 @@ public class SportAppService {
 	}
 	
 	// TO DO
-	public boolean makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime, User user)
+	public Challenge makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime)
 	{
 		Challenge challenge = new Challenge();
 		challenge.setName(name);
@@ -119,40 +119,37 @@ public class SportAppService {
 		challenge.setSport(sport);
 		challenge.setDistanceorTime(distanceorTime);
 		
-		if(user != null)
-		{
-			// send email to subscribe challenge to user
-			user.addChallenge(challenge);
-			return true;
-		}
-		else {				
-			return false;
-		}
+		
+		
+		
+		challenges.add(challenge);
+		
+		return challenge;
 		
 	}
 	
-	// TO DO
-	public boolean makeSession(User user, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration )
-	{
-		if(user != null)
-		{
-			
-			Session session = new Session();
-			session.setTitle(title);
-			session.setDistance(distance);
-			session.setSport(sport);
-			session.setDuration(duration);
-			session.setStartDate(startDate);
-			session.setStartTime(starTime);
-			session.setUser(user);
-		
-			user.addSession(session);
-			
-			return true;
-		}
-		
-		return false;
-	}
+//	// TO DO
+//	public boolean makeSession(Long token, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration )
+//	{
+//		if(server != null)
+//		{
+//			
+//			Session session = new Session();
+//			session.setTitle(title);
+//			session.setDistance(distance);
+//			session.setSport(sport);
+//			session.setDuration(duration);
+//			session.setStartDate(startDate);
+//			session.setStartTime(starTime);
+//			
+//		
+//			user.addSession(session);
+//			
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 	
 	
 }

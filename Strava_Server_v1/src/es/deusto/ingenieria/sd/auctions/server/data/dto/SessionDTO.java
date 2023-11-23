@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 
 public class SessionDTO implements Serializable{
 

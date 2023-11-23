@@ -11,13 +11,14 @@ import java.util.Map;
 
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 import es.deusto.ingenieria.sd.auctions.server.services.LoginAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.SportAppService;
 
@@ -105,19 +106,10 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
 			boolean distanceorTime) {
 		// TODO Auto-generated method stub
-		
-		Challenge challenge = new Challenge();
-		challenge.setName(name);
-		challenge.setStartDate(startDate);
-		challenge.setEndDate(endDate);
-		challenge.setTarget(target);
-		challenge.setSport(sport);
-		challenge.setDistanceorTime(distanceorTime);
-		
 		if(serverState.get(token) != null)
-		{
+		{	
 			// send email to subscribe challenge to user
-			serverState.get(token).addChallenge(challenge);
+			serverState.get(token).addChallenge(sportAppService.makeChallenge(name, startDate, endDate, target, sport, distanceorTime));
 			return true;
 		}
 		else {				
@@ -131,7 +123,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			LocalTime starTime, double duration) {
 		// TODO Auto-generated method stub
 		
-		if(token < 0)
+		if(token >= 0)
 		{
 			
 			Session session = new Session();
@@ -141,8 +133,8 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			session.setDuration(duration);
 			session.setStartDate(startDate);
 			session.setStartTime(starTime);
-			session.setUser(serverState.get(token));
 			
+			serverState.get(token).addSession(session);
 			return true;
 		}
 		
@@ -157,12 +149,14 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean register(String email, String password, String name, LocalDate birthdate, float weight, float height,
+	public boolean register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate, float weight, float height,
 			Integer heart_rate_max, Integer heart_rate_rest) {
 		if (email == null || password == null || name == null || birthdate == null || heart_rate_max == null || heart_rate_rest == null) {
 	        return false;
 	    }
 		User usuario = new User();
+		usuario.setTypeOfAccount(accountType);
+		System.out.println("TYPE OF ACCOUNT: "+ accountType);
 		usuario.setEmail(email);
 		usuario.setPassword(password);
 		usuario.setNickname(name);
@@ -172,6 +166,13 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		usuario.setMaxHeartRate(heart_rate_max);
 		usuario.setRestHeartRate(heart_rate_rest);
 		return true;
+	}
+
+	@Override
+	public boolean register(TypeOfAccount accountType, String email, String password, String name,
+			LocalDate birthdate) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 //	@Override

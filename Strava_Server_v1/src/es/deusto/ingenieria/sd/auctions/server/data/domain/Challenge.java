@@ -3,17 +3,15 @@ package es.deusto.ingenieria.sd.auctions.server.data.domain;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
+import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
+
 public class Challenge {
 	
 	private String name;
 	private LocalDate start_date;
 	private LocalDate end_date;
 	private float target;
-	public enum SportEnum{
-		Cycling,
-		Running,
-		Both
-	};
+	
 	private SportEnum sport;
 	private boolean distance_or_time;
 	

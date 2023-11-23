@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge.SportEnum;
+
 
 public class ChallengeDTO implements Serializable{
 
