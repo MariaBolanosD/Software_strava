@@ -1,13 +1,11 @@
 package es.deusto.ingenieria.sd.auctions.client;
 
-import java.util.List;
+import java.rmi.RemoteException;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
 import es.deusto.ingenieria.sd.auctions.client.gui.LoginDialog;
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 
 public class MainProgram {
 

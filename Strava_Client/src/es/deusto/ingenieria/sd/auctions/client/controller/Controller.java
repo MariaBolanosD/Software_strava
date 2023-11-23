@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 

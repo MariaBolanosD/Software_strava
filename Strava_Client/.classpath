@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
-	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
-	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Client/lib/commons-codec-1.15.jar"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Client/lib/commons-codec-1.15.jar"/>
 	<classpathentry kind="con" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Client/bin"/>
 	<classpathentry kind="src" path="/Strava_Server_v1"/>
 	<classpathentry kind="output" path="bin"/>

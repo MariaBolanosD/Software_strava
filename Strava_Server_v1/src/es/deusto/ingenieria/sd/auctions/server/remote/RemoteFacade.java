@@ -103,13 +103,13 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
+	public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, String sport,
 			boolean distanceorTime) {
 		// TODO Auto-generated method stub
 		if(serverState.get(token) != null)
 		{	
 			// send email to subscribe challenge to user
-			serverState.get(token).addChallenge(sportAppService.makeChallenge(name, startDate, endDate, target, sport, distanceorTime));
+			//serverState.get(token).addChallenge(sportAppService.makeChallenge(name, startDate, endDate, target, sport, distanceorTime));
 			return true;
 		}
 		else {				
@@ -119,7 +119,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate,
+	public boolean makeSession(long token, String title, String sport, double distance, LocalDate startDate,
 			LocalTime starTime, double duration) {
 		// TODO Auto-generated method stub
 		
@@ -129,7 +129,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			Session session = new Session();
 			session.setTitle(title);
 			session.setDistance(distance);
-			session.setSport(sport);
+			//session.setSport(sport);
 			session.setDuration(duration);
 			session.setStartDate(startDate);
 			session.setStartTime(starTime);
@@ -149,13 +149,13 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate, float weight, float height,
-			Integer heart_rate_max, Integer heart_rate_rest) {
-		if (email == null || password == null || name == null || birthdate == null || heart_rate_max == null || heart_rate_rest == null) {
+	public boolean register(String accountType, String email, String password, String name, LocalDate birthdate, float weight, float height,
+			int heart_rate_max, int heart_rate_rest) {
+		if (email == null || password == null || name == null || birthdate == null || heart_rate_max >=0 || heart_rate_rest >= 0) {
 	        return false;
 	    }
 		User usuario = new User();
-		usuario.setTypeOfAccount(accountType);
+		//usuario.setTypeOfAccount(accountType);
 		System.out.println("TYPE OF ACCOUNT: "+ accountType);
 		usuario.setEmail(email);
 		usuario.setPassword(password);
@@ -169,7 +169,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean register(TypeOfAccount accountType, String email, String password, String name,
+	public boolean register(String accountType, String email, String password, String name,
 			LocalDate birthdate) {
 		// TODO Auto-generated method stub
 		return false;

@@ -1,14 +1,16 @@
 package es.deusto.ingenieria.sd.auctions.client.gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.print.attribute.standard.RequestingUserName;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
