@@ -1,7 +1,5 @@
 package es.deusto.ingenieria.sd.auctions.client.gui;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -9,26 +7,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.rmi.RemoteException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.swing.BoxLayout;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
-import es.deusto.ingenieria.sd.auctions.server.data.dto.UserDTO;
-import es.deusto.ingenieria.sd.auctions.server.remote.RemoteFacade;
+import es.deusto.ingenieria.sd.auctions.server.remote.IRemoteFacade;
 
 public class AppWindow extends JFrame{
 
@@ -94,7 +86,7 @@ public class AppWindow extends JFrame{
 		List<String> dsChallengeDTO_s = new ArrayList<>();
 		List<ChallengeDTO> dsChallengeDTOs = new ArrayList<>();
 		try {
-			dsChallengeDTOs =((RemoteFacade) (this.controller.getServiceLoc().getService())).getChallenges();
+			dsChallengeDTOs =((this.controller.getServiceLoc().getService())).getChallenges();
 			for (ChallengeDTO challenge: dsChallengeDTOs ) {
 				dsChallengeDTO_s.add(challenge.getName());
 				
