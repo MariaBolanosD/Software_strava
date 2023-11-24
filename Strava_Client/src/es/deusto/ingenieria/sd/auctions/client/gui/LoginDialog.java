@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,7 +38,8 @@ public class LoginDialog extends JFrame{
 	public LoginDialog(LoginController controller, Controller controller2) {
 		this.controller = controller;
 		this.controllerApp = controller2;
-		VentanaLogin();
+		VentanaRegister();
+		//VentanaLogin();
 	}
 	
 	public boolean login() {		
@@ -61,6 +66,11 @@ public class LoginDialog extends JFrame{
 	
 	public static void main(String[] args) {
 		LoginDialog loginDialog = new LoginDialog(null, null);
+	}
+
+	public void VentanaMain()
+	{
+		
 	}
 	
 	public void VentanaLogin()
@@ -112,8 +122,128 @@ public class LoginDialog extends JFrame{
 		});
 		panel.add(button);
 		
+		frame.validate();
+	    frame.repaint();
+		
 	}
 
+	public void VentanaRegister()
+	{
+		//JPanel panel = new JPanel(null);
+		
+		frame = new JFrame();
+		frame.setTitle("LOGIN PAGE");
+		//frame.add(panel);
+		//panel.setSize(700,700);
+		frame.setSize(700, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.setLayout(null);
+		frame.setTitle("Registration Form in Java");  
+		//frame.pack();
+		 
+		JLabel l1 = new JLabel("Registration Form in Windows Form:");  
+		//l1.setForeground(Color.blue);   
+		l1.setBounds(100, 30, 400, 30);  
+		l1.setVisible(true);
+		frame.add(l1);  
+		
+        JLabel l2 = new JLabel("Name:");
+        l2.setBounds(80, 70, 200, 30);  
+        frame.add(l2);   
+        JTextField tf1 = new JTextField();  
+        tf1.setBounds(300, 70, 200, 30);  
+        frame.add(tf1);  
+        
+        JLabel l3 = new JLabel("Email:");  
+        l3.setBounds(80, 110, 200, 30);  
+        frame.add(l3);  
+        JTextField tf2 = new JTextField();  
+        tf2.setBounds(300, 110, 200, 30);  
+        frame.add(tf2);  
+        
+        JLabel l4 = new JLabel("Create Passowrd:");  
+        l4.setBounds(80, 150, 200, 30);  
+        frame.add(l4);  
+        JPasswordField p1 = new JPasswordField();  
+        p1.setBounds(300, 150, 200, 30);  
+        frame.add(p1);  
+
+        JLabel l5 = new JLabel("Confirm Password:");  
+        l5.setBounds(80, 190, 200, 30);  
+        frame.add(l5);  
+        JPasswordField p2 = new JPasswordField();  
+        p2.setBounds(300, 190, 200, 30);  
+        frame.add(p2);  
+        
+        JLabel l6 = new JLabel("Name:");  
+        l6.setBounds(80, 230, 200, 30);  
+        frame.add(l6);  
+        JTextField tf5 = new JTextField();  
+        tf5.setBounds(300, 230, 200, 30);  
+        frame.add(tf5);  
+        
+        JLabel l7 = new JLabel("Birthday:");  
+        l7.setBounds(80, 270, 200, 30);  
+        //frame.add(l7);  
+        JTextField tf6 = new JTextField();  
+        tf6.setBounds(300, 270, 200, 30);  
+        //frame.add(tf6);  
+        
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM YYYY");
+        JFormattedTextField today = new JFormattedTextField(dateFormat);
+        today.setName("Birthday");
+        today.setColumns(10);
+        today.setEditable(true);
+        JLabel todayLabel = new JLabel("Birtday:");
+        todayLabel.setLabelFor(today);
+        todayLabel.setBounds(80, 270, 200, 30); 
+        today.setValue(new Date());
+        today.setBounds(300, 270, 200, 30);  
+        frame.add(todayLabel);
+        frame.add(today);
+        
+        JLabel l8 = new JLabel("Weight(kg):");   
+        l8.setBounds(80, 310, 200, 30);  
+        frame.add(l8);  
+        JTextField tf7 = new JTextField();  
+        tf7.setBounds(300, 310, 200, 30);  
+        frame.add(tf7);  
+        
+        JLabel l9 = new JLabel("Height(m):");   
+        l9.setBounds(80, 350, 200, 30);  
+        frame.add(l9);  
+        JTextField tf8 = new JTextField();  
+        tf8.setBounds(300, 350, 200, 30);  
+        frame.add(tf8);  
+        
+        frame.validate();
+        frame.repaint();
+        
+        JButton btn1 = new JButton("Submit");  
+        JButton btn2 = new JButton("Clear");  
+        
+        btn1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+							}
+		});
+        
+        btn2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});  
+        btn1.setBounds(50, 390, 100, 30);  
+        btn2.setBounds(170, 390, 100, 30);  
+        frame.add(btn1);  
+        frame.add(btn2);
+	}
+	
 	void CheckLogin()
 	{
 		if(login())
