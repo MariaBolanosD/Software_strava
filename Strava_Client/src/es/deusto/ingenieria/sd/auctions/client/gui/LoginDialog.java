@@ -169,7 +169,7 @@ public class LoginDialog extends JFrame{
 		l1.setVisible(true);
 		frame.add(l1);  
 		
-        JLabel l2 = new JLabel("Name:");
+        JLabel l2 = new JLabel("TypeOfAccount");
         l2.setBounds(80, 70, 200, 30);  
         frame.add(l2);   
         JTextField tf1 = new JTextField();  
