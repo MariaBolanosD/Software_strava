@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -14,7 +15,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.AbstractSpinnerModel;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
@@ -122,6 +127,21 @@ public class LoginDialog extends JFrame{
 		});
 		panel.add(button);
 		
+		JButton button2 = new JButton("Register");
+		button2.setVisible(true);
+		button2.setBounds(100, 110, 90, 25);
+		button2.setForeground(Color.WHITE);
+		button2.setBackground(Color.BLACK);
+		button2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				VentanaRegister();
+			}
+		});
+		panel.add(button2);
+		
 		frame.validate();
 	    frame.repaint();
 		
@@ -143,7 +163,7 @@ public class LoginDialog extends JFrame{
 		frame.setTitle("Registration Form in Java");  
 		//frame.pack();
 		 
-		JLabel l1 = new JLabel("Registration Form in Windows Form:");  
+		JLabel l1 = new JLabel("Registration Form:");  
 		//l1.setForeground(Color.blue);   
 		l1.setBounds(100, 30, 400, 30);  
 		l1.setVisible(true);
@@ -186,43 +206,57 @@ public class LoginDialog extends JFrame{
         
         JLabel l7 = new JLabel("Birthday:");  
         l7.setBounds(80, 270, 200, 30);  
-        //frame.add(l7);  
+        frame.add(l7);  
         JTextField tf6 = new JTextField();  
         tf6.setBounds(300, 270, 200, 30);  
         //frame.add(tf6);  
         
-        DateFormat dateFormat = new SimpleDateFormat("dd MMM YYYY");
-        JFormattedTextField today = new JFormattedTextField(dateFormat);
-        today.setName("Birthday");
-        today.setColumns(10);
-        today.setEditable(true);
-        JLabel todayLabel = new JLabel("Birtday:");
-        todayLabel.setLabelFor(today);
-        todayLabel.setBounds(80, 270, 200, 30); 
-        today.setValue(new Date());
-        today.setBounds(300, 270, 200, 30);  
-        frame.add(todayLabel);
-        frame.add(today);
-        
+        Date today = new Date();
+		JSpinner spinner2 = new JSpinner(new SpinnerDateModel(today , null, null, Calendar.MONTH));
+		JSpinner.DateEditor editor = new JSpinner.DateEditor(spinner2, "dd/MM/yy");
+	    spinner2.setEditor(editor);
+	    spinner2.setBounds(300, 270, 200, 30);
+        frame.add(spinner2);
+	    
         JLabel l8 = new JLabel("Weight(kg):");   
         l8.setBounds(80, 310, 200, 30);  
-        frame.add(l8);  
-        JTextField tf7 = new JTextField();  
-        tf7.setBounds(300, 310, 200, 30);  
+        frame.add(l8);  SpinnerNumberModel numberModel = new SpinnerNumberModel(50, 0, 300, 1);
+        JSpinner tf7 = new JSpinner(numberModel);  
+        tf7.setBounds(220, 310, 100, 30);  
         frame.add(tf7);  
         
         JLabel l9 = new JLabel("Height(m):");   
-        l9.setBounds(80, 350, 200, 30);  
-        frame.add(l9);  
-        JTextField tf8 = new JTextField();  
-        tf8.setBounds(300, 350, 200, 30);  
+        l9.setBounds(350, 310, 200, 30);  
+        frame.add(l9);  SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1.74f, 0.0f, 2.50f, 0.01f);
+        JSpinner tf8 = new JSpinner(numberModel2);  
+        tf8.setBounds(490, 310, 100, 30);  
         frame.add(tf8);  
         
-        frame.validate();
-        frame.repaint();
+        JLabel l10 = new JLabel("Max Heart Rate:");   
+        l10.setBounds(80, 350, 200, 30);  
+        frame.add(l10);  SpinnerNumberModel numberModel3 = new SpinnerNumberModel(185, 0, 200 ,1);
+        JSpinner tf9 = new JSpinner(numberModel3);  
+        tf9.setBounds(220, 350, 100, 30);  
+        frame.add(tf9);  
+        
+        JLabel l11 = new JLabel("Heart Rate at Rest:");   
+        l11.setBounds(350, 350, 200, 30);  
+        frame.add(l11);  SpinnerNumberModel numberModel4 = new SpinnerNumberModel(70, 0, 200, 1);
+        JSpinner tf10 = new JSpinner(numberModel4);  
+        tf10.setBounds(490, 350, 100, 30);  
+        frame.add(tf10);  
         
         JButton btn1 = new JButton("Submit");  
+        btn1.setBounds(80, 430, 100, 30);  
+        frame.add(btn1);  
+        
         JButton btn2 = new JButton("Clear");  
+        btn2.setBounds(220, 430, 100, 30);  
+        frame.add(btn2);
+        
+        JButton btn3 = new JButton("Log in");  
+        btn3.setBounds(360, 430, 100, 30);  
+        frame.add(btn3);  
         
         btn1.addActionListener(new ActionListener() {
 			
@@ -238,10 +272,17 @@ public class LoginDialog extends JFrame{
 				
 			}
 		});  
-        btn1.setBounds(50, 390, 100, 30);  
-        btn2.setBounds(170, 390, 100, 30);  
-        frame.add(btn1);  
-        frame.add(btn2);
+        
+        btn3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				VentanaLogin();
+			}
+		});  
+        frame.validate();
+        frame.repaint();
 	}
 	
 	void CheckLogin()
