@@ -73,8 +73,8 @@ public class UserService {
 		if (!result.isEmpty()) {
 			User updatedUser = result.get();
 			
-			updatedUser.setFirstName(user.getFirstName());
-			updatedUser.setLastName(user.getLastName());
+			//updatedUser.setFirstName(user.getFirstName());
+			//updatedUser.setLastName(user.getLastName());
 			updatedUser.setEmail(user.getEmail());
 
 			userRepository.save(updatedUser);

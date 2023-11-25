@@ -9,6 +9,7 @@
 	<property name="rmiregistry.IP" value="127.0.0.1"/> 
 	<property name="rmiregistry.port" value="1099"/> 
 	<property name="server.name" value="Strava"/>
+	<property name="resources.dir" location="resources"/>
 
 	<path id="classpath">
         <fileset dir="${lib.dir}">
@@ -16,6 +17,11 @@
         </fileset>
         <pathelement location="${bin.dir}"/>
     </path>
+	
+	<!-- Clean target -->
+	    <target name="clean">
+	        <delete dir="${build.dir}"/>
+	    </target>
 	
 	<target name="1.build" description="Builds the project">
 		<delete dir="${bin.dir}"/>

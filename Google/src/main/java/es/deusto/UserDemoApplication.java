@@ -62,8 +62,10 @@ public class UserDemoApplication {
       return (args) -> {
           // INIT data ... some Users
     	    	  
-    	  User rebeca = new User ("Rebeca", "Cortazar", "rebeca.cortazar@deusto.es");
-    	  User roberto = new User ("Roberto", "Carballedo", "rcarba@deusto.es");
+    	  User rebeca = new User();
+    	  rebeca.setEmail("rebeca.cortazar@deusto.es");
+    	  User roberto = new User();
+    	  roberto.setEmail( "rcarba@deusto.es");
     	   
     	  repository.save(rebeca);
     	  repository.save(roberto);

@@ -2,7 +2,42 @@
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
 	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
-	<classpathentry kind="lib" path="C:/Users/mbola/OneDrive/Escritorio/Nuev/Software_strava/Strava_Server_v1/lib/commons-codec-1.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/lib/commons-codec-1.15.jar"/>
 	<classpathentry kind="con" path="C:/Users/mbola/OneDrive/Escritorio/Nuev/Software_strava/Strava_Server_v1/bin"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/6.0.13/5b205c9f2fb07c1367db144ce7ab305f94300604/spring-beans-6.0.13.jar" sourcepath="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/6.0.13/1ad4ca909bbbb21b99524de49e6c2398e6f13afc/spring-beans-6.0.13-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/6.0.13/4c49af6dde7fce9602049f952b45ca29f30e2a37/spring-context-6.0.13.jar" sourcepath="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/6.0.13/d9d3afc2ea6b37c1c7a9d67ade93b5b202b70ed0/spring-context-6.0.13-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/6.0.13/c374fcaf34d82d735a1dcf2c496f064488aa2b20/spring-web-6.0.13.jar" sourcepath="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/6.0.13/fad075294ad1d15c24c75663272be8c648130c7d/spring-web-6.0.13-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.7/41eb7184ea9d556f23e18b5cb99cad1f8581fc00/slf4j-api-2.0.7.jar" sourcepath="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.7/f887f95694cd20d51a062446b6e3d09dd02d98ff/slf4j-api-2.0.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/6.0.13/cd565c2408e37d2026822b871cd43e69da8ec40e/spring-core-6.0.13.jar" sourcepath="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/6.0.13/5c2935b16b7a9f997051515a7882792528869834/spring-core-6.0.13-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/3.1.5/42a5b2ee98f700fba8d8c88d4af7b23266f1de0f/spring-boot-autoconfigure-3.1.5.jar" sourcepath="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/3.1.5/9a0696b1101560509dd3fe14b41b246d8eb7789e/spring-boot-autoconfigure-3.1.5-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/3.1.5/c188015a5a79f5df65e876dcfdef16148c45fe2c/spring-boot-3.1.5.jar" sourcepath="C:/Users/Maria/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/3.1.5/56cb4e6e746384e13be1d991876fc0d6beceef2c/spring-boot-3.1.5-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
