@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="lib/spring-core-6.0.11.jar"/>
 	<classpathentry kind="lib" path="lib/spring-expression-6.0.11.jar"/>
 	<classpathentry kind="lib" path="lib/spring-web-6.0.11.jar"/>
+	<classpathentry kind="lib" path="resources"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
