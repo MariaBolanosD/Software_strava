@@ -54,7 +54,7 @@ public class LoginDialog extends JFrame{
 //		boolean result = this.controller.login(email, sha1);
 //		System.out.println("\t* Login result: " + result);
 //		System.out.println("\t* Token: " + this.controller.getToken());
-
+		controller.login(email, password);
 		return true;
 	}
 	

@@ -1,8 +1,10 @@
 package es.deusto.ingenieria.sd.auctions.client.controller;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 
 import es.deusto.ingenieria.sd.auctions.client.remote.ServiceLocator;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 
 
 //This class implements Controller pattern.
@@ -37,6 +39,40 @@ public class LoginController {
 		}
 	}
 
+	
+	public void Register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate, float weight, float height, int heart_rate_max, int heart_rate_rest)
+	{
+		try {
+			this.serviceLocator.getService().register(accountType, email, password, name, birthdate, weight, height, heart_rate_max, heart_rate_rest);
+			
+		} catch (RemoteException e) {
+			System.out.println("# Error during register: " + e);
+		}
+		
+		
+	}
+	public void Register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate)
+	{
+		try {
+			this.serviceLocator.getService().register(accountType, email, password, name, birthdate);
+			
+		} catch (RemoteException e) {
+			System.out.println("# Error during register: " + e);
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public long getToken() {
 		return token;
 	}

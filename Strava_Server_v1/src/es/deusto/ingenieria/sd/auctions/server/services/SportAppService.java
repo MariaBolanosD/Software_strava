@@ -128,6 +128,19 @@ public class SportAppService {
 		
 	}
 	
+	public  Session makeSession(String title, SportEnum sport, double distance, LocalDate startDate,
+			LocalTime starTime, double duration) {
+		Session session = new Session();
+		session.setTitle(title);
+		session.setDistance(distance);
+		session.setSport(sport);
+		session.setDuration(duration);
+		session.setStartDate(startDate);
+		session.setStartTime(starTime);
+		
+		return session;
+	}
+	
 //	// TO DO
 //	public boolean makeSession(Long token, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration )
 //	{

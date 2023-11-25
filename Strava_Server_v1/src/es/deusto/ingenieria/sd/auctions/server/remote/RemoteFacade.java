@@ -126,15 +126,17 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		if(token >= 0)
 		{
 			
-			Session session = new Session();
-			session.setTitle(title);
-			session.setDistance(distance);
-			session.setSport(sport);
-			session.setDuration(duration);
-			session.setStartDate(startDate);
-			session.setStartTime(starTime);
-			
-			serverState.get(token).addSession(session);
+//			Session session = new Session();
+//			session.setTitle(title);
+//			session.setDistance(distance);
+//			session.setSport(sport);
+//			session.setDuration(duration);
+//			session.setStartDate(startDate);
+//			session.setStartTime(starTime);
+//			
+//			serverState.get(token).addSession(session);
+//			return true;
+			serverState.get(token).addSession(sportAppService.makeSession(title, sport, distance, startDate, starTime, duration));
 			return true;
 		}
 		
@@ -171,8 +173,32 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	@Override
 	public boolean register(TypeOfAccount accountType, String email, String password, String name,
 			LocalDate birthdate) {
-		// TODO Auto-generated method stub
-		return false;
+		if (email == null || password == null || name == null || birthdate == null) {
+	        return false;
+	    }
+		User usuario = new User();
+		usuario.setTypeOfAccount(accountType);
+		System.out.println("TYPE OF ACCOUNT: "+ accountType);
+		usuario.setEmail(email);
+		usuario.setPassword(password);
+		usuario.setNickname(name);
+		usuario.setBirthDate(birthdate);
+		return true;
+	}
+
+	@Override
+	public void acceptChallenge(long token, ChallengeDTO challenge) {
+		for(Challenge eachChall : sportAppService.getChallenges())
+		{
+			if((eachChall.getName() == challenge.getName())
+					&& (eachChall.getStartDate() == challenge.getStartDate())
+						&& (eachChall.getSport() == challenge.getSport())) 
+			{
+				serverState.get(token).addChallenge(eachChall);
+				break;
+				
+			}
+		}
 	}
 	
 //	@Override
