@@ -5,6 +5,9 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class process the request of each client as a separated Thread.
@@ -13,6 +16,7 @@ public class FacebookService extends Thread {
 	private DataInputStream in;
 	private DataOutputStream out;
 	private Socket tcpSocket;
+	private static Map<String, String> users;
 
 	public FacebookService(Socket socket) {
 		try {
@@ -20,6 +24,7 @@ public class FacebookService extends Thread {
 			this.in = new DataInputStream(socket.getInputStream());
 			this.out = new DataOutputStream(socket.getOutputStream());
 			this.start();
+			this.users = new HashMap<String, String>();
 		} catch (IOException e) {
 			System.err.println("# FacebookService - TCPConnection IO error:" + e.getMessage());
 		}
@@ -32,6 +37,8 @@ public class FacebookService extends Thread {
 			String data = this.in.readUTF();
 			System.out.println("   - FacebookService - Received data from '" + tcpSocket.getInetAddress().getHostAddress()
 					+ ":" + tcpSocket.getPort() + "' -> '" + data + "'");
+			
+			
 
 			// Send response to the client
 			this.out.writeUTF(data.toUpperCase());
@@ -48,5 +55,23 @@ public class FacebookService extends Thread {
 				System.err.println("   # FacebookService - TCPConnection IO error:" + e.getMessage());
 			}
 		}
+	}
+
+	public static Map<String, String> getUsers() {
+		return users;
+	}
+
+	public static void setUsers(Map<String, String> users) {
+		FacebookService.users = users;
+	}
+	
+	public void registerFacebook()
+	{
+		
+	}
+	
+	public void loginFacebook(String email, String password)
+	{
+		
 	}
 }
