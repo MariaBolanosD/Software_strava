@@ -11,11 +11,13 @@
 	<property name="server.name" value="Strava"/>
 	<property name="resources.dir" location="resources"/>
 
-	<path id="classpath">
+	<path id="full.classpath">
         <fileset dir="${lib.dir}">
             <include name="**/*.jar"/>
         </fileset>
         <pathelement location="${bin.dir}"/>
+		<pathelement location="${build.dir}"/>
+		<pathelement location="${resources.dir}"/>
     </path>
 	
 	<!-- Clean target -->
