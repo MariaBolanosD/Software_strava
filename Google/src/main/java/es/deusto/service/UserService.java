@@ -42,13 +42,18 @@ public class UserService {
     }
     
     /** Sending an Email to a User */
-    public String sendEmail(Long id) {
-        Optional<User> result = userRepository.findById(id);
-
-        return result.map(theUser -> {
-            emailService.sendSimpleMessage(theUser.getEmail(), "This is a Spring Boot Message");
-            return "Email successfully sent";
-        }).orElse("User does not exist. Operation aborted, check the user and try again");
+    public boolean verifyPassword(String email,String password) {
+    	Optional<User> result = userRepository.findByEmail(email);
+    	if(result != null)
+    	{
+    		if(result.get().getPassword() == password)
+    		{
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+        
     }
      
     /** Creating a New User */
