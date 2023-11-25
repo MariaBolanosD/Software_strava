@@ -124,8 +124,14 @@ public class SpringBootController implements ISpringBootController {
 			  return "delete all users - this endpoint does not have a return";
 	  }
 	  
-	  public boolean validateUser()
+	  public boolean verifyPassword(String email, String password)
 	  {
-		  return true;
+		  log.info("Endpoint: Checking email and password");
+		  User userS =restTemplate.getForObject(serverURL + ":" +String.valueOf(serverPort) + "/user/verifyPassword/{email}/{password}",  User.class, email,password);
+		  if( userS != null)				  	 
+		  {
+			  return true;
+		  }
+		  return false;
 	  }
 }

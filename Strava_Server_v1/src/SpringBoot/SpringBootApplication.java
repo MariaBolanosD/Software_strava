@@ -13,7 +13,14 @@ public class SpringBootApplication {
 	
 	 ISpringBootController req = SpringBootController.getRequester();
 	 
-	 log.info("Adding user - response from requester: " + req.getUserByEmail());
+	 log.info("Adding user - response from requester: " );
+	 if(req.verifyPassword("rebeca.cortazar@deusto.es", "Roberto"))
+	 {
+		 log.info("Password CORRECT");
+	 }
+	 else {
+		 log.info("Password INCORRECT");
+	}
 	 log.info("********************************");
 
 	 log.info("Get list users - response from requester: " + req.getListUsers());

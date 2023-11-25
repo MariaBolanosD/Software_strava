@@ -7,5 +7,5 @@ public interface ISpringBootController {
 	 public String updateUser();
 	 public String deleteUser();
 	 public String deleteUserAll();
-	 public boolean validateUser();
+	 public boolean verifyPassword(String email, String password);
 }

@@ -37,24 +37,25 @@ public class UserController {
     
     @GetMapping("/user/email/{email}")
     public User getUserByEmail(@PathVariable String email) {
+    	log.info(email);
         return userService.getUserByEmail(email);
     }
         
-    @GetMapping("/user/{id}/sendEmail")
-    public boolean verifyPassword(@PathVariable String email, @PathVariable String password) {
+    @GetMapping("/user/verifyPassword/{email}/{password}")
+    public User verifyPassword(@PathVariable String email, @PathVariable String password) {
     	log.info("Searching for user...");
     	User user = userService.getUserByEmail(email);
     	if(user != null)
     	{
     		log.info("User found...");
-    		if(user.getPassword()==password)
+    		if(user.getPassword().compareTo(password) == 0)
     		{
     			log.info("Password matches");
-    			return true;
+    			return user;
     		}
     	}
     	
-    	return false;
+    	return null;
     	
    }
        

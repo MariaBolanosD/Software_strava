@@ -19,9 +19,7 @@ public class UserService {
 		SUCCESS,
 		FAIL;
 	}
- 
-    @Autowired
-    private EmailService emailService;
+
         
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -42,17 +40,17 @@ public class UserService {
     }
     
     /** Sending an Email to a User */
-    public boolean verifyPassword(String email,String password) {
+    public Optional<User> verifyPassword(String email,String password) {
     	Optional<User> result = userRepository.findByEmail(email);
     	if(result != null)
     	{
     		if(result.get().getPassword() == password)
     		{
-    			return true;
+    			return result;
     		}
     	}
     	
-    	return false;
+    	return null;
         
     }
      
