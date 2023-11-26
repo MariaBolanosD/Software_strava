@@ -75,11 +75,8 @@ public class SpringBootApplication {
   public boolean checkEmail(String email)
   {
 	  log.info("Checking if user in Google ...");
-	  if(req.getUserByEmail() != null)
-	  {
-		  return true;
-	  }
-	  return false;
+	  return req.getUserByEmail(email);
+
   }
   
 }  

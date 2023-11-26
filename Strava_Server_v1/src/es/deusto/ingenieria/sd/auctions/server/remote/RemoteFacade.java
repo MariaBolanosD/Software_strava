@@ -101,6 +101,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			throw new RemoteException("getSessions() fails!");
 		}
 	}
+	
 	@Override
 	public List<ChallengeDTO> getAcceptedChallenges(long token) throws RemoteException {
 		System.out.println(" * RemoteFacade getUserAcceptedChallenges('" + serverState.get(token).getEmail() + "')");
@@ -155,7 +156,6 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		return false;
 	}
 	
-	
 	// TO DO
 	public void updateChallenges()
 	{
@@ -163,29 +163,28 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public boolean register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate, float weight, float height,
+	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate, float weight, float height,
 			int heart_rate_max, int heart_rate_rest) {
-		if (email == null || password == null || name == null || birthdate == null || heart_rate_max >=0 || heart_rate_rest >= 0) {
+		if (email == null || name == null || birthdate == null || heart_rate_max >=0 || heart_rate_rest >= 0) {
 	        return false;
 	    }
 		
-		return true;
+		System.out.println(" * RemoteFacade Register(): " + email);
+		
+		//Perform login() using LoginAppService
+		return loginService.register(accountType, email, name, birthdate, weight, height, heart_rate_max, heart_rate_rest);
+		
 	}
 
 	@Override
-	public boolean register(TypeOfAccount accountType, String email, String password, String name,
+	public boolean register(TypeOfAccount accountType, String email, String name,
 			LocalDate birthdate) {
-		if (email == null || password == null || name == null || birthdate == null) {
+		if (email == null || name == null || birthdate == null) {
 	        return false;
 	    }
-		User usuario = new User();
-		usuario.setTypeOfAccount(accountType);
-		System.out.println("TYPE OF ACCOUNT: "+ accountType);
-		usuario.setEmail(email);
-		usuario.setPassword(password);
-		usuario.setNickname(name);
-		usuario.setBirthDate(birthdate);
-		return true;
+		System.out.println(" * RemoteFacade Register_default(): " + email);
+		
+		 return loginService.register(accountType, email, name, birthdate, 0, 0, 0, 0);
 	}
 
 	@Override
@@ -203,49 +202,5 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		}
 	}
 
-	
-	
-//	@Override
-//	public boolean makeBid(long token, int article, float amount) throws RemoteException {		
-//		System.out.println(" * RemoteFacade makeBid article : " + article + " / amount " + amount);
-//		
-//		if (this.serverState.containsKey(token)) {						
-//			//Make the bid using Bid Application Service
-//			if (bidService.makeBid(this.serverState.get(token), article, amount)) {
-//				return true;
-//			} else {
-//				throw new RemoteException("makeBid() fails!");
-//			}
-//		} else {
-//			throw new RemoteException("To place a bid you must first log in");
-//		}
-//	}
 
-//	@Override
-//	public float getUSDRate() throws RemoteException {
-//		System.out.println(" * RemoteFacade get USD rate");
-//
-//		//Get rate using BidAppService
-//		float rate = bidService.getUSDRate();
-//		
-//		if (rate != -1) {
-//			return rate;
-//		} else {
-//			throw new RemoteException("getUSDRate() fails!");
-//		}
-//	}
-
-//	@Override
-//	public float getGBPRate() throws RemoteException {
-//		System.out.println(" * RemoteFacade get GBP rate");
-//		
-//		//Get rate using BidAppService
-//		float rate = bidService.getGBPRate();
-//		
-//		if (rate != -1) {
-//			return rate;
-//		} else {
-//			throw new RemoteException("getGBPRate() fails!");
-//		}
-//	}
 }

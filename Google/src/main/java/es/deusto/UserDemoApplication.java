@@ -1,15 +1,11 @@
 package es.deusto;
 
 
-import java.util.Properties;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -37,25 +33,6 @@ public class UserDemoApplication {
         SpringApplication.run(UserDemoApplication.class, args);
         
           }
-     
-//    @Bean
-//    JavaMailSender getJavaMailSender() {
-//    	// Configuration programmatically done - automatic Spring mapping does not work
-//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl(); 
-//       
-//        mailSender.setHost(host);
-//        mailSender.setPort(port);
-//        mailSender.setUsername(sender);
-//        mailSender.setPassword(password);
-//
-//        Properties props = mailSender.getJavaMailProperties();
-//        props.put("mail.transport.protocol", "smtp");
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");
-//        props.put("mail.debug", "true");
-//
-//        return mailSender;
-//    }
     
     @Bean
     CommandLineRunner demo(UserRepository repository) {
@@ -68,9 +45,17 @@ public class UserDemoApplication {
     	  User roberto = new User();
     	  roberto.setEmail( "rcarba@deusto.es");
     	  roberto.setPassword("Roberto"); 
+    	  User user1 = new User();
+    	  user1.setEmail("thomas.e2001@gmail.com");
+    	  user1.setPassword("$!9PhNz,");
+    	  User user2 = new User();
+    	  user2.setEmail("sample@gmail.com");
+    	  user2.setPassword("hqc`}3Hb");
     	  
     	  repository.save(rebeca);
     	  repository.save(roberto);
+    	  repository.save(user1);
+    	  repository.save(user2);
     	  
         log.info("Sample users created"); 
     	  

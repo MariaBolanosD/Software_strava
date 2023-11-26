@@ -40,26 +40,27 @@ public class LoginController {
 	}
 
 	
-	public void Register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate, float weight, float height, int heart_rate_max, int heart_rate_rest)
+	public boolean Register(TypeOfAccount accountType, String email, String name, LocalDate birthdate, float weight, float height, int heart_rate_max, int heart_rate_rest)
 	{
 		try {
-			this.serviceLocator.getService().register(accountType, email, password, name, birthdate, weight, height, heart_rate_max, heart_rate_rest);
-			
+			return serviceLocator.getService().register(accountType, email, name, birthdate, weight, height, heart_rate_max, heart_rate_rest);
+
 		} catch (RemoteException e) {
 			System.out.println("# Error during register: " + e);
 		}
-		
+		return false;
 		
 	}
-	public void Register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate)
+	public boolean Register(TypeOfAccount accountType, String email, String name, LocalDate birthdate)
 	{
+		System.out.println(email);
 		try {
-			this.serviceLocator.getService().register(accountType, email, password, name, birthdate);
+			return this.serviceLocator.getService().register(accountType, email, name, birthdate);
 			
 		} catch (RemoteException e) {
 			System.out.println("# Error during register: " + e);
 		}
-		
+		return false;
 		
 	}
 	

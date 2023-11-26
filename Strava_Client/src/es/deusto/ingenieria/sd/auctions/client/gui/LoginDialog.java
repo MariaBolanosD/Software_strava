@@ -6,13 +6,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSpinner;
@@ -23,6 +27,7 @@ import javax.swing.AbstractSpinnerModel;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
 import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
+import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 
 
 public class LoginDialog extends JFrame{	
@@ -38,13 +43,17 @@ public class LoginDialog extends JFrame{
 
 	private static JPasswordField Password;
 	private static JTextField username;
+	private static JTextField email_s;
+	private static JTextField name;
 	private static JFrame frame;
+	private static JComboBox<String> typeofAccount;
+	private static JSpinner spinner2;
 	
 	public LoginDialog(LoginController controller, Controller controller2) {
 		this.controller = controller;
 		this.controllerApp = controller2;
-		//VentanaRegister();
-		VentanaLogin();
+		VentanaRegister();
+		//VentanaLogin();
 	}
 	
 	public boolean login() {		
@@ -52,7 +61,7 @@ public class LoginDialog extends JFrame{
 		String email = username.getText();
 		String password = String.valueOf(Password.getPassword());
 		
-		System.out.println(" - Login into the server: '" + username.getText() + "' - '" + Password.getPassword().toString() + "' ...");
+		System.out.println(" - Login into the server: '" + email + "' - '" + password + "' ...");
 		String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex(password);
 		System.out.println("\t* Password hash: " + sha1);		
 		boolean result = this.controller.login(email, sha1);
@@ -60,6 +69,33 @@ public class LoginDialog extends JFrame{
 		System.out.println("\t* Token: " + this.controller.getToken());
 		controller.login(email, password);
 		return true;
+	}
+	
+	public void register()
+	{		
+		String email = email_s.getText();
+		
+		String accountString = (String)typeofAccount.getSelectedItem();
+		if(accountString.compareTo("Google") == 0) 
+		{
+			System.out.println(" - Register into the GOOGLE server: '" + email);
+			Date bitDate = (Date) spinner2.getValue();
+			LocalDate birthDate = convertToLocalDateViaInstant(bitDate);
+			System.out.println(email);
+			boolean bool = controller.Register(TypeOfAccount.GOOGLE, email, name.getText(), birthDate);
+			if(bool == false)
+				JOptionPane.showMessageDialog(frame, "Email not in Google. Account not registered");
+			else
+				JOptionPane.showMessageDialog(frame, "Registration complete.");
+		}
+		else { //  FACEBOOK
+			
+		}
+		
+		// Register into Google
+		//String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex(password);
+		//System.out.println("\t* Password hash: " + sha1);		
+		
 	}
 	
 	public void logout() {
@@ -75,11 +111,6 @@ public class LoginDialog extends JFrame{
 	
 	public static void main(String[] args) {
 		LoginDialog loginDialog = new LoginDialog(null, null);
-	}
-
-	public void VentanaMain()
-	{
-		
 	}
 	
 	public void VentanaLogin()
@@ -177,106 +208,79 @@ public class LoginDialog extends JFrame{
         JLabel l2 = new JLabel("TypeOfAccount");
         l2.setBounds(80, 70, 200, 30);  
         frame.add(l2);   
-        JTextField tf1 = new JTextField();  
-        tf1.setBounds(300, 70, 200, 30);  
-        frame.add(tf1);  
+        typeofAccount = new JComboBox<>(); typeofAccount.addItem("Google"); typeofAccount.addItem("Facebook");
+        typeofAccount.setBounds(300, 70, 200, 30);  
+        frame.add(typeofAccount);  
         
         JLabel l3 = new JLabel("Email:");  
         l3.setBounds(80, 110, 200, 30);  
         frame.add(l3);  
-        JTextField tf2 = new JTextField();  
-        tf2.setBounds(300, 110, 200, 30);  
-        frame.add(tf2);  
-        
-        JLabel l4 = new JLabel("Create Passowrd:");  
-        l4.setBounds(80, 150, 200, 30);  
-        frame.add(l4);  
-        JPasswordField p1 = new JPasswordField();  
-        p1.setBounds(300, 150, 200, 30);  
-        frame.add(p1);  
-
-        JLabel l5 = new JLabel("Confirm Password:");  
-        l5.setBounds(80, 190, 200, 30);  
-        frame.add(l5);  
-        JPasswordField p2 = new JPasswordField();  
-        p2.setBounds(300, 190, 200, 30);  
-        frame.add(p2);  
+        email_s = new JTextField();  
+        email_s.setBounds(300, 110, 200, 30);  
+        frame.add(email_s);   
         
         JLabel l6 = new JLabel("Name:");  
-        l6.setBounds(80, 230, 200, 30);  
+        l6.setBounds(80, 150, 200, 30);  
         frame.add(l6);  
-        JTextField tf5 = new JTextField();  
-        tf5.setBounds(300, 230, 200, 30);  
-        frame.add(tf5);  
+        name = new JTextField();  
+        name.setBounds(300, 150, 200, 30);  
+        frame.add(name);  
         
         JLabel l7 = new JLabel("Birthday:");  
-        l7.setBounds(80, 270, 200, 30);  
+        l7.setBounds(80, 190, 200, 30);  
         frame.add(l7);  
         JTextField tf6 = new JTextField();  
-        tf6.setBounds(300, 270, 200, 30);  
-        //frame.add(tf6);  
-        
+        tf6.setBounds(300, 190, 200, 30);          
         Date today = new Date();
-		JSpinner spinner2 = new JSpinner(new SpinnerDateModel(today , null, null, Calendar.MONTH));
+		spinner2 = new JSpinner(new SpinnerDateModel(today , null, null, Calendar.MONTH));
 		JSpinner.DateEditor editor = new JSpinner.DateEditor(spinner2, "dd/MM/yy");
 	    spinner2.setEditor(editor);
-	    spinner2.setBounds(300, 270, 200, 30);
+	    spinner2.setBounds(300, 190, 200, 30);
         frame.add(spinner2);
 	    
         JLabel l8 = new JLabel("Weight(kg):");   
-        l8.setBounds(80, 310, 200, 30);  
+        l8.setBounds(80, 230, 200, 30);  
         frame.add(l8);  SpinnerNumberModel numberModel = new SpinnerNumberModel(50, 0, 300, 1);
         JSpinner tf7 = new JSpinner(numberModel);  
-        tf7.setBounds(220, 310, 100, 30);  
+        tf7.setBounds(220, 230, 100, 30);  
         frame.add(tf7);  
         
         JLabel l9 = new JLabel("Height(m):");   
-        l9.setBounds(350, 310, 200, 30);  
+        l9.setBounds(350, 230, 200, 30);  
         frame.add(l9);  SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1.74f, 0.0f, 2.50f, 0.01f);
         JSpinner tf8 = new JSpinner(numberModel2);  
-        tf8.setBounds(490, 310, 100, 30);  
+        tf8.setBounds(490, 230, 100, 30);  
         frame.add(tf8);  
         
         JLabel l10 = new JLabel("Max Heart Rate:");   
-        l10.setBounds(80, 350, 200, 30);  
+        l10.setBounds(80, 270, 200, 30);  
         frame.add(l10);  SpinnerNumberModel numberModel3 = new SpinnerNumberModel(185, 0, 200 ,1);
         JSpinner tf9 = new JSpinner(numberModel3);  
-        tf9.setBounds(220, 350, 100, 30);  
+        tf9.setBounds(220, 270, 100, 30);  
         frame.add(tf9);  
         
         JLabel l11 = new JLabel("Heart Rate at Rest:");   
-        l11.setBounds(350, 350, 200, 30);  
+        l11.setBounds(350, 270, 200, 30);  
         frame.add(l11);  SpinnerNumberModel numberModel4 = new SpinnerNumberModel(70, 0, 200, 1);
         JSpinner tf10 = new JSpinner(numberModel4);  
-        tf10.setBounds(490, 350, 100, 30);  
+        tf10.setBounds(490, 270, 100, 30);  
         frame.add(tf10);  
         
         JButton btn1 = new JButton("Submit");  
-        btn1.setBounds(80, 430, 100, 30);  
+        btn1.setBounds(360, 320, 100, 30);  
         frame.add(btn1);  
         
-        JButton btn2 = new JButton("Clear");  
-        btn2.setBounds(220, 430, 100, 30);  
-        frame.add(btn2);
-        
         JButton btn3 = new JButton("Log in");  
-        btn3.setBounds(360, 430, 100, 30);  
+        btn3.setBounds(80, 320, 100, 30);  
         frame.add(btn3);  
         
         btn1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-							}
-		});
-        
-        btn2.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
+				register();
 			}
-		});  
+		}); 
         
         btn3.addActionListener(new ActionListener() {
 			
@@ -301,5 +305,11 @@ public class LoginDialog extends JFrame{
 			
 			
 		}
+	}
+	
+	public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+	    return dateToConvert.toInstant()
+	      .atZone(ZoneId.systemDefault())
+	      .toLocalDate();
 	}
 }

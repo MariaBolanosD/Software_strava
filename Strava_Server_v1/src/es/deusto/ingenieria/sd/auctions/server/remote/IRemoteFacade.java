@@ -15,9 +15,9 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 //This interface defines the API of the Server. It represents the Remote Facade pattern
 public interface IRemoteFacade extends Remote {	
 
-	public boolean register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate, float weight, float height, int heart_rate_max, int heart_rate_rest)throws RemoteException;
+	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate, float weight, float height, int heart_rate_max, int heart_rate_rest)throws RemoteException;
 
-	public boolean register(TypeOfAccount accountType, String email, String password, String name, LocalDate birthdate) throws RemoteException;
+	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate) throws RemoteException;
 
 	public long login(String email, String password) throws RemoteException;
 	

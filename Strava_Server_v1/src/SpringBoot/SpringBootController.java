@@ -71,11 +71,16 @@ public class SpringBootController implements ISpringBootController {
 		  return "getListUsers -  all users info on console (if not null) ";
 	  }
 	
-	  public String getUserByEmail() {
+	  public boolean getUserByEmail(String email) {
+		  	 log.info(email);
 			 log.info("This is the endpoint: " + serverURL + ":" + String.valueOf(serverPort) + "/user/email/{email}"); 
-			 User user = restTemplate.getForObject(serverURL + ":" + String.valueOf(serverPort) + "/user/email/{email}", User.class, Map.of("email", "rebeca.cortazar@deusto.es"));
+			 User user = restTemplate.getForObject(serverURL + ":" + String.valueOf(serverPort) + "/user/email/{email}", User.class, Map.of("email", email));
 			 log.info("/user/email/{email} - This is User: " + user.getEmail());// + "name: " + user.getFirstName());
-			 return "getUserByEmail -  " ;//+ user.getFirstName()+" "+ user.getLastName();
+			 if (user != null)
+			 {
+				 return true;				 
+			 }
+			 return false;
 	  }	 
 	  
 	  public String addUser() {

@@ -10,7 +10,6 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 public class User {
 	private TypeOfAccount tipoAut;
 	private String nickname;
-	private String password;
 	private String email;
 	private LocalDate birthDate;
 	private double weight;
@@ -37,14 +36,7 @@ public class User {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
-	public boolean checkPassword(String password) {
-		return this.password.equals(password);
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	
 	public String getEmail() {
 		return email;
