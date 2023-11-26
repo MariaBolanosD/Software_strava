@@ -12,6 +12,7 @@ public class SpringBootApplication {
   ISpringBootController req;
   public static void main(String args[]) {
 
+	  System.out.println("connecting to spring boot");
 	  SpringBootApplication springBoot = new SpringBootApplication();
 	  springBoot.MAIN();
   }	  
