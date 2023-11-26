@@ -88,7 +88,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 
 	@Override
 	public List<SessionDTO> getSessions(long token) throws RemoteException {
-		System.out.println(" * RemoteFacade getArticle('" + serverState.get(token).getEmail() + "')");
+		System.out.println(" * RemoteFacade getSessions('" + serverState.get(token).getEmail() + "')");
 
 		//Get Articles using BidAppService
 
@@ -98,7 +98,19 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			//Convert domain object to DTO
 			return SessionAssembler.getInstance().sessionToDTO(sessions);
 		} else {
-			throw new RemoteException("getArticles() fails!");
+			throw new RemoteException("getSessions() fails!");
+		}
+	}
+	@Override
+	public List<ChallengeDTO> getAcceptedChallenges(long token) throws RemoteException {
+		System.out.println(" * RemoteFacade getUserAcceptedChallenges('" + serverState.get(token).getEmail() + "')");
+		
+		List<Challenge> challenges = serverState.get(token).getChallenges();
+		
+		if (challenges != null) {
+			return ChallengeAssembler.getInstance().challengeToDTO(challenges);
+		} else {
+			throw new RemoteException("getAcceptedChallenges() fails!");
 		}
 	}
 
@@ -190,6 +202,8 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			}
 		}
 	}
+
+	
 	
 //	@Override
 //	public boolean makeBid(long token, int article, float amount) throws RemoteException {		

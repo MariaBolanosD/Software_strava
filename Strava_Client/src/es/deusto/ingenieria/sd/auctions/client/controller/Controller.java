@@ -37,6 +37,18 @@ public class Controller {
 			}
 		}
 		
+		public List<ChallengeDTO> getAcceptedChallenges(long token)
+		{
+//			try {
+//				return this.serviceLocator.getService().getAcceptedChallenges(token);
+//			} catch (RemoteException e) {
+//				System.out.println("# Error getting accepted challenges of a user: " + e);
+//				return null;
+//			}
+			return null;
+			
+		}
+		
 		public void makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
 				boolean distanceorTime)
 		{
@@ -47,6 +59,8 @@ public class Controller {
 			}
 			
 		}
+		
+		
 		
 		public void makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration) {
 			try {

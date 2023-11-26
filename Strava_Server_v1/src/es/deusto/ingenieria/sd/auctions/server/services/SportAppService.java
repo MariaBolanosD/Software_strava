@@ -99,14 +99,14 @@ public class SportAppService {
 		return this.challenges;
 	}
 
-	public List<Session> getSessions(User user) {
-		//TODO: Get all the categories using DAO Pattern		
-		if(user != null)
-		{
-			return user.getSessions();
-		}
-		return null;
-	}
+//	public List<Session> getSessions(User user) {
+//		//TODO: Get all the categories using DAO Pattern		
+//		if(user != null)
+//		{
+//			return user.getSessions();
+//		}
+//		return null;
+//	}
 	
 	// TO DO
 	public Challenge makeChallenge(String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport, boolean distanceorTime)
