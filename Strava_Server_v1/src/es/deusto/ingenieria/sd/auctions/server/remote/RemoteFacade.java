@@ -165,26 +165,13 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	@Override
 	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate, float weight, float height,
 			int heart_rate_max, int heart_rate_rest) {
-		if (email == null || name == null || birthdate == null || heart_rate_max >=0 || heart_rate_rest >= 0) {
-	        return false;
-	    }
+
 		
 		System.out.println(" * RemoteFacade Register(): " + email);
 		
 		//Perform login() using LoginAppService
 		return loginService.register(accountType, email, name, birthdate, weight, height, heart_rate_max, heart_rate_rest);
 		
-	}
-
-	@Override
-	public boolean register(TypeOfAccount accountType, String email, String name,
-			LocalDate birthdate) {
-		if (email == null || name == null || birthdate == null) {
-	        return false;
-	    }
-		System.out.println(" * RemoteFacade Register_default(): " + email);
-		
-		 return loginService.register(accountType, email, name, birthdate, 0, 0, 0, 0);
 	}
 
 	@Override
