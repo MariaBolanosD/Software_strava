@@ -120,7 +120,7 @@ public class LoginDialog extends JFrame{
 		System.out.println("\t* Logout success!");		
 
 	}
-	
+
 //	
 	
 	///////////////////////////////////////////////////////////////////////////////
@@ -317,8 +317,7 @@ public class LoginDialog extends JFrame{
 			
 			frame.dispose();
 			
-			AppWindow appWindow = new AppWindow(controllerApp);
-			
+			AppWindow appWindow = new AppWindow(controllerApp, this.controller.getToken());
 			
 		}
 	}

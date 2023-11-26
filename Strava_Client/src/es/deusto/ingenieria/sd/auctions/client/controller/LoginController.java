@@ -24,7 +24,7 @@ public class LoginController {
 			this.token = this.serviceLocator.getService().login(email, password);			
 			return true;
 		} catch (RemoteException e) {
-			System.out.println("# Error during login: " + e);
+			System.out.println("# Error during login_: " + e);
 			this.token = -1;
 			return false;
 		} 

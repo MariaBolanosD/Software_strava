@@ -33,14 +33,13 @@ public class AppWindow extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
-	
+	private long token; 
 	private static JFrame frame;
-	private static JPasswordField Password;
-	private static JTextField username;
 	
-	public AppWindow(Controller controller )
+	public AppWindow(Controller controller,long token )
 	{
 		this.controller = controller;
+		this.token = token;
 		Ventana();
 	}
 	
@@ -76,7 +75,6 @@ public class AppWindow extends JFrame{
 	public void Ventana()
 	{		
 		
-		
 		frame = new JFrame();
 		frame.setTitle("APP PAGE");
 		frame.setSize(425, 220);
@@ -100,6 +98,17 @@ public class AppWindow extends JFrame{
 			e1.printStackTrace();
 		}
 		List<String> dsSessionDTO_s = new ArrayList<>();
+		List<SessionDTO>  dsSessionDTO = new ArrayList<>();
+		try {
+			dsSessionDTO =((this.controller.getServiceLoc().getService())).getSessions(token);
+			for (SessionDTO session: dsSessionDTO ) {
+				dsSessionDTO_s.add(session.getTitle());
+				
+			}
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		/////////END - CHECKBOX TEST////////////
 		
@@ -165,6 +174,13 @@ public class AppWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controller.getServiceLoc().getService().logout(token);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					System.out.println("error login out");
+					e.printStackTrace();
+				}
 				frame.dispose();
 			}
 		});
