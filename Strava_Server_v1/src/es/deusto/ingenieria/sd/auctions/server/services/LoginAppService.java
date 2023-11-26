@@ -38,14 +38,14 @@ public class LoginAppService {
 			System.out.println("Incorrect password");
 			return null;
 		}
-		
+		System.out.println("correct password LOginAPPSERVICES");
 		// Get user from users
 		User user = users.get(email);			
 		
 		return user;
 	}
 	
-	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate, float weight, float height, int heart_rate_max, int heart_rate_rest) {
+	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate ,float weight, float height, int heart_rate_max, int heart_rate_rest) {
 		if(accountType == TypeOfAccount.GOOGLE)
 		{			
 			System.out.println("Inside LOGIN APP SERVICE REGISTER GOOGLE");
@@ -64,7 +64,6 @@ public class LoginAppService {
 				
 		User usuario = new User();
 		usuario.setTypeOfAccount(accountType);
-		//System.out.println("TYPE OF ACCOUNT: "+ accountType);
 		usuario.setEmail(email);
 		usuario.setNickname(name);
 		usuario.setBirthDate(birthdate);
@@ -100,8 +99,8 @@ public class LoginAppService {
 		
 		
 		User user0 = new User();
-		user0.setEmail("thomas.e2001@gmail.com");
-		user0.setNickname("Thomas");
+		user0.setEmail("rebeca.cortazar@deusto.es");
+		user0.setNickname("Rebeca");
 		//user0.setPassword("$!9PhNz,");
 		user0.setBirthDate(LocalDate.of(1985, 2, 25 ));
 		user0.setWeight(86);

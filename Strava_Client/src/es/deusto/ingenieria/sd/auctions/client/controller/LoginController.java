@@ -51,27 +51,6 @@ public class LoginController {
 		return false;
 		
 	}
-	public boolean Register(TypeOfAccount accountType, String email, String name, LocalDate birthdate)
-	{
-		System.out.println(email);
-		try {
-			return this.serviceLocator.getService().register(accountType, email, name, birthdate);
-			
-		} catch (RemoteException e) {
-			System.out.println("# Error during register: " + e);
-		}
-		return false;
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	public long getToken() {

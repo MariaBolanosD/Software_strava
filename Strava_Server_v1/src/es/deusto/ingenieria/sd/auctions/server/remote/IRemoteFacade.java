@@ -17,8 +17,6 @@ public interface IRemoteFacade extends Remote {
 
 	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate, float weight, float height, int heart_rate_max, int heart_rate_rest)throws RemoteException;
 
-	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate) throws RemoteException;
-
 	public long login(String email, String password) throws RemoteException;
 	
 	public void logout(long token) throws RemoteException; 

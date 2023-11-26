@@ -48,12 +48,16 @@ public class LoginDialog extends JFrame{
 	private static JFrame frame;
 	private static JComboBox<String> typeofAccount;
 	private static JSpinner spinner2;
+	private static JSpinner tf7;
+	private static JSpinner tf8;
+	private static JSpinner tf9;
+	private static JSpinner tf10;
 	
 	public LoginDialog(LoginController controller, Controller controller2) {
 		this.controller = controller;
 		this.controllerApp = controller2;
-		VentanaRegister();
-		//VentanaLogin();
+		//VentanaRegister();
+		VentanaLogin();
 	}
 	
 	public boolean login() {		
@@ -67,8 +71,15 @@ public class LoginDialog extends JFrame{
 		boolean result = this.controller.login(email, sha1);
 		System.out.println("\t* Login result: " + result);
 		System.out.println("\t* Token: " + this.controller.getToken());
-		controller.login(email, password);
-		return true;
+		if(controller.login(email, password))
+		{
+			return true;
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(frame, "Incorrect password.");
+			return false;
+		}
 	}
 	
 	public void register()
@@ -77,12 +88,21 @@ public class LoginDialog extends JFrame{
 		
 		String accountString = (String)typeofAccount.getSelectedItem();
 		if(accountString.compareTo("Google") == 0) 
-		{
+		{			
+			float weight =  Float.parseFloat(tf7.getValue().toString());
+			//System.out.println(weight);
+			
+			float height=  Float.parseFloat(tf8.getValue().toString());
+			int heartmax=  Integer.parseInt(tf9.getValue().toString());
+			int heartrest= Integer.parseInt(tf10.getValue().toString());
+			
+			
+			
 			System.out.println(" - Register into the GOOGLE server: '" + email);
 			Date bitDate = (Date) spinner2.getValue();
 			LocalDate birthDate = convertToLocalDateViaInstant(bitDate);
 			System.out.println(email);
-			boolean bool = controller.Register(TypeOfAccount.GOOGLE, email, name.getText(), birthDate);
+			boolean bool = controller.Register(TypeOfAccount.GOOGLE, email, name.getText(), birthDate, weight,height,heartmax,heartrest);
 			if(bool == false)
 				JOptionPane.showMessageDialog(frame, "Email not in Google. Account not registered");
 			else
@@ -91,10 +111,6 @@ public class LoginDialog extends JFrame{
 		else { //  FACEBOOK
 			
 		}
-		
-		// Register into Google
-		//String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex(password);
-		//System.out.println("\t* Password hash: " + sha1);		
 		
 	}
 	
@@ -241,28 +257,28 @@ public class LoginDialog extends JFrame{
         JLabel l8 = new JLabel("Weight(kg):");   
         l8.setBounds(80, 230, 200, 30);  
         frame.add(l8);  SpinnerNumberModel numberModel = new SpinnerNumberModel(50, 0, 300, 1);
-        JSpinner tf7 = new JSpinner(numberModel);  
+        tf7 = new JSpinner(numberModel);  
         tf7.setBounds(220, 230, 100, 30);  
         frame.add(tf7);  
         
         JLabel l9 = new JLabel("Height(m):");   
         l9.setBounds(350, 230, 200, 30);  
         frame.add(l9);  SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1.74f, 0.0f, 2.50f, 0.01f);
-        JSpinner tf8 = new JSpinner(numberModel2);  
+        tf8 = new JSpinner(numberModel2);  
         tf8.setBounds(490, 230, 100, 30);  
         frame.add(tf8);  
         
         JLabel l10 = new JLabel("Max Heart Rate:");   
         l10.setBounds(80, 270, 200, 30);  
         frame.add(l10);  SpinnerNumberModel numberModel3 = new SpinnerNumberModel(185, 0, 200 ,1);
-        JSpinner tf9 = new JSpinner(numberModel3);  
+        tf9 = new JSpinner(numberModel3);  
         tf9.setBounds(220, 270, 100, 30);  
         frame.add(tf9);  
         
         JLabel l11 = new JLabel("Heart Rate at Rest:");   
         l11.setBounds(350, 270, 200, 30);  
         frame.add(l11);  SpinnerNumberModel numberModel4 = new SpinnerNumberModel(70, 0, 200, 1);
-        JSpinner tf10 = new JSpinner(numberModel4);  
+        tf10 = new JSpinner(numberModel4);  
         tf10.setBounds(490, 270, 100, 30);  
         frame.add(tf10);  
         
@@ -271,7 +287,7 @@ public class LoginDialog extends JFrame{
         frame.add(btn1);  
         
         JButton btn3 = new JButton("Log in");  
-        btn3.setBounds(80, 320, 100, 30);  
+        btn3.setBounds(100, 320, 100, 30);  
         frame.add(btn3);  
         
         btn1.addActionListener(new ActionListener() {

@@ -75,7 +75,7 @@ public class SpringBootController implements ISpringBootController {
 		  	 log.info(email);
 			 log.info("This is the endpoint: " + serverURL + ":" + String.valueOf(serverPort) + "/user/email/{email}"); 
 			 User user = restTemplate.getForObject(serverURL + ":" + String.valueOf(serverPort) + "/user/email/{email}", User.class, Map.of("email", email));
-			 log.info("/user/email/{email} - This is User: " + user.getEmail());// + "name: " + user.getFirstName());
+			 //log.info("/user/email/{email} - This is User: " + user.getEmail());// + "name: " + user.getFirstName());
 			 if (user != null)
 			 {
 				 return true;				 
@@ -132,6 +132,7 @@ public class SpringBootController implements ISpringBootController {
 	  public boolean verifyPassword(String email, String password)
 	  {
 		  log.info("Endpoint: Checking email and password");
+		  log.info(password);
 		  User userS =restTemplate.getForObject(serverURL + ":" +String.valueOf(serverPort) + "/user/verifyPassword/{email}/{password}",  User.class, email,password);
 		  if( userS != null)				  	 
 		  {
