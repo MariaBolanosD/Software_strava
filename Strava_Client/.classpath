@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
-	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
-	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Client/lib/commons-codec-1.15.jar"/>
-	<classpathentry kind="con" path="C:/Users/mbola/OneDrive/Escritorio/Nuev/Software_strava/Strava_Client/bin"/>
-	<classpathentry kind="src" path="/Strava_Server_v1"/>
+	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Client/lib/Strava.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Client/lib/commons-codec-1.15.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Client/lib/eAuctions.jar"/>
+	<classpathentry kind="con" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Client/bin"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

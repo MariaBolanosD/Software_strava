@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * This class process the request of each client as a separated Thread.
@@ -24,7 +25,7 @@ public class FacebookService extends Thread {
 			this.in = new DataInputStream(socket.getInputStream());
 			this.out = new DataOutputStream(socket.getOutputStream());
 			this.start();
-			this.users = new HashMap<String, String>();
+			FacebookService.users = new HashMap<String, String>();
 		} catch (IOException e) {
 			System.err.println("# FacebookService - TCPConnection IO error:" + e.getMessage());
 		}
@@ -64,14 +65,9 @@ public class FacebookService extends Thread {
 	public static void setUsers(Map<String, String> users) {
 		FacebookService.users = users;
 	}
-	
-	public void registerFacebook()
-	{
-		
-	}
-	
-	public void loginFacebook(String email, String password)
-	{
-		
-	}
+
+    public boolean checkIfExists(String email)
+    {
+    	return users.containsKey(email);
+    }
 }
