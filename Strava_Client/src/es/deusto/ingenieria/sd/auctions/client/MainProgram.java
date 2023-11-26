@@ -19,9 +19,7 @@ public class MainProgram {
 		
 		LoginController loginController = new LoginController(serviceLocator);
 		Controller controller = new Controller(serviceLocator);
-		LoginDialog loginDialog = new LoginDialog(loginController, controller);			
-
-			
+		LoginDialog loginDialog = new LoginDialog(loginController, controller);					
 		
 	}
 }

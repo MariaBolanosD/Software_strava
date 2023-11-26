@@ -39,13 +39,13 @@ public class Controller {
 		
 		public List<ChallengeDTO> getAcceptedChallenges(long token)
 		{
-//			try {
-//				return this.serviceLocator.getService().getAcceptedChallenges(token);
-//			} catch (RemoteException e) {
-//				System.out.println("# Error getting accepted challenges of a user: " + e);
-//				return null;
-//			}
-			return null;
+			try {
+				return this.serviceLocator.getService().getAcceptedChallenges(token);
+			} catch (RemoteException e) {
+				System.out.println("# Error getting accepted challenges of a user: " + e);
+				return null;
+			}
+			//return null;
 			
 		}
 		

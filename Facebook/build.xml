@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="help" name="2.3_exampleSocket_Server">    
+<project basedir="." default="help" name="Facebook">    
 	<property environment="env"/>
 	<property name="source.dir" location="src"/>
    	<property name="build.dir" location="bin"/>

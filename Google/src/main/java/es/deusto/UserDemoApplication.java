@@ -64,7 +64,7 @@ public class UserDemoApplication {
     	    	  
     	  User rebeca = new User();
     	  rebeca.setEmail("rebeca.cortazar@deusto.es");
-    	  rebeca.setPassword("Rebeca");
+    	  rebeca.setPassword("[C@2a8a2882");
     	  User roberto = new User();
     	  roberto.setEmail( "rcarba@deusto.es");
     	  roberto.setPassword("Roberto"); 

@@ -33,8 +33,8 @@ public class LoginDialog extends JFrame{
 	
 	private LoginController controller;	
 	private Controller controllerApp;
-	private String email = "thomas.e2001@gmail.com";
-	private String password = "$!9PhNz,";
+//	private String email = "thomas.e2001@gmail.com";
+//	private String password = "$!9PhNz,";
 
 	private static JPasswordField Password;
 	private static JTextField username;
@@ -43,17 +43,21 @@ public class LoginDialog extends JFrame{
 	public LoginDialog(LoginController controller, Controller controller2) {
 		this.controller = controller;
 		this.controllerApp = controller2;
-		VentanaRegister();
-		//VentanaLogin();
+		//VentanaRegister();
+		VentanaLogin();
 	}
 	
 	public boolean login() {		
+		
+		String email = username.getText();
+		String password = String.valueOf(Password.getPassword());
+		
 		System.out.println(" - Login into the server: '" + username.getText() + "' - '" + Password.getPassword().toString() + "' ...");
-//		String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex(password);
-//		System.out.println("\t* Password hash: " + sha1);		
-//		boolean result = this.controller.login(email, sha1);
-//		System.out.println("\t* Login result: " + result);
-//		System.out.println("\t* Token: " + this.controller.getToken());
+		String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex(password);
+		System.out.println("\t* Password hash: " + sha1);		
+		boolean result = this.controller.login(email, sha1);
+		System.out.println("\t* Login result: " + result);
+		System.out.println("\t* Token: " + this.controller.getToken());
 		controller.login(email, password);
 		return true;
 	}
@@ -122,6 +126,7 @@ public class LoginDialog extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("click");
 				CheckLogin();
 			}
 		});

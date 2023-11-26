@@ -55,7 +55,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 				throw new RemoteException("User is already logged in!");
 			}
 		} else {
-			throw new RemoteException("Login fails!");
+			throw new RemoteException("Login fails_!");
 		}
 	}
 	
