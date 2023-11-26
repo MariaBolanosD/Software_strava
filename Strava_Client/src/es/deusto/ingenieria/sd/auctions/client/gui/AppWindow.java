@@ -10,11 +10,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.loading.PrivateClassLoader;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
@@ -35,6 +37,16 @@ public class AppWindow extends JFrame{
 	private Controller controller;
 	private long token; 
 	private static JFrame frame;
+	private int j ;
+	private int i ;
+	private String challengedetail;
+	private String sessiondetail;
+	private List<String> dsChallengeDTO_s = new ArrayList<>();
+	private List<ChallengeDTO> dsChallengeDTOs = new ArrayList<>();
+	private List<String> dsSessionDTO_s = new ArrayList<>();
+	private List<SessionDTO>  dsSessionDTO = new ArrayList<>();
+	private JTextArea challengeDetails;
+	private JTextArea SessionDetails;
 	
 	public AppWindow(Controller controller,long token )
 	{
@@ -85,8 +97,7 @@ public class AppWindow extends JFrame{
 		
 		
 	/////////START - CHECKBOX TEST////////////
-		List<String> dsChallengeDTO_s = new ArrayList<>();
-		List<ChallengeDTO> dsChallengeDTOs = new ArrayList<>();
+		
 		try {
 			dsChallengeDTOs =((this.controller.getServiceLoc().getService())).getChallenges();
 			for (ChallengeDTO challenge: dsChallengeDTOs ) {
@@ -97,8 +108,7 @@ public class AppWindow extends JFrame{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		List<String> dsSessionDTO_s = new ArrayList<>();
-		List<SessionDTO>  dsSessionDTO = new ArrayList<>();
+		
 		try {
 			dsSessionDTO =((this.controller.getServiceLoc().getService())).getSessions(token);
 			for (SessionDTO session: dsSessionDTO ) {
@@ -111,6 +121,7 @@ public class AppWindow extends JFrame{
 		}
 		
 		/////////END - CHECKBOX TEST////////////
+		challengedetail = new String(); 
 		
 		// Username label constructor
 		JLabel label = new JLabel("Challenges");
@@ -118,25 +129,72 @@ public class AppWindow extends JFrame{
 		frame.add(label);		
 		JComboBox challenges = new JComboBox(dsChallengeDTO_s.toArray()) ; //controller.getChallenges());
 		frame.add(challenges);
-		challenges.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e) {
-                //updateChallengeDetails(, label);
-            }
-        });
-		
-		JLabel challengeDetails = new JLabel("Challenge Details [NOT IMPLEMENTED]");
+		j= challenges.getSelectedIndex();
+		challengedetail =   "Name :           " + dsChallengeDTOs.get(j).getName() + '\n' +
+      		"Sport :         " + dsChallengeDTOs.get(j).getSport() + '\n' + 
+      		"Start_date : " + dsChallengeDTOs.get(j).getStartDate()+ '\n' + 
+      		"EndDate : " + dsChallengeDTOs.get(j).getEndDate()+'\n'+
+      		"Target :    " + dsChallengeDTOs.get(j).getTarget();
+		if(dsChallengeDTOs.get(j).getDistanceorTime() == true)
+        {
+        	challengedetail += " km";
+        }
+        else {
+        	challengedetail += " min";
+        }
+		challengeDetails = new JTextArea(challengedetail);
 		frame.add(challengeDetails);
 		
 		
+		challenges.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("cambiando" + challenges.getSelectedIndex());
+				j = challenges.getSelectedIndex();
+				challengedetail =   "Name :           " + dsChallengeDTOs.get(j).getName() + '\n' +
+              		"Sport :         " + dsChallengeDTOs.get(j).getSport() + '\n' + 
+              		"Start_date : " + dsChallengeDTOs.get(j).getStartDate()+ '\n' + 
+              		"EndDate : " + dsChallengeDTOs.get(j).getEndDate()+'\n'+
+              		"Target :    " + dsChallengeDTOs.get(j).getTarget();
+				System.out.println(challengedetail);
+              if(dsChallengeDTOs.get(j).getDistanceorTime() == true)
+              {
+              	challengedetail += " km";
+              }
+              else {
+              	challengedetail += " min";
+              }
+				 challengeDetails.setText(challengedetail);
+			}
+		});
+
 			
 		// Username label constructor
 		JLabel label2 = new JLabel("Sessions");
 		label2.setBounds(100, 38, 70, 20);
 		frame.add(label2);
 		JComboBox sessions = new JComboBox(dsSessionDTO_s.toArray()) ; //controller.getChallenges());
+		sessiondetail = new String(); i = sessions.getSelectedIndex();
+		sessiondetail = "Title :           " + dsSessionDTO.get(i).getTitle() + '\n' +
+        		"Sport :         " + dsSessionDTO.get(i).getSport() + '\n' + 
+        		"Start_date : " + dsSessionDTO.get(i).getStartDate()+ '\n' + 
+        		"Start_time : " + dsSessionDTO.get(i).getStartTime()+'\n'+
+        		"Duration :    " + dsSessionDTO.get(i).getDuration();
 		frame.add(sessions);
+		SessionDetails = new JTextArea(sessiondetail);
+		sessions.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                i = sessions.getSelectedIndex();
+                sessiondetail = "Title :           " + dsSessionDTO.get(i).getTitle() + '\n' +
+                		"Sport :         " + dsSessionDTO.get(i).getSport() + '\n' + 
+                		"Start_date : " + dsSessionDTO.get(i).getStartDate()+ '\n' + 
+                		"Start_time : " + dsSessionDTO.get(i).getStartTime()+'\n'+
+                		"Duration :    " + dsSessionDTO.get(i).getDuration();
+                SessionDetails.setText(sessiondetail);
+            }
+        });
 		
-		JLabel SessionDetails = new JLabel("Session Details [NOT IMPLEMENTED]");
 		frame.add(SessionDetails);
 		JButton chalengeButton = new JButton("Create Challenge");
 		chalengeButton.addActionListener(new ActionListener() {
@@ -186,10 +244,9 @@ public class AppWindow extends JFrame{
 		});
 		frame.add(new Label(""));
 		frame.add(logoutButton);
-		
+		frame.pack();
 	}
-	
-	
+
 	
 	public void updateChallengeDetails(ChallengeDTO c, JLabel l)
 	{
