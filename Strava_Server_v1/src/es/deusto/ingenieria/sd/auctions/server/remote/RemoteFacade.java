@@ -156,17 +156,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		if (email == null || password == null || name == null || birthdate == null || heart_rate_max >=0 || heart_rate_rest >= 0) {
 	        return false;
 	    }
-		User usuario = new User();
-		usuario.setTypeOfAccount(accountType);
-		System.out.println("TYPE OF ACCOUNT: "+ accountType);
-		usuario.setEmail(email);
-		usuario.setPassword(password);
-		usuario.setNickname(name);
-		usuario.setBirthDate(birthdate);
-		usuario.setWeight(weight);
-		usuario.setHeight(height);
-		usuario.setMaxHeartRate(heart_rate_max);
-		usuario.setRestHeartRate(heart_rate_rest);
+		
 		return true;
 	}
 
