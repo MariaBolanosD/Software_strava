@@ -15,20 +15,20 @@ public class TCPSocketClient {
 	String email;
 	boolean data;
 	
-	public static void main(String args[]) {
+	public TCPSocketClient() {
 		
 		
 
 		
-		if (args.length < 3) {
-			System.err.println(" # Usage: TCPSocketClient [SERVER IP] [PORT] [MESSAGE]");
-			System.exit(1);
-		}
+//		if (args.length < 3) {
+//			System.err.println(" # Usage: TCPSocketClient [SERVER IP] [PORT] [MESSAGE]");
+//			System.exit(1);
+//		}
 		
 		//args[0] = Server IP
-		String serverIP = args[0];
+		String serverIP = "127.0.0.1";
 		//args[1] = Server socket port
-		int serverPort = Integer.parseInt(args[1]);
+		int serverPort = 8090;
 		//argrs[2] = Message
 		String email = "";
 
