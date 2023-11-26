@@ -35,16 +35,17 @@ public class FacebookService extends Thread {
 		// Facebook server
 		try {
 			// Read request from the client
-			String data = this.in.readUTF();
+			String email = this.in.readUTF();
 			System.out.println("   - FacebookService - Received data from '" + tcpSocket.getInetAddress().getHostAddress()
-					+ ":" + tcpSocket.getPort() + "' -> '" + data + "'");
+					+ ":" + tcpSocket.getPort() + "' -> '" + email + "'");
 			
 			
 
 			// Send response to the client
-			this.out.writeUTF(data.toUpperCase());
+			this.out.writeBoolean(checkIfExists(email));
 			System.out.println("   - FacebookService - Sent data to '" + tcpSocket.getInetAddress().getHostAddress() + ":"
-					+ tcpSocket.getPort() + "' -> '" + data.toUpperCase() + "'");
+					+ tcpSocket.getPort() + "' -> '" + checkIfExists(email) + "'");
+			
 		} catch (EOFException e) {
 			System.err.println("   # FacebookService - TCPConnection EOF error" + e.getMessage());
 		} catch (IOException e) {

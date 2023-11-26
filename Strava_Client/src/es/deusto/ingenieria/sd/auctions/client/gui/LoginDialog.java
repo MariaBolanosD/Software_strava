@@ -108,11 +108,28 @@ public class LoginDialog extends JFrame{
 			else
 				JOptionPane.showMessageDialog(frame, "Registration complete.");
 		}
-		else { //  FACEBOOK
-			
+		else { 
+			//  FACEBOOK
+				float weight =  Float.parseFloat(tf7.getValue().toString());
+				//System.out.println(weight);
+				
+				float height=  Float.parseFloat(tf8.getValue().toString());
+				int heartmax=  Integer.parseInt(tf9.getValue().toString());
+				int heartrest= Integer.parseInt(tf10.getValue().toString());
+				
+				
+				
+				System.out.println(" - Register into the Facebook server: '" + email);
+				Date bitDate = (Date) spinner2.getValue();
+				LocalDate birthDate = convertToLocalDateViaInstant(bitDate);
+				System.out.println(email);
+				boolean bool = controller.Register(TypeOfAccount.FACEBOOK, email, name.getText(), birthDate, weight,height,heartmax,heartrest);
+				if(bool == false)
+					JOptionPane.showMessageDialog(frame, "Email not in Facebook. Account not registered");
+				else
+					JOptionPane.showMessageDialog(frame, "Registration complete.");
+			}
 		}
-		
-	}
 	
 	public void logout() {
 		System.out.println(" - Logout from the server...");		

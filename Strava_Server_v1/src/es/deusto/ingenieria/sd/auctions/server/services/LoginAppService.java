@@ -11,6 +11,9 @@ import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
+import es.deusto.ingenieria.sd.socket.client.TCPSocketClient;
+import es.deusto.ingenieria.sd.socket.server.FacebookService;
+import es.deusto.ingenieria.sd.socket.server.TCPSocketServer;
 
 //TODO: Implement Singleton Pattern
 public class LoginAppService {
@@ -59,7 +62,17 @@ public class LoginAppService {
 			System.out.println("Usuario existe en Google");
 		}
 		else { // FACEBOOK
-			return false;
+			
+			System.out.println("Inside LOGIN APP SERVICE REGISTER FACEBOOK");
+			TCPSocketClient tcpSC = new TCPSocketClient();
+			tcpSC.setEmailToCheck(email);
+			if( tcpSC.getResponse() == "false")
+			{
+				System.out.println("Incorrect email");
+				System.out.println(email);
+				return false;
+			}
+			System.out.println("Usuario existe en Facebook");
 		}
 				
 		User usuario = new User();

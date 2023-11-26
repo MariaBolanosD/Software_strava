@@ -10,7 +10,15 @@ import java.net.UnknownHostException;
 
 public class TCPSocketClient {
 
+	String serverIP;
+	int serverPort;
+	String email;
+	String data;
+	
 	public static void main(String args[]) {
+		
+		
+
 		
 		if (args.length < 3) {
 			System.err.println(" # Usage: TCPSocketClient [SERVER IP] [PORT] [MESSAGE]");
@@ -22,7 +30,7 @@ public class TCPSocketClient {
 		//args[1] = Server socket port
 		int serverPort = Integer.parseInt(args[1]);
 		//argrs[2] = Message
-		String message = args[2];
+		String email = "";
 
 		/**
 		 * NOTE: try-with resources Statement - https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
@@ -39,8 +47,8 @@ public class TCPSocketClient {
 			 DataOutputStream out = new DataOutputStream(tcpSocket.getOutputStream())){
 			
 			//Send request (a String) to the server
-			out.writeUTF(message);
-			System.out.println(" - TCPSocketClient: Sent data to '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + message + "'");
+			out.writeUTF(email);
+			System.out.println(" - TCPSocketClient: Sent data to '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + email + "'");
 			
 			//Read response (a String) from the server
 			String data = in.readUTF();			
@@ -52,5 +60,15 @@ public class TCPSocketClient {
 		} catch (IOException e) {
 			System.err.println("# TCPSocketClient: IO error: " + e.getMessage());
 		}
+	}
+	
+	public void setEmailToCheck(String email)
+	{
+		this.email = email;
+	}
+	
+	public String getResponse()
+	{
+		return data;
 	}
 }

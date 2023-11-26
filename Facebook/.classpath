@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
 	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
-	<classpathentry kind="con" path="C:/Users/Maria/Desktop/Strava/Software_strava/Facebook/bin"/>
+	<classpathentry kind="con" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Facebook/bin"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

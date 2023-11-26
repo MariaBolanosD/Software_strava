@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
-	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
-	<classpathentry kind="con" path="C:/Users/mbola/OneDrive/Escritorio/Nuev/Software_strava/Strava_Server_v1/bin"/>
-	<classpathentry kind="lib" path="lib/commons-codec-1.15.jar"/>
-	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-annotations-2.15.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-core-2.15.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-databind-2.15.2.jar"/>
-	<classpathentry kind="lib" path="lib/micrometer-commons-1.11.4.jar"/>
-	<classpathentry kind="lib" path="lib/micrometer-core-1.11.4.jar"/>
-	<classpathentry kind="lib" path="lib/micrometer-observation-1.11.4.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-2.0.9.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-simple-2.0.9.jar"/>
-	<classpathentry kind="lib" path="lib/spring-aop-6.0.12.jar"/>
-	<classpathentry kind="lib" path="lib/spring-beans-6.0.12.jar"/>
-	<classpathentry kind="lib" path="lib/spring-boot-3.1.4.jar"/>
-	<classpathentry kind="lib" path="lib/spring-boot-autoconfigure-3.1.4.jar"/>
-	<classpathentry kind="lib" path="lib/spring-boot-starter-3.1.4.jar"/>
-	<classpathentry kind="lib" path="lib/spring-context-6.0.11.jar"/>
-	<classpathentry kind="lib" path="lib/spring-core-6.0.11.jar"/>
-	<classpathentry kind="lib" path="lib/spring-expression-6.0.11.jar"/>
-	<classpathentry kind="lib" path="lib/spring-web-6.0.11.jar"/>
-	<classpathentry kind="lib" path="resources"/>
+	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/commons-codec-1.15.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/jackson-annotations-2.15.2.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/jackson-core-2.15.2.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/jackson-databind-2.15.2.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/micrometer-commons-1.11.4.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/micrometer-core-1.11.4.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/micrometer-observation-1.11.4.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/slf4j-api-2.0.9.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/slf4j-simple-2.0.9.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-aop-6.0.12.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-beans-6.0.12.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-boot-3.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-boot-autoconfigure-3.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-boot-starter-3.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-context-6.0.11.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-core-6.0.11.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-expression-6.0.11.jar"/>
+	<classpathentry kind="lib" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/lib/spring-web-6.0.11.jar"/>
+	<classpathentry kind="con" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/bin"/>
+	<classpathentry kind="con" path="C:/SOFTWARE_REQUIREMENTS/PROYECTOS/Software_strava/Strava_Server_v1/resources"/>
+	<classpathentry kind="src" path="/Facebook"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
