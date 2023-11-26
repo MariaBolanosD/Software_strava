@@ -1,6 +1,5 @@
 package es.deusto.ingenieria.sd.auctions.server.services;
 
-import java.security.KeyStore.Entry;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
@@ -12,8 +11,6 @@ import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 import es.deusto.ingenieria.sd.socket.client.TCPSocketClient;
-import es.deusto.ingenieria.sd.socket.server.FacebookService;
-import es.deusto.ingenieria.sd.socket.server.TCPSocketServer;
 
 //TODO: Implement Singleton Pattern
 public class LoginAppService {
