@@ -4,6 +4,7 @@ import java.rmi.Naming;
 
 import es.deusto.ingenieria.sd.auctions.server.remote.IRemoteFacade;
 import es.deusto.ingenieria.sd.auctions.server.remote.RemoteFacade;
+import es.deusto.ingenieria.sd.socket.client.TCPSocketClient;
 
 public class MainProgram {
 
@@ -24,6 +25,8 @@ public class MainProgram {
 			IRemoteFacade remoteFacade = new RemoteFacade();			
 			Naming.rebind(name, remoteFacade);
 			System.out.println(" * eAuction Server v1 '" + name + "' started!!");
+			TCPSocketClient tcp = new TCPSocketClient();
+			
 		} catch (Exception ex) {
 			System.err.println(" # eAuction Server Exception: " + ex.getMessage());
 			ex.printStackTrace();

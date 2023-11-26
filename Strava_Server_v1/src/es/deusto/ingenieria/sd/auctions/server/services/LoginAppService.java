@@ -24,16 +24,17 @@ public class LoginAppService {
 	
 	public User login(String email, String password) {
 		//TODO: Get User using DAO and check 		
-		//check if user in Googl
+		//check if user in Google
 		System.out.println("Inside LOGIN APP SERVICE LOGIN");
 		SpringBootApplication spr = new SpringBootApplication();
-		if( spr.checkEmail(email) == false)
+		TCPSocketClient tcp = new TCPSocketClient();
+		if( spr.checkEmail(email) == false && tcp.getResponse() == false)
 		{
 			System.out.println("Incorrect email");
 			System.out.println(email);
 			return null;
 		}
-		if(spr.verifyPassword(email, password) == false)
+		if(spr.verifyPassword(email, password) == false && tcp.getResponse() == false)
 		{
 			System.out.println("Incorrect password");
 			return null;
@@ -63,7 +64,7 @@ public class LoginAppService {
 			System.out.println("Inside LOGIN APP SERVICE REGISTER FACEBOOK");
 			TCPSocketClient tcpSC = new TCPSocketClient();
 			tcpSC.setEmailToCheck(email);
-			if( tcpSC.getResponse() == "false")
+			if( tcpSC.getResponse() == false)
 			{
 				System.out.println("Incorrect email");
 				System.out.println(email);

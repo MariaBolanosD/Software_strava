@@ -13,7 +13,7 @@ public class TCPSocketClient {
 	String serverIP;
 	int serverPort;
 	String email;
-	String data;
+	boolean data;
 	
 	public static void main(String args[]) {
 		
@@ -51,7 +51,7 @@ public class TCPSocketClient {
 			System.out.println(" - TCPSocketClient: Sent data to '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + email + "'");
 			
 			//Read response (a String) from the server
-			String data = in.readUTF();			
+			boolean data = in.readBoolean();			
 			System.out.println(" - TCPSocketClient: Received data from '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + data + "'");
 		} catch (UnknownHostException e) {
 			System.err.println("# TCPSocketClient: Socket error: " + e.getMessage());
@@ -67,7 +67,7 @@ public class TCPSocketClient {
 		this.email = email;
 	}
 	
-	public String getResponse()
+	public boolean getResponse()
 	{
 		return data;
 	}
