@@ -37,19 +37,28 @@ public class UserController {
     
     @GetMapping("/user/email/{email}")
     public User getUserByEmail(@PathVariable String email) {
+    	log.info(email);
         return userService.getUserByEmail(email);
     }
         
-    @GetMapping("/user/{id}/sendEmail")
-    public ResponseEntity<Object> sendEmail(@PathVariable Long id) {
-    	log.info("Sending an email to a User ...");
-       	switch (userService.sendEmail(id)) {
-       	    case "FAIL":
-    	    	return ResponseEntity.unprocessableEntity().body("User does not exist. Op. aborted, check user and try again");
-    	    
-   	   	    default:
-      	    	return ResponseEntity.ok("Default - Email successfully sent");	
-    	}
+    @GetMapping("/user/verifyPassword/{email}/{password}")
+    public User verifyPassword(@PathVariable String email, @PathVariable String password) {
+    	log.info("Searching for user..."); 
+    	log.info(email);
+//    	User user = userService.getUserByEmail(email);
+//    	if(user != null)
+//    	{
+//    		log.info("User found...");
+//    		if(user.getPassword().compareTo(password) == 0)
+//    		{
+//    			log.info("Password matches");
+//    			return user;
+//    		}
+//    	}
+//      	return null;
+   	
+    	return userService.verifyPassword(email, password);
+    	
    }
        
     @PostMapping("/user/create")

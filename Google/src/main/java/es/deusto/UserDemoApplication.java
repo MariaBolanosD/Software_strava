@@ -38,24 +38,24 @@ public class UserDemoApplication {
         
           }
      
-    @Bean
-    JavaMailSender getJavaMailSender() {
-    	// Configuration programmatically done - automatic Spring mapping does not work
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl(); 
-       
-        mailSender.setHost(host);
-        mailSender.setPort(port);
-        mailSender.setUsername(sender);
-        mailSender.setPassword(password);
-
-        Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.debug", "true");
-
-        return mailSender;
-    }
+//    @Bean
+//    JavaMailSender getJavaMailSender() {
+//    	// Configuration programmatically done - automatic Spring mapping does not work
+//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl(); 
+//       
+//        mailSender.setHost(host);
+//        mailSender.setPort(port);
+//        mailSender.setUsername(sender);
+//        mailSender.setPassword(password);
+//
+//        Properties props = mailSender.getJavaMailProperties();
+//        props.put("mail.transport.protocol", "smtp");
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.debug", "true");
+//
+//        return mailSender;
+//    }
     
     @Bean
     CommandLineRunner demo(UserRepository repository) {
@@ -64,9 +64,11 @@ public class UserDemoApplication {
     	    	  
     	  User rebeca = new User();
     	  rebeca.setEmail("rebeca.cortazar@deusto.es");
+    	  rebeca.setPassword("Rebeca");
     	  User roberto = new User();
     	  roberto.setEmail( "rcarba@deusto.es");
-    	   
+    	  roberto.setPassword("Roberto"); 
+    	  
     	  repository.save(rebeca);
     	  repository.save(roberto);
     	  
