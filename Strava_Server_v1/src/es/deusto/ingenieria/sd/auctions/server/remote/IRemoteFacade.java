@@ -33,7 +33,7 @@ public interface IRemoteFacade extends Remote {
 	
 	public boolean makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration )throws RemoteException;
 	
-	public void acceptChallenge(long token, ChallengeDTO challenge)throws RemoteException;
+	public void acceptChallenge(long token, String name, LocalDate start_date, SportEnum sport) throws RemoteException;
 	
 //	public boolean makeBid(long token, int article, float amount) throws RemoteException;
 

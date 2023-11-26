@@ -49,24 +49,38 @@ public class Controller {
 			
 		}
 		
-		public void makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
+		public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
 				boolean distanceorTime)
 		{
 			try {
 				 this.serviceLocator.getService().makeChallenge(token, name, startDate, endDate, target, sport, distanceorTime);
+				 return true;
 			} catch (RemoteException e) {
 				System.out.println("# Error making challenge: " + e);
+				return false;
 			}
 			
 		}
 		
 		
 		
-		public void makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration) {
+		public boolean makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate, LocalTime starTime, double duration) {
 			try {
 				 this.serviceLocator.getService().makeSession(token, title, sport, distance, startDate, starTime, duration);
+				 return true;
 			} catch (RemoteException e) {
 				System.out.println("# Error making session: " + e);
+				return false;
+			}
+			
+		}
+		
+		public void acceptChallenge(long token, String name, LocalDate start_date, SportEnum sport)
+		{
+			try {
+				 this.serviceLocator.getService().acceptChallenge(token, name, start_date, sport);
+			} catch (RemoteException e) {
+				System.out.println("# Error accepting challenge: " + e);
 			}
 			
 		}

@@ -188,12 +188,12 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	}
 
 	@Override
-	public void acceptChallenge(long token, ChallengeDTO challenge) {
+	public void acceptChallenge(long token, String name, LocalDate start_date, SportEnum sport) {
 		for(Challenge eachChall : sportAppService.getChallenges())
 		{
-			if((eachChall.getName() == challenge.getName())
-					&& (eachChall.getStartDate() == challenge.getStartDate())
-						&& (eachChall.getSport() == challenge.getSport())) 
+			if((eachChall.getName() == name)
+					&& (eachChall.getStartDate() == start_date)
+						&& (eachChall.getSport() == sport)) 
 			{
 				serverState.get(token).addChallenge(eachChall);
 				break;
