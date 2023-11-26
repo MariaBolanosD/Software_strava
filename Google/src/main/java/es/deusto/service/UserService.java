@@ -40,11 +40,11 @@ public class UserService {
     }
     
     /** Sending an Email to a User */
-    public Optional<User> verifyPassword(String email,String password) {
-    	Optional<User> result = userRepository.findByEmail(email);
+    public User verifyPassword(String email,String password) {
+    	User result = getUserByEmail(email);
     	if(result != null)
     	{
-    		if(result.get().getPassword() == password)
+    		if(result.getPassword().compareTo(password) == 0)
     		{
     			return result;
     		}

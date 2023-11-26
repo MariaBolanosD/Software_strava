@@ -13,14 +13,9 @@ public class SpringBootApplication {
 	
 	 ISpringBootController req = SpringBootController.getRequester();
 	 
-	 log.info("Adding user - response from requester: " );
-	 if(req.verifyPassword("rebeca.cortazar@deusto.es", "Roberto"))
-	 {
-		 log.info("Password CORRECT");
-	 }
-	 else {
-		 log.info("Password INCORRECT");
-	}
+	 verifyPassword(req, "rebeca.cortazar@deusto.es", "Rebeca");
+	 verifyPassword(req, "rebeca.cortazar@deusto.es", "Roberto");
+	 
 	 log.info("********************************");
 
 	 log.info("Get list users - response from requester: " + req.getListUsers());
@@ -65,8 +60,21 @@ public class SpringBootApplication {
 	            " \n";
 
 	  System.out.println(asciiArtEnd);
+	  
 	 
 	  
   }	  
+  
+  public static void verifyPassword(ISpringBootController req, String email, String password)
+  {
+	  log.info("Adding user - response from requester: " );
+		 if(req.verifyPassword(email, password))
+		 {
+			 log.info("Password CORRECT");
+		 }
+		 else {
+			 log.info("Password INCORRECT");
+		}
+  }
   
 }  
