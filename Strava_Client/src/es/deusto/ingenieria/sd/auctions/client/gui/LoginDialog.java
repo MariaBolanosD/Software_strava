@@ -334,7 +334,7 @@ public class LoginDialog extends JFrame{
 			
 			frame.dispose();
 			
-			AppWindow appWindow = new AppWindow(controllerApp, this.controller.getToken());
+			AppWindow appWindow = new AppWindow(controllerApp, controller, this.controller.getToken());
 			
 		}
 	}

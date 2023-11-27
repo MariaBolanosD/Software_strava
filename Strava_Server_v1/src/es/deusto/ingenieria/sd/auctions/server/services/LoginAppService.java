@@ -27,15 +27,19 @@ public class LoginAppService {
 		//check if user in Google
 		System.out.println("Inside LOGIN APP SERVICE LOGIN");
 		SpringBootApplication spr = new SpringBootApplication();
-		TCPSocketClient tcp = new TCPSocketClient();
+		TCPSocketClient tcp = new TCPSocketClient(email, password);
+		System.out.println("before checking email");
+		System.out.println("response: " + tcp.getResponse());
 		if( spr.checkEmail(email) == false && tcp.getResponse() == false)
 		{
 			System.out.println("Incorrect email");
 			System.out.println(email);
 			return null;
 		}
+		System.out.println("response: " + tcp.getResponse());
 		if(spr.verifyPassword(email, password) == false && tcp.getResponse() == false)
 		{
+			System.out.println("response inside: " + tcp.getResponse());
 			System.out.println("Incorrect password");
 			return null;
 		}
@@ -62,7 +66,7 @@ public class LoginAppService {
 		else { // FACEBOOK
 			
 			System.out.println("Inside LOGIN APP SERVICE REGISTER FACEBOOK");
-			TCPSocketClient tcpSC = new TCPSocketClient();
+			TCPSocketClient tcpSC = new TCPSocketClient(email, null);
 			tcpSC.setEmailToCheck(email);
 			if( tcpSC.getResponse() == false)
 			{
@@ -131,8 +135,20 @@ public class LoginAppService {
 		user1.setRestHeartRate(79);
 		user1.addSession(sesion2);
 		
+		User user2 = new User();
+		user2.setEmail("hola@deusto.es");
+		user2.setNickname("hola");		
+		//user1.setPassword("hqc`}3Hb");
+		user2.setBirthDate(LocalDate.of(1989, 5, 2 ));
+		user2.setWeight(98);
+		user2.setHeight(193.50);
+		user2.setMaxHeartRate(147);
+		user2.setRestHeartRate(79);
+		user2.addSession(sesion2);
+		
 		users.put(user0.getEmail(), user0);
 		users.put(user1.getEmail(), user1);
+		users.put(user2.getEmail(), user2);
 	}
 	
 }

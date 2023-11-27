@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
+import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 
@@ -35,6 +36,7 @@ public class AppWindow extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
+	private LoginController loginController;
 	private long token; 
 	private static JFrame frame;
 	private int j ;
@@ -48,9 +50,10 @@ public class AppWindow extends JFrame{
 	private JTextArea challengeDetails;
 	private JTextArea SessionDetails;
 	
-	public AppWindow(Controller controller,long token )
+	public AppWindow(Controller controller, LoginController loginController, long token )
 	{
 		this.controller = controller;
+		this.loginController = loginController;
 		this.token = token;
 		Ventana();
 	}
@@ -240,6 +243,7 @@ public class AppWindow extends JFrame{
 					e.printStackTrace();
 				}
 				frame.dispose();
+				LoginDialog login = new LoginDialog(loginController, controller);
 			}
 		});
 		frame.add(new Label(""));

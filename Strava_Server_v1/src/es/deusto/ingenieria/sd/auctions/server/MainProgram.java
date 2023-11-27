@@ -25,7 +25,7 @@ public class MainProgram {
 			IRemoteFacade remoteFacade = new RemoteFacade();			
 			Naming.rebind(name, remoteFacade);
 			System.out.println(" * eAuction Server v1 '" + name + "' started!!");
-			TCPSocketClient tcp = new TCPSocketClient();
+			//TCPSocketClient tcp = new TCPSocketClient();
 			
 		} catch (Exception ex) {
 			System.err.println(" # eAuction Server Exception: " + ex.getMessage());

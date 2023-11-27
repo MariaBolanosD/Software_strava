@@ -24,18 +24,23 @@ public class FacebookService extends Thread {
 			this.tcpSocket = socket;
 			this.in = new DataInputStream(socket.getInputStream());
 			this.out = new DataOutputStream(socket.getOutputStream());
-			this.start();
 			FacebookService.users = new HashMap<String, String>();
+			this.initializeUsers();
+			this.start();
 		} catch (IOException e) {
 			System.err.println("# FacebookService - TCPConnection IO error:" + e.getMessage());
 		}
 	}
 
 	public void run() {
+		System.out.println("run");
 		// Facebook server
 		try {
 			// Read request from the client
 			String email = this.in.readUTF();
+			System.out.println("email : " + email);
+			String password = this.in.readUTF();
+			System.out.println("password: " + password);
 			System.out.println("   - FacebookService - Received data from '" + tcpSocket.getInetAddress().getHostAddress()
 					+ ":" + tcpSocket.getPort() + "' -> '" + email + "'");
 			
@@ -71,4 +76,11 @@ public class FacebookService extends Thread {
     {
     	return users.containsKey(email);
     }
+    
+    public void initializeUsers()   
+    {        
+    	User u1 = new User("hola", "hola@deusto.es");     
+    	users.put(u1.getEmail(), u1.getPassword());    
+    }
+    
 }

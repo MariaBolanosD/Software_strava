@@ -15,9 +15,9 @@ public class TCPSocketClient {
 	String email;
 	boolean data;
 	
-	public TCPSocketClient() {
+	public TCPSocketClient(String email, String password) {
 		
-		
+		this.email = email;
 
 		
 //		if (args.length < 3) {
@@ -30,7 +30,7 @@ public class TCPSocketClient {
 		//args[1] = Server socket port
 		int serverPort = 8090;
 		//argrs[2] = Message
-		String email = "";
+		//String email = "";
 
 		/**
 		 * NOTE: try-with resources Statement - https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
@@ -48,10 +48,11 @@ public class TCPSocketClient {
 			
 			//Send request (a String) to the server
 			out.writeUTF(email);
+			out.writeUTF(password);
 			System.out.println(" - TCPSocketClient: Sent data to '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + email + "'");
 			
 			//Read response (a String) from the server
-			boolean data = in.readBoolean();			
+			data = in.readBoolean();			
 			System.out.println(" - TCPSocketClient: Received data from '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + data + "'");
 		} catch (UnknownHostException e) {
 			System.err.println("# TCPSocketClient: Socket error: " + e.getMessage());
