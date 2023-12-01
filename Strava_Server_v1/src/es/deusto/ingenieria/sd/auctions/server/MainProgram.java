@@ -4,7 +4,6 @@ import java.rmi.Naming;
 
 import es.deusto.ingenieria.sd.auctions.server.remote.IRemoteFacade;
 import es.deusto.ingenieria.sd.auctions.server.remote.RemoteFacade;
-import es.deusto.ingenieria.sd.socket.client.TCPSocketClient;
 
 public class MainProgram {
 
