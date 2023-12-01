@@ -40,7 +40,8 @@ public class UserDemoApplication {
           // INIT data ... some Users
     	    	  
     	  User rebeca = new User();
-    	  rebeca.setEmail("rebeca.cortazar@deusto.es");
+    	  rebeca.setEmail("rebeca");
+    	  //rebeca.setEmail("rebeca.cortazar@deusto.es");
     	  rebeca.setPassword("Rebeca");
     	  User roberto = new User();
     	  roberto.setEmail( "rcarba@deusto.es");
