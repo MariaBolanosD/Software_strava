@@ -12,7 +12,6 @@ public class Factory {
 	 private static Factory instance;
 	 private final IGateway googleGateway;
 	 private final IGateway facebookGateway;
-	 //private final ISpringBootController controller;
 	
 	 
 	 private Factory()
@@ -21,7 +20,6 @@ public class Factory {
 		 System.out.println("Factory constructor");
 		 facebookGateway = new FacebookGateway();
 		 googleGateway = GoogleGateway.getRequester();
-		 //controller = SpringBootController.getRequester();
 	 }
 	 
 	 public static Factory getInstance()
@@ -45,6 +43,15 @@ public class Factory {
 		default:
 			return null;
 		}
+	}
+	
+	public void setFacebookPortIp(String port, String ip)
+	{
+		//FacebookGateway facebookGateway = new FacebookGateway();
+		//facebookGateway.setFacebookPortIp(port, ip);
+		System.out.println("facebook" + port + ip);
+		((FacebookGateway )this.facebookGateway).setFacebookPortIp(port, ip);
+		//this.facebookGateway = facebookGateway;
 	}
 	
 }

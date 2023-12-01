@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import org.springframework.boot.autoconfigure.integration.IntegrationAutoConfiguration;
+
 public class FacebookGateway implements IGateway{
 
 	private String serverIP;
@@ -16,9 +18,10 @@ public class FacebookGateway implements IGateway{
 	public boolean getUserByEmail(String email)
 	{
 		//args[0] = Server IP
-		serverIP = "127.0.0.1";
+		//serverIP = "127.0.0.1";
 		//args[1] = Server socket port
-		serverPort = 8090;
+		//serverPort = 8090;
+		System.out.println("server port " + serverPort + " serverip: "+ serverIP);
 		
 		try (Socket tcpSocket = new Socket(serverIP, serverPort);
 				 //Streams to send and receive information are created from the Socket
@@ -45,10 +48,10 @@ public class FacebookGateway implements IGateway{
 	public boolean verifyPassword(String email, String password)
 	{
 		//args[0] = Server IP
-		serverIP = "127.0.0.1";
+		//serverIP = "127.0.0.1";
 		//args[1] = Server socket port
-		serverPort = 8090;
-		
+		//serverPort = 8090;
+		System.out.println("server port " + serverPort + " serverip: "+ serverIP);
 		try (Socket tcpSocket = new Socket(serverIP, serverPort);
 				 //Streams to send and receive information are created from the Socket
 			     DataInputStream in = new DataInputStream(tcpSocket.getInputStream());
@@ -76,8 +79,10 @@ public class FacebookGateway implements IGateway{
 	{
 		return data;
 	}
-	public void start()
+	public void setFacebookPortIp(String port, String ip)
 	{
-		
+		System.out.println("facebook inside" + port + ip);
+		this.serverIP = ip;
+		this.serverPort = Integer.parseInt(port);
 	}
 }

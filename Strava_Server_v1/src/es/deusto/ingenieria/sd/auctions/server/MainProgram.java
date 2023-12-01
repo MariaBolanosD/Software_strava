@@ -2,6 +2,7 @@ package es.deusto.ingenieria.sd.auctions.server;
 
 import java.rmi.Naming;
 
+import es.deusto.ingenieria.sd.auctions.server.factory.Factory;
 import es.deusto.ingenieria.sd.auctions.server.remote.IRemoteFacade;
 import es.deusto.ingenieria.sd.auctions.server.remote.RemoteFacade;
 
@@ -25,7 +26,7 @@ public class MainProgram {
 			Naming.rebind(name, remoteFacade);
 			System.out.println(" * eAuction Server v1 '" + name + "' started!!");
 			//TCPSocketClient tcp = new TCPSocketClient();
-			
+			Factory.getInstance().setFacebookPortIp(args[3], args[0]);
 		} catch (Exception ex) {
 			System.err.println(" # eAuction Server Exception: " + ex.getMessage());
 			ex.printStackTrace();
