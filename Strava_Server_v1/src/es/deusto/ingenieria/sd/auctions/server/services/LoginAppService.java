@@ -24,27 +24,7 @@ public class LoginAppService {
 	}
 	
 	public User login(String email, String password) {
-		//TODO: Get User using DAO and check 		
-//		//check if user in Google
-//		System.out.println("Inside LOGIN APP SERVICE LOGIN");
-		//SpringBootApplication spr = new SpringBootApplication();
-//		TCPSocketClient tcp = new TCPSocketClient(email, password);
-//		System.out.println("before checking email");
-//		System.out.println("response: " + tcp.getResponse());
-//		if( spr.checkEmail(email) == false && tcp.getResponse() == false)
-//		{
-//			System.out.println("Incorrect email");
-//			System.out.println(email);
-//			return null;
-//		}
-//		System.out.println("response: " + tcp.getResponse());
-//		if(spr.verifyPassword(email, password) == false && tcp.getResponse() == false)
-//		{
-//			System.out.println("response inside: " + tcp.getResponse());
-//			System.out.println("Incorrect password");
-//			return null;
-//		}
-//		System.out.println("correct password LOginAPPSERVICES");
+
 		// Get user from users
 		User user = users.get(email);	
 		if(user == null)
@@ -60,32 +40,7 @@ public class LoginAppService {
 	}
 	
 	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate ,float weight, float height, int heart_rate_max, int heart_rate_rest) {
-//		if(accountType == TypeOfAccount.GOOGLE)
-//		{			
-//			System.out.println("Inside LOGIN APP SERVICE REGISTER GOOGLE");
-//			SpringBootApplication spr = new SpringBootApplication();
-//			if( spr.checkEmail(email) == false)
-//			{
-//				System.out.println("Incorrect email");
-//				System.out.println(email);
-//				return false;
-//			}
-//			System.out.println("Usuario existe en Google");
-//		}
-//		else { // FACEBOOK
-//			
-//			System.out.println("Inside LOGIN APP SERVICE REGISTER FACEBOOK");
-//			TCPSocketClient tcpSC = new TCPSocketClient(email, null);
-//			tcpSC.setEmailToCheck(email);
-//			if( tcpSC.getResponse() == false)
-//			{
-//				System.out.println("Incorrect email");
-//				System.out.println(email);
-//				return false;
-//			}
-//			System.out.println("Usuario existe en Facebook");
-//		}
-				
+
 		if(Factory.getInstance().creategateway(accountType).getUserByEmail(email) == false)
 			return false;
 		
