@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="bin" path="src"/>
+	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/commons-codec-1.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/datanucleus-api-jpa-6.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/datanucleus-core-6.0.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/datanucleus-jpa-query-6.0.0-release.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/datanucleus-rdbms-6.0.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/javax.persistence-2.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/mysql-connector-j-8.1.0.jar"/>
+	<classpathentry kind="con" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/bin"/>
+	<classpathentry kind="con" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/resources"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

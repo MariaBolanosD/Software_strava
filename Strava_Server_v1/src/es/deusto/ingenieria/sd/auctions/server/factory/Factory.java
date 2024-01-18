@@ -10,16 +10,11 @@ import es.deusto.ingenieria.sd.auctions.server.gateway.IGateway;
 public class Factory {
 
 	 private static Factory instance;
-	 private final IGateway googleGateway;
-	 private final IGateway facebookGateway;
 	
 	 
 	 private Factory()
 	 {
-		 GoogleGateway.start();
 		 System.out.println("Factory constructor");
-		 facebookGateway = new FacebookGateway();
-		 googleGateway = GoogleGateway.getRequester();
 	 }
 	 
 	 public static Factory getInstance()
@@ -31,27 +26,23 @@ public class Factory {
 	      return instance;
 	 } 
 	 
-	public IGateway creategateway(TypeOfAccount type)
+	public IGateway creategateway(TypeOfAccount type, String connctionInfo)
 	{
 		// calls IGateway
 		switch (type) {
 		case GOOGLE:
 			System.out.println("GOOGLE");
-			return googleGateway;
+			GoogleGateway.start();
+			return GoogleGateway.getRequester();
 		case FACEBOOK:
-			return facebookGateway;
+			FacebookGateway facebook = new FacebookGateway();
+			// get port and ip from string
+			//facebook.setFacebookPortIp(port, ip);
+			return facebook;
 		default:
 			return null;
 		}
 	}
 	
-	public void setFacebookPortIp(String port, String ip)
-	{
-		//FacebookGateway facebookGateway = new FacebookGateway();
-		//facebookGateway.setFacebookPortIp(port, ip);
-		System.out.println("facebook" + port + ip);
-		((FacebookGateway )this.facebookGateway).setFacebookPortIp(port, ip);
-		//this.facebookGateway = facebookGateway;
-	}
 	
 }

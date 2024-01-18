@@ -26,7 +26,7 @@ public class MainProgram {
 			Naming.rebind(name, remoteFacade);
 			System.out.println(" * eAuction Server v1 '" + name + "' started!!");
 			//TCPSocketClient tcp = new TCPSocketClient();
-			Factory.getInstance().setFacebookPortIp(args[3], args[0]);
+			//Factory.getInstance().setFacebookPortIp(args[3], args[0]);
 		} catch (Exception ex) {
 			System.err.println(" # eAuction Server Exception: " + ex.getMessage());
 			ex.printStackTrace();

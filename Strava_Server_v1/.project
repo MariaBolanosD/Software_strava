@@ -25,4 +25,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>bin</name>
+			<type>2</type>
+			<location>C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/bin</location>
+		</link>
+	</linkedResources>
 </projectDescription>
