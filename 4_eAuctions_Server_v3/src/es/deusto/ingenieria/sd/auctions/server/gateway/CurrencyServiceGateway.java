@@ -2,8 +2,6 @@ package es.deusto.ingenieria.sd.auctions.server.gateway;
 
 import java.rmi.Naming;
 
-import es.deusto.ingenieria.sd.auctions.currency.remote.ICurrencyExchange;
-
 public class CurrencyServiceGateway {
 
 	private static CurrencyServiceGateway instance;
@@ -41,7 +39,7 @@ public class CurrencyServiceGateway {
 		System.out.println("   - Get GBP rate from Currency Service Gateway");
 		
 		try {
-			return this.currencyConvService.getGBPRate();
+			return this.currencyConvService.getUSDRate();
 		} catch (Exception ex) {
 			System.out.println("   $ Error getting GBP rate: " + ex.getMessage());
 			return -1f;

@@ -4,12 +4,16 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
-
+@Entity
 public class Session {
 	
 	//private User user;
+	@Id
 	private String title;
 	private SportEnum sport;
 	private double distance;

@@ -5,11 +5,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 
+@Entity
 public class User {
 	private TypeOfAccount tipoAut;
 	private String nickname;
+	@Id
 	private String email;
 	private LocalDate birthDate;
 	private double weight;
@@ -17,8 +26,12 @@ public class User {
 	private int maxHeartRate;
 	private int restHeartRate;
 	
+	@ManyToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Challenge> challenges = new ArrayList<>();
+	// redundante para la base de datos
+	////////////@ManyToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Challenge> updatedChallenges = new ArrayList<>();
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Session> sessions = new ArrayList<>();
 		
 	public TypeOfAccount getTipoAut() {

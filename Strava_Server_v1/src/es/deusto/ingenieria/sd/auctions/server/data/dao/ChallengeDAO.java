@@ -1,6 +1,11 @@
 package es.deusto.ingenieria.sd.auctions.server.data.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
 
@@ -20,26 +25,109 @@ public class ChallengeDAO extends DataAccessObjectBase implements IDataAccessObj
 	
 	@Override
 	public void store(Challenge object) {
-		// TODO Auto-generated method stub
+		Challenge storedObject = instance.find(String.valueOf(object.getName()));
 
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+
+		try {
+			tx.begin();
+			
+			if (storedObject != null) {
+				em.merge(object);
+			} else {
+				em.persist(object);			
+			}
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error storing Challenge: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}
 	}
 
 	@Override
 	public void delete(Challenge object) {
-		// TODO Auto-generated method stub
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
 
+		try {
+			tx.begin();
+			
+			Challenge storedObject = (Challenge) em.find(Challenge.class, 
+													 String.valueOf(object.getName()));
+			em.remove(storedObject);
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error removing an Challenge: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Challenge> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		
+		List<Challenge> challenges = new ArrayList<>();
+
+		try {
+			tx.begin();
+			
+			Query q = em.createQuery("SELECT b FROM Challenge b");
+			challenges = (List<Challenge>) q.getResultList();
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Challenge: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}
+
+		return challenges;
 	}
 
 	@Override
 	public Challenge find(String param) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		
+		Challenge result = null; 
+
+		try {
+			tx.begin();
+						
+			result = (Challenge) em.find(Challenge.class, param);
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error querying an Challenge by Id: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}
+
+		return result;
+	
 	}
 
 }

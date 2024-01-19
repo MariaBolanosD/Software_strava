@@ -3,10 +3,14 @@ package es.deusto.ingenieria.sd.auctions.server.data.domain;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
+@Entity
 public class Challenge {
-	
+	@Id
 	private String name;
 	private LocalDate start_date;
 	private LocalDate end_date;

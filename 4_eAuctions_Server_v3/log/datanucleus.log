@@ -1,0 +1,178 @@
+16:04:45,365 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,370 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,371 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,371 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,372 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,373 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,373 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,374 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:04:45,374 (main) ERROR [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con un error. Por favor lee el LOG para los detalles. Habia errores con algunas de las clases
+Failure during enhancement of classes - see the log for details
+org.datanucleus.exceptions.NucleusException: Failure during enhancement of classes - see the log for details
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:543)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,079 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,085 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,086 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,087 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,088 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,088 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,089 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.checkClassIsEnhanced(ClassEnhancerImpl.java:777)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:639)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,090 (main) ERROR [DataNucleus.Enhancer] - Error thrown enhancing with ASMClassEnhancer
+java.lang.IllegalArgumentException: Unsupported class file major version 65
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.datanucleus.enhancer.asm.ClassReader.<init>(ClassReader.java:287)
+	at org.datanucleus.enhancer.ClassEnhancerImpl.enhance(ClassEnhancerImpl.java:692)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhanceClass(DataNucleusEnhancer.java:940)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:532)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)
+16:14:21,090 (main) ERROR [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con un error. Por favor lee el LOG para los detalles. Habia errores con algunas de las clases
+Failure during enhancement of classes - see the log for details
+org.datanucleus.exceptions.NucleusException: Failure during enhancement of classes - see the log for details
+	at org.datanucleus.enhancer.DataNucleusEnhancer.enhance(DataNucleusEnhancer.java:543)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1160)

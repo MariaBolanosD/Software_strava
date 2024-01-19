@@ -1,6 +1,11 @@
 package es.deusto.ingenieria.sd.auctions.server.data.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 
@@ -19,27 +24,108 @@ public class SessionDAO extends DataAccessObjectBase implements IDataAccessObjec
 
 	@Override
 	public void store(Session object) {
-		// TODO Auto-generated method stub
-		
+		Session storedObject = instance.find(String.valueOf(object.getTitle()));
 
-	}
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+
+		try {
+			tx.begin();
+			
+			if (storedObject != null) {
+				em.merge(object);
+			} else {
+				em.persist(object);			
+			}
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error storing Session: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}	}
 
 	@Override
 	public void delete(Session object) {
-		// TODO Auto-generated method stub
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+
+		try {
+			tx.begin();
+			
+			Session storedObject = (Session) em.find(Session.class, 
+													 String.valueOf(object.getTitle()));
+			em.remove(storedObject);
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error removing an Session: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Session> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		
+		List<Session> session = new ArrayList<>();
+
+		try {
+			tx.begin();
+			
+			Query q = em.createQuery("SELECT b FROM Session b");
+			session = (List<Session>) q.getResultList();
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Session: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}
+
+		return session;
 	}
 
 	@Override
 	public Session find(String param) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		
+		Session result = null; 
+
+		try {
+			tx.begin();
+						
+			result = (Session) em.find(Session.class, param);
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error querying an Session by Id: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			em.close();
+		}
+
+		return result;
 	}
 
 }
