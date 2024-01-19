@@ -26,7 +26,7 @@ public class Factory {
 	      return instance;
 	 } 
 	 
-	public IGateway creategateway(TypeOfAccount type, String connctionInfo)
+	public IGateway creategateway(TypeOfAccount type)
 	{
 		// calls IGateway
 		switch (type) {
@@ -37,7 +37,7 @@ public class Factory {
 		case FACEBOOK:
 			FacebookGateway facebook = new FacebookGateway();
 			// get port and ip from string
-			//facebook.setFacebookPortIp(port, ip);
+			facebook.setFacebookPortIp("8090", "127.0.0.1");
 			return facebook;
 		default:
 			return null;

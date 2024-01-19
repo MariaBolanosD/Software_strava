@@ -30,7 +30,7 @@ public class LoginAppService {
 		if(user == null)
 			return null;
 		System.out.println(user.getTipoAut());
-		IGateway gateway  = Factory.getInstance().creategateway(user.getTipoAut(), null);
+		IGateway gateway  = Factory.getInstance().creategateway(user.getTipoAut());
 		boolean b = gateway.verifyPassword(email, password);
 		System.out.println("result: " + b);
 		if(b == true)
@@ -41,7 +41,7 @@ public class LoginAppService {
 	
 	public boolean register(TypeOfAccount accountType, String email, String name, LocalDate birthdate ,float weight, float height, int heart_rate_max, int heart_rate_rest) {
 
-		if(Factory.getInstance().creategateway(accountType, null).getUserByEmail(email) == false)
+		if(Factory.getInstance().creategateway(accountType).getUserByEmail(email) == false)
 			return false;
 		
 		User usuario = new User();

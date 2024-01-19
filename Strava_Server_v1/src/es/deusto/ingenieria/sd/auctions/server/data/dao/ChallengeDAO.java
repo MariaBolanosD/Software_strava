@@ -59,8 +59,7 @@ public class ChallengeDAO extends DataAccessObjectBase implements IDataAccessObj
 		try {
 			tx.begin();
 			
-			Challenge storedObject = (Challenge) em.find(Challenge.class, 
-													 String.valueOf(object.getName()));
+			Challenge storedObject = (Challenge) em.find(Challenge.class, object.getName());
 			em.remove(storedObject);
 			
 			tx.commit();

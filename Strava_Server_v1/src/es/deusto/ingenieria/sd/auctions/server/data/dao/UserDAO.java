@@ -32,7 +32,6 @@ private static UserDAO instance;
 
 			try {
 				tx.begin();
-				
 				if (storedObject != null) {
 					em.merge(object);
 				} else {

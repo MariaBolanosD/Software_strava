@@ -1,18 +1,19 @@
 package es.deusto.ingenieria.sd.auctions.server.data.domain;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
 @Entity
 public class Session {
 	
-	//private User user;
 	@Id
 	private String title;
 	private SportEnum sport;
@@ -20,6 +21,10 @@ public class Session {
 	private LocalDate start_date;
 	private LocalTime start_time;
 	private double duration;
+
+	@ManyToOne
+    @JoinColumn(name = "user_email")
+    private User user;
 	
 	
 	public String getTitle()
@@ -94,34 +99,33 @@ public class Session {
 	
 	@Override
 	public String toString() {
-		SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MMM-YY");
-		SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm:ss");
-		
-		StringBuffer result = new StringBuffer();
-		
-		result.append("# Session title: ");
-		result.append(this.title);
-		result.append("# Initial date: ");
-		result.append(dateFormatter.format(this.start_date));
-		result.append("# Initial time: ");
-		result.append(timeFormatter.format(this.start_time));
-		result.append("# Distance: ");
-		result.append(this.distance);
-		result.append("Sport: ");
-		result.append(this.sport);
-		result.append("Duration: ");
-		result.append(this.duration);
-		
-		return result.toString();	
+	    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yy");
+	    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+	    StringBuilder result = new StringBuilder();
+
+	    result.append("# Session title: ").append(this.title).append("\n");
+	    result.append("# Initial date: ").append(dateFormatter.format(this.start_date)).append("\n");
+	    result.append("# Initial time: ").append(timeFormatter.format(this.start_time)).append("\n");
+	    result.append("# Distance: ").append(this.distance).append("\n");
+	    result.append("Sport: ").append(this.sport).append("\n");
+	    result.append("Duration: ").append(this.duration).append("\n");
+
+	    return result.toString();
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (this.getClass().getName().equals(obj.getClass().getName())) {
-			return ((this.title == ((Session)obj).title) && (this.start_date == ((Session)obj).start_date)) ;
+			return (this.title == ((Session)obj).title) ;
 		}
 		
 		return false;
+	}
+
+	public void setUser(User user2) {
+		// TODO Auto-generated method stub
+		this.user = user2;
 	}
 	
 }

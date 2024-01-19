@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
+import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
 
 public class SessionDAO extends DataAccessObjectBase implements IDataAccessObject<Session> {
 
@@ -55,15 +56,21 @@ public class SessionDAO extends DataAccessObjectBase implements IDataAccessObjec
 		EntityTransaction tx = em.getTransaction();
 
 		try {
-			tx.begin();
-			
-			Session storedObject = (Session) em.find(Session.class, 
-													 String.valueOf(object.getTitle()));
-			em.remove(storedObject);
-			
+            tx.begin();
+
+            // Retrieve the managed session
+            Session managedSession = em.find(Session.class, object.getTitle());
+
+         // Remove associated user_session records
+        
+
+
+            em.remove(managedSession);
+
 			tx.commit();
 		} catch (Exception ex) {
 			System.out.println("  $ Error removing an Session: " + ex.getMessage());
+			ex.printStackTrace();
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();

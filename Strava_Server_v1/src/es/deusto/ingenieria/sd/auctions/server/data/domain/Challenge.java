@@ -2,6 +2,7 @@ package es.deusto.ingenieria.sd.auctions.server.data.domain;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -80,29 +81,29 @@ public class Challenge {
 	
 	@Override
 	public String toString() {
-SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MMM-YY - hh:mm");
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yy");
 		
 		StringBuffer result = new StringBuffer();
 		
-		result.append("# Challenge name: ");
-		result.append(this.name);
-		result.append("# Initial date: ");
-		result.append(dateFormatter.format(this.start_date));
-		result.append("# End date:");
-		result.append(dateFormatter.format(this.end_date));
+		result.append("# Challenge name: ").append("\n");
+		result.append(this.name).append("\n");
+		result.append("# Initial date: ").append("\n");
+		result.append(dateFormatter.format(this.start_date)).append("\n");
+		result.append("# End date:").append("\n");
+		result.append(dateFormatter.format(this.end_date)).append("\n");
 		// if true -> distance / false -> time
 		if(distance_or_time == true) 
 		{
-			result.append("# Target in km: ");
-			result.append(this.target);
+			result.append("# Target in km: ").append("\n");
+			result.append(this.target).append("\n");
 			
 		}
 		else {
-			result.append("# Target in min: ");
-			result.append(this.target);
+			result.append("# Target in min: ").append("\n");
+			result.append(this.target).append("\n");
 		}
-		result.append("Sport:");
-		result.append(this.sport);
+		result.append("Sport:").append("\n");
+		result.append(this.sport).append("\n");
 		
 		return result.toString();
 	}

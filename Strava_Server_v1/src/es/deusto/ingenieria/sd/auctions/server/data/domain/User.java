@@ -9,29 +9,41 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 
 @Entity
 public class User {
-	private TypeOfAccount tipoAut;
-	private String nickname;
 	@Id
 	private String email;
+	private TypeOfAccount tipoAut;
+	private String nickname;
 	private LocalDate birthDate;
 	private double weight;
 	private double height;
 	private int maxHeartRate;
 	private int restHeartRate;
 	
-	@ManyToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Challenge> challenges = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	@JoinTable(
+	        name = "user_challenge", 
+	        joinColumns = @JoinColumn(name = "user_email"), 
+	        inverseJoinColumns = @JoinColumn(name = "challenge_name")
+	    )
+	private List<Challenge> challenges = new ArrayList<>();;
+	
+	
 	// redundante para la base de datos
 	////////////@ManyToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Challenge> updatedChallenges = new ArrayList<>();
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	
+	
+	
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private List<Session> sessions = new ArrayList<>();
 		
 	public TypeOfAccount getTipoAut() {
@@ -85,7 +97,10 @@ public class User {
 	}
 	
 	public List<Session> getSessions() {
-		return sessions;
+		if (sessions == null) {
+			sessions = new ArrayList<>();
+	    }
+	    return sessions;
 	}
 	
 	public void setSessions(List<Session> sessions) {
@@ -95,6 +110,7 @@ public class User {
 	public void addSession(Session session) {
 		if (session != null && !this.sessions.contains(session)) {
 			this.sessions.add(session);
+			session.setUser(this);
 		}
 	}
 	
@@ -171,8 +187,11 @@ public class User {
 		return true;
 	}
 	
-	
-	
+
+    public void removeSession(Session session) {
+        sessions.remove(session);
+        session.setUser(null);
+    }
 			
 	@Override
 	public String toString() {
