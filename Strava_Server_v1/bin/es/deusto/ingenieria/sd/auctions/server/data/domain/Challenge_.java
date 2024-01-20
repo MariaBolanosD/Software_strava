@@ -7,6 +7,7 @@ import javax.persistence.metamodel.*;
 @StaticMetamodel(Challenge.class)
 public class Challenge_
 {
+    public static volatile SingularAttribute<Challenge, java.lang.Long> id;
     public static volatile SingularAttribute<Challenge, java.lang.String> name;
     public static volatile SingularAttribute<Challenge, java.time.LocalDate> start_date;
     public static volatile SingularAttribute<Challenge, java.time.LocalDate> end_date;

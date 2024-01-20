@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,6 +17,9 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 public class Session {
 	
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
 	private String title;
 	private SportEnum sport;
 	private double distance;
@@ -26,6 +31,14 @@ public class Session {
     @JoinColumn(name = "user_email")
     private User user;
 	
+	public Long getId() {
+		return this.id;
+	}
+	
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 	
 	public String getTitle()
 	{

@@ -10,7 +10,7 @@ import es.deusto.ingenieria.sd.auctions.server.gateway.IGateway;
 public class Factory {
 
 	 private static Factory instance;
-	
+	 FacebookGateway facebook = null;
 	 
 	 private Factory()
 	 {
@@ -35,9 +35,9 @@ public class Factory {
 			GoogleGateway.start();
 			return GoogleGateway.getRequester();
 		case FACEBOOK:
-			FacebookGateway facebook = new FacebookGateway();
-			// get port and ip from string
-			facebook.setFacebookPortIp("8090", "127.0.0.1");
+			if(facebook == null) {
+				facebook = new FacebookGateway();
+			}
 			return facebook;
 		default:
 			return null;

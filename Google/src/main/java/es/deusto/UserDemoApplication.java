@@ -41,17 +41,16 @@ public class UserDemoApplication {
     	    	  
     	  User rebeca = new User();
     	  rebeca.setEmail("rebeca");
-    	  //rebeca.setEmail("rebeca.cortazar@deusto.es");
     	  rebeca.setPassword("Rebeca");
     	  User roberto = new User();
     	  roberto.setEmail( "rcarba@deusto.es");
     	  roberto.setPassword("Roberto"); 
     	  User user1 = new User();
     	  user1.setEmail("thomas.e2001@gmail.com");
-    	  user1.setPassword("$!9PhNz,");
+    	  user1.setPassword("$thomas,");
     	  User user2 = new User();
     	  user2.setEmail("sample@gmail.com");
-    	  user2.setPassword("hqc`}3Hb");
+    	  user2.setPassword("hello");
     	  
     	  repository.save(rebeca);
     	  repository.save(roberto);

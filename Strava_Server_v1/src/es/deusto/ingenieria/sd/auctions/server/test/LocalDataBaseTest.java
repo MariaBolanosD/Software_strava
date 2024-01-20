@@ -63,7 +63,19 @@ public class LocalDataBaseTest {
 			System.out.println("\t$ Retreiving a Session by name: " + ex.getMessage());
 		}
 			
-		
+		try {
+			if (challenge != null && !challenge.isEmpty()) {
+				String name = challenge.get(0).getName();
+				System.out.println(" - Retreiving a challenge by named '" + name + "' ...");
+				Session category = SessionDAO.getInstance().find(name);
+				
+				if (category != null) {
+					System.out.println("\t- challenge '" + name + "' has " + category.toString());		
+				}
+			}
+		} catch (Exception ex) {
+			System.out.println("\t$ Retreiving a challenge by name: " + ex.getMessage());
+		}
 
 			
 		if (users != null && !users.isEmpty()) {
@@ -86,6 +98,14 @@ public class LocalDataBaseTest {
 			System.out.println(" - Retreiving all session ...");
 			session = SessionDAO.getInstance().findAll();
 			System.out.println("\t- " + session.size() + " session retreived!");
+			
+			challenge = ChallengeDAO.getInstance().findAll();
+			System.out.println(" - Deleting all challenge ...");
+			ChallengeDAO.getInstance().delete(challenge.get(0));		
+			
+			System.out.println(" - Retreiving all challenge ...");
+			challenge = ChallengeDAO.getInstance().findAll();
+			System.out.println("\t- " + challenge.size() + " challenge retreived!");
 			
 			users = UserDAO.getInstance().findAll();
 			System.out.println(" - Deleting all users ...");

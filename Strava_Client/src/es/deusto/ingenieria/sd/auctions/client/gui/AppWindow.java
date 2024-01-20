@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +58,13 @@ public class AppWindow extends JFrame{
 		this.loginController = loginController;
 		this.token = token;
 		Ventana();
+		
+		this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                handleWindowClosing();
+            }
+        });
 	}
 	
 	// check 
@@ -149,6 +158,7 @@ public class AppWindow extends JFrame{
 		frame.add(challengeDetails);
 		
 		
+		
 		challenges.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -177,6 +187,7 @@ public class AppWindow extends JFrame{
 		JLabel label2 = new JLabel("Sessions");
 		label2.setBounds(100, 38, 70, 20);
 		frame.add(label2);
+		@SuppressWarnings("unchecked")
 		JComboBox sessions = new JComboBox(dsSessionDTO_s.toArray()) ; //controller.getChallenges());
 		sessiondetail = new String(); i = sessions.getSelectedIndex();
 		sessiondetail = "Title :           " + dsSessionDTO.get(i).getTitle() + '\n' +
@@ -251,6 +262,14 @@ public class AppWindow extends JFrame{
 		frame.pack();
 	}
 
+	private void handleWindowClosing() {
+        try {
+            controller.getServiceLoc().getService().logout(token);
+        } catch (RemoteException e) {
+            System.out.println("Error logging out");
+            e.printStackTrace();
+        }
+    }
 	
 	public void updateChallengeDetails(ChallengeDTO c, JLabel l)
 	{

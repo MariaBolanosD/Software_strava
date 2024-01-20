@@ -9,7 +9,6 @@
 	<property name="rmiregistry.IP" value="127.0.0.1"/> 
 	<property name="rmiregistry.port" value="1099"/> 
 	<property name="server.name" value="Strava"/>
-	<property name="server.port" value="8090"/> 
 	<property name="resources.dir" location="resources"/>
 
 	<path id="classpath">

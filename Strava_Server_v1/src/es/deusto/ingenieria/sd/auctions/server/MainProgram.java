@@ -17,7 +17,8 @@ import es.deusto.ingenieria.sd.auctions.server.remote.IRemoteFacade;
 import es.deusto.ingenieria.sd.auctions.server.remote.RemoteFacade;
 
 public class MainProgram {
-
+	
+	@SuppressWarnings({ "removal", "deprecation" })
 	public static void main(String[] args) {	
 		
 		//Activate Security Manager. It is needed for RMI.
@@ -30,15 +31,15 @@ public class MainProgram {
 		//args[2] = Service Name
 		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];		
 		
+		initDB();
+		
 		//Bind remote facade instance to a sirvice name using RMIRegistry
 		try {
 			IRemoteFacade remoteFacade = new RemoteFacade();			
 			Naming.rebind(name, remoteFacade);
-			System.out.println(" * eAuction Server v1 '" + name + "' started!!");
-			//TCPSocketClient tcp = new TCPSocketClient();
-			//Factory.getInstance().setFacebookPortIp(args[3], args[0]);
+			System.out.println(" * Strava Server v1 '" + name + "' started!!");
 		} catch (Exception ex) {
-			System.err.println(" # eAuction Server Exception: " + ex.getMessage());
+			System.err.println(" # Strava Server Exception: " + ex.getMessage());
 			ex.printStackTrace();
 		}
 	}

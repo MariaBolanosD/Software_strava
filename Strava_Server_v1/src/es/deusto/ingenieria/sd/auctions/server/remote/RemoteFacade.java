@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+import es.deusto.ingenieria.sd.auctions.server.data.dao.SessionDAO;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 import es.deusto.ingenieria.sd.auctions.server.data.domain.User;
@@ -27,11 +27,6 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 
 	//Data structure for manage Server State
 	private Map<Long, User> serverState = new HashMap<>();
-	
-	//TODO: Remove this instances when Singleton Pattern is implemented
-	private LoginAppService loginService = new LoginAppService();
-	private SportAppService sportAppService = new SportAppService();
-	//private BidAppService bidService = new BidAppService();
 
 	public RemoteFacade() throws RemoteException {
 		super();		
@@ -42,11 +37,15 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		System.out.println(" * RemoteFacade login(): " + email + " / " + password);
 				
 		//Perform login() using LoginAppService
-		User user = loginService.login(email, password);
-		//clear as we are not doing logout
-		this.serverState.clear();
-		//If login() success user is stored in the Server State
+		User user = LoginAppService.getInstance().login(email, password);
+		
+		//If login() success user iis stored in the Server State
 		if (user != null) {
+			
+			// *********** ELIMINAR DESPUES DE COMPILAR UNA VEZ *************************************************************
+			this.serverState.clear();
+			// *********** ELIMINAR DESPUES DE COMPILAR UNA VEZ *************************************************************
+			
 			//If user is not logged in 
 			if (!this.serverState.values().contains(user)) {
 				Long token = Calendar.getInstance().getTimeInMillis();		
@@ -68,7 +67,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 			//Logout means remove the User from Server State
 			this.serverState.remove(token);
 		} else {
-			throw new RemoteException("User is not logged in!");
+			throw new RemoteException("Token error (" + token + ")!");
 		}
 	}
 	
@@ -76,8 +75,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	public List<ChallengeDTO> getChallenges() throws RemoteException {
 		System.out.println(" * RemoteFacade getChallenges");
 		
-		//Get Categories using BidAppService
-		List<Challenge> challenges = sportAppService.getChallenges();
+		List<Challenge> challenges = SportAppService.getInstance().getChallenges();
 		
 		if (challenges != null) {
 			//Convert domain object to DTO
@@ -87,13 +85,12 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		}
 	}
 
+	// TO DO
 	@Override
 	public List<SessionDTO> getSessions(long token) throws RemoteException {
 		System.out.println(" * RemoteFacade getSessions('" + serverState.get(token).getEmail() + "')");
 
-		//Get Articles using BidAppService
-
-		List<Session> sessions = serverState.get(token).getSessions();
+		List<Session> sessions = SessionDAO.getInstance().getSessionsForUser(serverState.get(token));
 		
 		if (sessions != null) {
 			//Convert domain object to DTO
@@ -119,11 +116,10 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	@Override
 	public boolean makeChallenge(long token, String name, LocalDate startDate, LocalDate endDate, float target, SportEnum sport,
 			boolean distanceorTime) {
-		// TODO Auto-generated method stub
 		if(serverState.get(token) != null)
 		{	
 			// send email to subscribe challenge to user
-			serverState.get(token).addChallenge(sportAppService.makeChallenge(name, startDate, endDate, target, sport, distanceorTime));
+			serverState.get(token).addChallenge(SportAppService.getInstance().makeChallenge(name, startDate, endDate, target, sport, distanceorTime));
 			return true;
 		}
 		else {				
@@ -135,22 +131,11 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	@Override
 	public boolean makeSession(long token, String title, SportEnum sport, double distance, LocalDate startDate,
 			LocalTime starTime, double duration) {
-		// TODO Auto-generated method stub
 		
 		if(token >= 0)
 		{
-			
-//			Session session = new Session();
-//			session.setTitle(title);
-//			session.setDistance(distance);
-//			session.setSport(sport);
-//			session.setDuration(duration);
-//			session.setStartDate(startDate);
-//			session.setStartTime(starTime);
-//			
-//			serverState.get(token).addSession(session);
-//			return true;
-			serverState.get(token).addSession(sportAppService.makeSession(title, sport, distance, startDate, starTime, duration));
+			serverState.get(token).addSession(SportAppService.getInstance().makeSession(title, sport, 
+					distance, startDate, starTime, duration, serverState.get(token)));
 			return true;
 		}
 		
@@ -171,13 +156,13 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		System.out.println(" * RemoteFacade Register(): " + email);
 		
 		//Perform login() using LoginAppService
-		return loginService.register(accountType, email, name, birthdate, weight, height, heart_rate_max, heart_rate_rest);
+		return LoginAppService.getInstance().register(accountType, email, name, birthdate, weight, height, heart_rate_max, heart_rate_rest);
 		
 	}
 
 	@Override
 	public void acceptChallenge(long token, String name, LocalDate start_date, SportEnum sport) {
-		for(Challenge eachChall : sportAppService.getChallenges())
+		for(Challenge eachChall : SportAppService.getInstance().getChallenges())
 		{
 			if((eachChall.getName() == name)
 					&& (eachChall.getStartDate() == start_date)

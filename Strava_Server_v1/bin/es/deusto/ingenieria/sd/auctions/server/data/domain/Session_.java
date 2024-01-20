@@ -7,6 +7,7 @@ import javax.persistence.metamodel.*;
 @StaticMetamodel(Session.class)
 public class Session_
 {
+    public static volatile SingularAttribute<Session, java.lang.Long> id;
     public static volatile SingularAttribute<Session, java.lang.String> title;
     public static volatile SingularAttribute<Session, es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum> sport;
     public static volatile SingularAttribute<Session, Double> distance;

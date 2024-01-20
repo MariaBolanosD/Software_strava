@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
-	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
 	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/lib/commons-codec-1.15.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/lib/jackson-annotations-2.15.2.jar"/>
@@ -21,8 +21,8 @@
 	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/lib/spring-core-6.0.11.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/lib/spring-expression-6.0.11.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/lib/spring-web-6.0.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/javax.persistence-2.2.4.jar"/>
 	<classpathentry kind="con" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/bin"/>
 	<classpathentry kind="con" path="C:/Users/Maria/Desktop/Strava/Software_strava/Strava_Server_v1/resources"/>
-	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4_eAuctions_Server_v3/lib/javax.persistence-2.2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

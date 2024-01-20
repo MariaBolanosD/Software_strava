@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge;
+import es.deusto.ingenieria.sd.auctions.server.data.domain.Session;
 
 public class ChallengeDAO extends DataAccessObjectBase implements IDataAccessObject<Challenge> {
 
@@ -25,8 +26,12 @@ public class ChallengeDAO extends DataAccessObjectBase implements IDataAccessObj
 	
 	@Override
 	public void store(Challenge object) {
-		Challenge storedObject = instance.find(String.valueOf(object.getName()));
-
+		Challenge storedObject = null;
+		if(object.getId() != null)
+		{
+			storedObject = instance.find(String.valueOf(String.valueOf(object.getId())));
+		}
+		
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
@@ -59,8 +64,10 @@ public class ChallengeDAO extends DataAccessObjectBase implements IDataAccessObj
 		try {
 			tx.begin();
 			
-			Challenge storedObject = (Challenge) em.find(Challenge.class, object.getName());
-			em.remove(storedObject);
+			Challenge storedObject = (Challenge) em.find(Challenge.class, String.valueOf(object.getId()));
+			 if (storedObject != null) {
+	                em.remove(storedObject);
+	            }
 			
 			tx.commit();
 		} catch (Exception ex) {
@@ -112,8 +119,14 @@ public class ChallengeDAO extends DataAccessObjectBase implements IDataAccessObj
 		try {
 			tx.begin();
 						
-			result = (Challenge) em.find(Challenge.class, param);
-			
+			 if (param != null) {
+		            Long challengeId = Long.parseLong(param);
+		            result = (Challenge) em.find(Challenge.class, challengeId);
+		        } else {
+		            // Handle the case where param is null (e.g., log a message or throw an exception)
+		            System.out.println("  $ Error: Session ID is null");
+		        }
+			 
 			tx.commit();
 		} catch (Exception ex) {
 			System.out.println("  $ Error querying an Challenge by Id: " + ex.getMessage());

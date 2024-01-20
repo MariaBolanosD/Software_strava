@@ -18,9 +18,9 @@ public class FacebookGateway implements IGateway{
 	public boolean getUserByEmail(String email)
 	{
 		//args[0] = Server IP
-		//serverIP = "127.0.0.1";
+		serverIP = "127.0.0.1";
 		//args[1] = Server socket port
-		//serverPort = 8090;
+		serverPort = 8090;
 		System.out.println("server port " + serverPort + " serverip: "+ serverIP);
 		
 		try (Socket tcpSocket = new Socket(serverIP, serverPort);

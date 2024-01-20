@@ -81,6 +81,9 @@ public class FacebookService extends Thread {
     {        
     	User u1 = new User("hola", "hola@deusto.es");     
     	users.put(u1.getEmail(), u1.getPassword());    
+    	
+    	User u2 = new User("joselu", "joselu");     
+    	users.put(u2.getEmail(), u2.getPassword());   
     }
     
 }

@@ -5,20 +5,34 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
 @Entity
 public class Challenge {
+	
+	
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 	private String name;
 	private LocalDate start_date;
 	private LocalDate end_date;
 	private float target;
-	
 	private SportEnum sport;
 	private boolean distance_or_time;
+
+	public Long getId() {
+		return this.id;
+	}
+	
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 	
 	public String getName() {
 		return this.name;
