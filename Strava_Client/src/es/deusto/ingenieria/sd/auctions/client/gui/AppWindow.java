@@ -9,6 +9,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class AppWindow extends JFrame{
 		this.controller = controller;
 		this.loginController = loginController;
 		this.token = token;
-		Ventana();
+		Ventana(this);
 		
 		this.addWindowListener(new WindowAdapter() {
             @Override
@@ -97,7 +98,7 @@ public class AppWindow extends JFrame{
 		
 	}
 	
-	public void Ventana()
+	public void Ventana(AppWindow appWind)
 	{		
 		
 		frame = new JFrame();
@@ -118,7 +119,6 @@ public class AppWindow extends JFrame{
 				
 			}
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -129,7 +129,6 @@ public class AppWindow extends JFrame{
 				
 			}
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -163,7 +162,6 @@ public class AppWindow extends JFrame{
 		challenges.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.out.println("cambiando" + challenges.getSelectedIndex());
 				j = challenges.getSelectedIndex();
 				challengedetail =   "Name :           " + dsChallengeDTOs.get(j).getName() + '\n' +
@@ -216,7 +214,11 @@ public class AppWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				try {
+					new CreateChallengeDialog(appWind, controller);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		frame.add(chalengeButton);
@@ -226,7 +228,11 @@ public class AppWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				try {
+					new CreateSessionDialog(appWind, controller);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		frame.add(sessionButton);
@@ -236,7 +242,7 @@ public class AppWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				// TODO
 			}
 		});
 		frame.add(apuntarButton
@@ -250,7 +256,6 @@ public class AppWindow extends JFrame{
 				try {
 					controller.getServiceLoc().getService().logout(token);
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
 					System.out.println("error login out");
 					e.printStackTrace();
 				}
