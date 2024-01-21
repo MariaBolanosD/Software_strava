@@ -19,6 +19,7 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionAssembler;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SessionDTO;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
+import es.deusto.ingenieria.sd.auctions.server.factory.Factory;
 import es.deusto.ingenieria.sd.auctions.server.services.LoginAppService;
 import es.deusto.ingenieria.sd.auctions.server.services.SportAppService;
 
@@ -119,7 +120,12 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		if(serverState.get(token) != null)
 		{	
 			// send email to subscribe challenge to user
-			serverState.get(token).addChallenge(SportAppService.getInstance().makeChallenge(name, startDate, endDate, target, sport, distanceorTime));
+			Challenge challenge = SportAppService.getInstance().makeChallenge(name, startDate, endDate, target, sport, distanceorTime);
+			serverState.get(token).addChallenge(challenge);
+			
+			// send email by using MailSender
+			String infoString = "You have susbcribed to a new challenge: \n" + challenge.toString();
+			Factory.getInstance().getMailGateway(serverState.get(token).getEmail(), infoString );
 			return true;
 		}
 		else {				

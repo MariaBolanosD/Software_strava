@@ -5,6 +5,7 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 import es.deusto.ingenieria.sd.auctions.server.gateway.FacebookGateway;
 import es.deusto.ingenieria.sd.auctions.server.gateway.GoogleGateway;
 import es.deusto.ingenieria.sd.auctions.server.gateway.IGateway;
+import es.deusto.ingenieria.sd.auctions.server.gateway.MailSender;
 
 @Component
 public class Factory {
@@ -44,5 +45,10 @@ public class Factory {
 		}
 	}
 	
+	public void getMailGateway(String email, String info)
+	{
+		new MailSender(email).sendMessage(info);
+
+	}
 	
 }
