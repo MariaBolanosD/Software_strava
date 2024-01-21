@@ -37,6 +37,7 @@ public class AppWindow extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private Controller controller;
 	private LoginController loginController;
 	private long token; 
@@ -278,4 +279,7 @@ public class AppWindow extends JFrame{
 		
 	}
 	
+	public long getToken() {
+		return token;
+	}
 }
