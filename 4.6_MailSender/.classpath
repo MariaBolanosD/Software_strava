@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="bin" path="src"/>
+	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4.6_MailSender/lib/javax.activation-1.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Maria/Desktop/Strava/Software_strava/4.6_MailSender/lib/javax.mail.jar"/>
+	<classpathentry kind="con" path="C:/Users/Maria/Desktop/Strava/Software_strava/4.6_MailSender/bin"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
