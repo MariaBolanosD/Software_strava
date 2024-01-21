@@ -2,3 +2,4 @@
 *.class
 Google/data/userFile.mv.db
 Strava_Server_v1/.classpath
+Strava_Server_v1/log/datanucleus.log
