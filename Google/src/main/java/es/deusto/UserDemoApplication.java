@@ -51,11 +51,16 @@ public class UserDemoApplication {
     	  User user2 = new User();
     	  user2.setEmail("sample@gmail.com");
     	  user2.setPassword("hello");
-    	  
+    	  User user3 = new User();
+    	  user3.setEmail("maria.bolanos@opendeusto.es");
+    	  user3.setPassword("maria");
     	  repository.save(rebeca);
     	  repository.save(roberto);
     	  repository.save(user1);
     	  repository.save(user2);
+    	  repository.save(user3);
+    	  
+    	  log.info(user3.getEmail());   
     	  
         log.info("Sample users created"); 
     	  

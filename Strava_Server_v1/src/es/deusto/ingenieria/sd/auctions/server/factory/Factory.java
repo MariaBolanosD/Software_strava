@@ -5,24 +5,21 @@ import es.deusto.ingenieria.sd.auctions.server.data.dto.TypeOfAccount;
 import es.deusto.ingenieria.sd.auctions.server.gateway.FacebookGateway;
 import es.deusto.ingenieria.sd.auctions.server.gateway.GoogleGateway;
 import es.deusto.ingenieria.sd.auctions.server.gateway.IGateway;
+import es.deusto.ingenieria.sd.auctions.server.gateway.MailSender;
 
 @Component
 public class Factory {
 
 	 private static Factory instance;
-	 FacebookGateway facebook = null;
 	 
 	 private Factory()
-	 {
-		 System.out.println("Factory constructor");
-	 }
+	 {	 }
 	 
 	 public static Factory getInstance()
 	 {
 	      if (instance == null) {
 	          instance = new Factory();
 	      }
-	      System.out.println("factory already exists");
 	      return instance;
 	 } 
 	 
@@ -32,17 +29,22 @@ public class Factory {
 		switch (type) {
 		case GOOGLE:
 			System.out.println("GOOGLE");
-			GoogleGateway.start();
+			if(!GoogleGateway.isStarted())
+			{
+				GoogleGateway.start();				
+			}
 			return GoogleGateway.getRequester();
 		case FACEBOOK:
-			if(facebook == null) {
-				facebook = new FacebookGateway();
-			}
-			return facebook;
+			return new FacebookGateway();
 		default:
 			return null;
 		}
 	}
 	
+	public void getMailGateway(String email, String info)
+	{
+		new MailSender(email).sendMessage(info);
+
+	}
 	
 }

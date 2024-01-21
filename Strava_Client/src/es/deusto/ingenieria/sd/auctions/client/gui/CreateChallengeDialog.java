@@ -11,29 +11,36 @@ import java.util.Date;
 import javax.swing.*;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
+import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
-public class CreateChallengeDialog extends JFrame{
+public class CreateChallengeDialog extends JFrame {
 
 	/**
 	 * 
 	 */
+
+	private Controller controller;
+	private long token;
+	private LoginController parentWind;
 	private static final long serialVersionUID = 1L;
 	private static JFrame frame;
 	private static JTextField name;
 	private static JComboBox<SportEnum> sport;
 	private static SportEnum[] sports = SportEnum.values();
-	private static String[] pickable = {"Distance", "Time"};
+	private static String[] pickable = { "Distance", "Time" };
 	private static boolean dist_time_variable;
 	private static JTextField target;
 	private static JComboBox<String> dist_time;
 	private static JSpinner start_date;
 	private static JSpinner end_date;
+
+	public CreateChallengeDialog(LoginController parentWind, Controller controller, long token) throws ParseException
+	{	//JPanel panel = new JPanel(null);
+	this.controller = controller;
+	this.token = token;
+	this.parentWind = parentWind;	
 	
-	public CreateChallengeDialog(AppWindow parentWind, Controller controller) throws ParseException
-	{
-		//JPanel panel = new JPanel(null);
-		
 		frame = new JFrame();
 		frame.setTitle("CREATE CHALLENGE");
 		//frame.add(panel);
@@ -115,8 +122,8 @@ public class CreateChallengeDialog extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				createChallenge(parentWind, controller);
-				
+				createChallenge(controller);
+				AppWindow app = new AppWindow(controller, parentWind, token);
 			}
 		});
         
@@ -127,8 +134,9 @@ public class CreateChallengeDialog extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				parentWind.setEnabled(true);
+				
 				frame.dispose();
+				AppWindow app = new AppWindow(controller, parentWind, token);
 			}
 		});
         frame.validate();
@@ -136,46 +144,40 @@ public class CreateChallengeDialog extends JFrame{
 
 	
 	}
-	
+
 	private void variableChange() {
 
-        int selectedIndex = dist_time.getSelectedIndex();
+		int selectedIndex = dist_time.getSelectedIndex();
 
-        if (selectedIndex == 0) {
-            dist_time_variable = true;
-            System.out.println("true");
-        } else if (selectedIndex == 1) {
-        	dist_time_variable = false;
-        	 System.out.println("false");
-        }
-    }
-	
-	public void createChallenge(AppWindow parentWindow, Controller controller)
-	{
+		if (selectedIndex == 0) {
+			dist_time_variable = true;
+			System.out.println("true");
+		} else if (selectedIndex == 1) {
+			dist_time_variable = false;
+			System.out.println("false");
+		}
+	}
+
+	public void createChallenge(Controller controller) {
 		String name_s = name.getText();
 		Date start_date_d = (Date) start_date.getValue();
 		LocalDate start_date_ld = convertToLocalDateViaInstant(start_date_d);
 		Date end_date_d = (Date) end_date.getValue();
 		LocalDate end_date_ld = convertToLocalDateViaInstant(end_date_d);
-		float target_f =  Float.parseFloat(target.getText());
+		float target_f = Float.parseFloat(target.getText());
 		SportEnum sport_e = (SportEnum) sport.getSelectedItem();
 		boolean dist_time_b = dist_time_variable;
-		
-		controller.makeChallenge(parentWindow.getToken(), 
-				name_s, start_date_ld, end_date_ld, target_f, 
-				sport_e, dist_time_b);
-		parentWindow.setEnabled(true);
+
+		controller.makeChallenge(token, name_s, start_date_ld, end_date_ld, target_f, sport_e,
+				dist_time_b);
 		frame.dispose();
 
-		
 	}
-	
+
 	public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
-	    return dateToConvert.toInstant()
-	      .atZone(ZoneId.systemDefault())
-	      .toLocalDate();
+		return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 	}
-	
+
 	public static void main(String[] args) throws ParseException {
 		// new CreateChallengeDialog();
 	}

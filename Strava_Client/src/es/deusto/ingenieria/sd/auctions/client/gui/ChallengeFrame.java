@@ -3,11 +3,13 @@ package es.deusto.ingenieria.sd.auctions.client.gui;
 import javax.swing.*;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
+import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.ChallengeDTO;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +18,17 @@ public class ChallengeFrame extends JFrame {
     private DefaultListModel<ChallengeDTO> challengeListModel;
     private JTextArea detailsTextArea;
     private String challengeDetail;
-
-    public ChallengeFrame(AppWindow appWindow, Controller controller) {
-        super("Challenge List");
+	private Controller controller;
+	private long token;
+	private LoginController parentWind;
+    public ChallengeFrame(LoginController parentWind, Controller controller, long token)
+	{   
+    	super("Challenge List");
+        
+        this.controller = controller;
+		this.token = token;
+		this.parentWind = parentWind;
+		
         setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -74,9 +84,8 @@ public class ChallengeFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				appWindow.setEnabled(true);
 				dispose();
-
+				AppWindow app = new AppWindow(controller, parentWind, token);
 			}
 		});
 		
@@ -90,8 +99,10 @@ public class ChallengeFrame extends JFrame {
                 ChallengeDTO selectedChallenge = challengeList.getSelectedValue();
                 if (selectedChallenge != null) {
                     detailsTextArea.setText("Challenge accepted: " + selectedChallenge);
-                    controller.getAcceptedChallenges(appWindow.getToken()).add(selectedChallenge);
+                    controller.getAcceptedChallenges(token).add(selectedChallenge);
                     JOptionPane.showMessageDialog(ChallengeFrame.this, "Challenge accepted: " + selectedChallenge, "Success", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+    				AppWindow app = new AppWindow(controller, parentWind, token);
                 } else {
                     JOptionPane.showMessageDialog(ChallengeFrame.this, "Selecciona un desafío primero", "Error", JOptionPane.ERROR_MESSAGE);
                 }

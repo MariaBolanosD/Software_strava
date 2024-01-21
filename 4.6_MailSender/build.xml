@@ -4,7 +4,7 @@
 	<property name="source.dir" location="src"/>
    	<property name="build.dir" location="bin"/>
 	<property name="lib.dir" location="lib"/>
-	<property name="receiverEmail" value="rebeca.cortazar@deusto.es"/>
+	<property name="receiverEmail" value="maria.bolanos@opendeusto.es"/>
 	<property name="messageEmail" value="This is a testing message that sends details using Gmail. Useful for Java projects!"/>
 	
 	<path id="classpath">

@@ -16,6 +16,5 @@ public class User_
     public static volatile SingularAttribute<User, Integer> maxHeartRate;
     public static volatile SingularAttribute<User, Integer> restHeartRate;
     public static volatile ListAttribute<User, es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge> challenges;
-    public static volatile ListAttribute<User, es.deusto.ingenieria.sd.auctions.server.data.domain.Challenge> updatedChallenges;
     public static volatile ListAttribute<User, es.deusto.ingenieria.sd.auctions.server.data.domain.Session> sessions;
 }
