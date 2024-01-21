@@ -66,10 +66,10 @@ public class LoginDialog extends JFrame{
 		String password = String.valueOf(Password.getPassword());
 		
 		System.out.println(" - Login into the server: '" + email + "' - '" + password + "' ...");
-		String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex(password);
-		System.out.println("\t* Password hash: " + sha1);		
-		boolean result = this.controller.login(email, sha1);
-		System.out.println("\t* Login result: " + result);
+		//String sha1 = org.apache.commons.codec.digest.DigestUtils.sha1Hex(password);
+		//System.out.println("\t* Password hash: " + sha1);		
+		//boolean result = this.controller.login(email, sha1);
+		//System.out.println("\t* Login result: " + result);
 		System.out.println("\t* Token: " + this.controller.getToken());
 		if(controller.login(email, password))
 		{

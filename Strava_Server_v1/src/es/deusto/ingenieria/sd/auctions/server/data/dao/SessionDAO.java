@@ -144,6 +144,11 @@ public class SessionDAO extends DataAccessObjectBase implements IDataAccessObjec
 
 			em.close();
 		}
+		if(sessions == null)
+			System.out.println("NULLLL");
+		else {
+			System.out.println("not null");
+		}
 		return sessions;
 	}
 

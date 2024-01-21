@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="C:/Users/mbola/OneDrive/Escritorio/Strava/Software_strava/Strava_Client/lib/Strava.jar"/>
 	<classpathentry kind="lib" path="C:/Users/mbola/OneDrive/Escritorio/Strava/Software_strava/Strava_Client/lib/commons-codec-1.15.jar"/>
 	<classpathentry kind="con" path="C:/Users/mbola/OneDrive/Escritorio/Strava/Software_strava/Strava_Client/bin"/>
+	<classpathentry kind="src" path="/Strava_Server_v1"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

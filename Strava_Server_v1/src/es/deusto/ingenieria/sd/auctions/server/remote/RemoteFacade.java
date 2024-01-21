@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +78,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		System.out.println(" * RemoteFacade getChallenges");
 		
 		List<Challenge> challenges = SportAppService.getInstance().getChallenges();
-		
+		System.out.println(challenges);
 		if (challenges != null) {
 			//Convert domain object to DTO
 			return ChallengeAssembler.getInstance().challengeToDTO(challenges);
@@ -91,13 +92,17 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	public List<SessionDTO> getSessions(long token) throws RemoteException {
 		System.out.println(" * RemoteFacade getSessions('" + serverState.get(token).getEmail() + "')");
 
-		List<Session> sessions = SessionDAO.getInstance().getSessionsForUser(serverState.get(token));
+		List<Session> sessions = SportAppService.getInstance().getSessions(serverState.get(token));
 		
+		System.out.println("sessions : " + sessions);
 		if (sessions != null) {
 			//Convert domain object to DTO
 			return SessionAssembler.getInstance().sessionToDTO(sessions);
 		} else {
-			throw new RemoteException("getSessions() fails!");
+			sessions = new ArrayList<Session>();
+			System.out.println("sessions is null");
+			//throw new RemoteException("getSessions() fails!");
+			return SessionAssembler.getInstance().sessionToDTO(sessions);
 		}
 	}
 	

@@ -44,12 +44,15 @@ public class UserService {
     	User result = getUserByEmail(email);
     	if(result != null)
     	{
+    		System.out.println(password);
+    		System.out.println(result.getPassword());
     		if(result.getPassword().compareTo(password) == 0)
     		{
+    			System.out.println("Usuario encontrado"); 
     			return result;
     		}
     	}
-    	
+    	System.out.println("Usuario no encontrado"); 
     	return null;
         
     }

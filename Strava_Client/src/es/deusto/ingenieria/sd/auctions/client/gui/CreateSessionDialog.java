@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
 import es.deusto.ingenieria.sd.auctions.client.controller.Controller;
+import es.deusto.ingenieria.sd.auctions.client.controller.LoginController;
 import es.deusto.ingenieria.sd.auctions.server.data.dto.SportEnum;
 
 public class CreateSessionDialog extends JFrame{
@@ -21,6 +22,11 @@ public class CreateSessionDialog extends JFrame{
 	/**
 	 * 
 	 */
+	
+	private Controller controller;
+	private long token;
+	private LoginController parentWind;
+	
 	private static final long serialVersionUID = 1L;
 	private static JFrame frame;
 	private static JTextField title;
@@ -32,9 +38,12 @@ public class CreateSessionDialog extends JFrame{
 	DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm:ss");
 	private static JTextField duration;
 	
-	public CreateSessionDialog(AppWindow parentWind, Controller controller) throws ParseException
+	public CreateSessionDialog(LoginController parentWind, Controller controller, long token) throws ParseException
 	{
 		//JPanel panel = new JPanel(null);
+		this.controller = controller;
+		this.token = token;
+		this.parentWind = parentWind;
 		
 		frame = new JFrame();
 		frame.setTitle("CREATE SESSION");
@@ -109,8 +118,8 @@ public class CreateSessionDialog extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				createSession(parentWind, controller);
-				
+				createSession(controller);
+				AppWindow app = new AppWindow(controller, parentWind, token);
 			}
 		});
         
@@ -121,16 +130,14 @@ public class CreateSessionDialog extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				parentWind.setEnabled(true);
 				frame.dispose();
+				AppWindow app = new AppWindow(controller, parentWind, token);
 			}
 		});
-        frame.validate();
-        frame.repaint();
 	
 	}
 	
-	public void createSession(AppWindow parentWind, Controller controller)
+	public void createSession(Controller controller)
 	{
 		String title_s = title.getText();
 		SportEnum sport_enum = (SportEnum) sport.getSelectedItem();
@@ -141,10 +148,10 @@ public class CreateSessionDialog extends JFrame{
 		LocalTime start_time_lt = LocalTime.parse(start_time_s, formatterTime);
 		double duration_d = Double.parseDouble(duration.getText());
 		
-		controller.makeSession(parentWind.getToken(), 
+		controller.makeSession(token, 
 				title_s, sport_enum, distance_d, 
 				start_date_ld, start_time_lt, duration_d);
-		parentWind.setEnabled(true);
+
 		frame.dispose();
 		
 	}

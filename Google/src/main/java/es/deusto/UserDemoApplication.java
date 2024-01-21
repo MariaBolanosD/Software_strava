@@ -60,6 +60,8 @@ public class UserDemoApplication {
     	  repository.save(user2);
     	  repository.save(user3);
     	  
+    	  log.info(user3.getEmail());   
+    	  
         log.info("Sample users created"); 
     	  
     	log.info("USER Services AVAILABLE ...");

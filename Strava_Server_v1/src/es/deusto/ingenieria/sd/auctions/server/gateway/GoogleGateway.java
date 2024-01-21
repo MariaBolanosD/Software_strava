@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class GoogleGateway implements IGateway{
 
 	public RestTemplate restTemplate;
 	private static GoogleGateway requester;
+	private static boolean Started = false;
 	
 	
 	@Bean
@@ -36,11 +38,16 @@ public class GoogleGateway implements IGateway{
 	
 	public static void start() {
 		System.out.println("GOOGLE START");
+		Started = true;
 		SpringApplication.run(GoogleGateway.class);	
 	}
 		
+	public static boolean isStarted()
+	{
+		return Started;
+	}
 	
-    public GoogleGateway() {
+    public GoogleGateway() { Started = false;
     }
 
 	
@@ -60,7 +67,7 @@ public class GoogleGateway implements IGateway{
 	{
 		
 		User user = restTemplate.getForObject(serverURL + ":" + String.valueOf(serverPort) + "/user/email/{email}", User.class, Map.of("email", email));
-		 //log.info("/user/email/{email} - This is User: " + user.getEmail());// + "name: " + user.getFirstName());
+		System.out.println("/user/email/{email} - This is User: " + user.getEmail());// + "name: " + user.getFirstName());
 		 if (user != null)
 		 {
 			 return true;				 
@@ -79,12 +86,16 @@ public class GoogleGateway implements IGateway{
 			restTemplate = restTemplate();
 		}
 		System.out.println("Verifying password kjdhakjdhad");
+		String url = serverURL + ":" + serverPort + "/user/verifyPassword/{email}/{password}";
+		System.out.println("Constructed URL: " + url);
 		User userS =restTemplate.getForObject(serverURL + ":" +String.valueOf(serverPort) + "/user/verifyPassword/{email}/{password}",  User.class, email,password);
+		System.out.println("/user/email/{email} - This is User: " + userS.getEmail());// + "name: " + user.getFirstName());
 		if( userS != null)				  	 
 		{
-			  
+			System.out.println("TRUE");
 			return true;
 		}
+		System.out.println("FALSE");
 		return false;
 	}
 }

@@ -52,9 +52,9 @@ public class LoginAppService {
 			return false;
 
 		User usuario = new User();
-		usuario.setTypeOfAccount(accountType);
 		usuario.setEmail(email);
 		usuario.setNickname(name);
+		usuario.setTypeOfAccount(accountType);
 		usuario.setBirthDate(birthdate);
 		usuario.setWeight(weight);
 		usuario.setHeight(height);

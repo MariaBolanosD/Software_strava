@@ -34,14 +34,8 @@ public class User {
 	        joinColumns = @JoinColumn(name = "user_email"), 
 	        inverseJoinColumns = @JoinColumn(name = "challenge_name")
 	    )
-	private List<Challenge> challenges = new ArrayList<>();;
-	
-	
-	// redundante para la base de datos
-	////////////@ManyToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Challenge> updatedChallenges = new ArrayList<>();
-	
-	
+	private List<Challenge> challenges = new ArrayList<>();
+		
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private List<Session> sessions = new ArrayList<>();
@@ -89,7 +83,6 @@ public class User {
 			challengeCop.setTarget(challenge.getTarget());
 			challengeCop.setSport(challenge.getSport());
 			challengeCop.setDistanceorTime(challenge.getDistanceorTime());
-			this.updatedChallenges.add(challengeCop);
 			this.challenges.add(challenge);
 			
 			
@@ -155,7 +148,7 @@ public class User {
 	}
 
 	public boolean UpdateChallenges(Session session) {
-		for (Challenge eachChal : updatedChallenges) {
+		for (Challenge eachChal : challenges) {
 			if((session.getStartDate().compareTo(eachChal.getStartDate())>= 0) && (session.getStartDate().compareTo(eachChal.getEndDate()) <= 0) && session.getSport() == eachChal.getSport())
 			{
 				if(eachChal.getDistanceorTime())// DISTANCE
@@ -170,15 +163,8 @@ public class User {
 				
 				if(eachChal.getTarget() <= 0.0f)
 				{
-					for (Challenge eachChallenge : challenges) {
-						if(eachChal == eachChallenge)
-						{
-							challenges.remove(eachChallenge);
-							break;
-						}
-						
-					}
-					updatedChallenges.remove(eachChal);
+					
+					challenges.remove(eachChal);
 				}
 			}
 			
