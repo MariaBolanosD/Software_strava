@@ -78,7 +78,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		System.out.println(" * RemoteFacade getChallenges");
 		
 		List<Challenge> challenges = SportAppService.getInstance().getChallenges();
-		System.out.println(challenges);
+		//System.out.println(challenges);
 		if (challenges != null) {
 			//Convert domain object to DTO
 			return ChallengeAssembler.getInstance().challengeToDTO(challenges);
@@ -113,6 +113,7 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 		List<Challenge> challenges = serverState.get(token).getChallenges();
 		
 		if (challenges != null) {
+			System.out.println(challenges);
 			return ChallengeAssembler.getInstance().challengeToDTO(challenges);
 		} else {
 			throw new RemoteException("getAcceptedChallenges() fails!");
@@ -175,10 +176,10 @@ public class RemoteFacade extends UnicastRemoteObject implements IRemoteFacade {
 	public void acceptChallenge(long token, String name, LocalDate start_date, SportEnum sport) {
 		for(Challenge eachChall : SportAppService.getInstance().getChallenges())
 		{
-			if((eachChall.getName() == name)
-					&& (eachChall.getStartDate() == start_date)
-						&& (eachChall.getSport() == sport)) 
+			System.out.println(eachChall.getName() + " == " + name);
+			if((eachChall.getName().compareTo(name) == 0))
 			{
+				System.out.println(eachChall);
 				serverState.get(token).addChallenge(eachChall);
 				break;
 				

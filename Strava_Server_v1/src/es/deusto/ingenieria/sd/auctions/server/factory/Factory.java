@@ -11,6 +11,7 @@ import es.deusto.ingenieria.sd.auctions.server.gateway.MailSender;
 public class Factory {
 
 	 private static Factory instance;
+	 FacebookGateway facebook = null;
 	 
 	 private Factory()
 	 {	 }
@@ -35,7 +36,10 @@ public class Factory {
 			}
 			return GoogleGateway.getRequester();
 		case FACEBOOK:
-			return new FacebookGateway();
+			if(facebook == null) {
+				facebook = new FacebookGateway();
+			}
+			return facebook;
 		default:
 			return null;
 		}

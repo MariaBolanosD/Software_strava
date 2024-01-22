@@ -64,44 +64,17 @@ public class MainProgram {
 			sesion2.setStartTime(LocalTime.of(15, 30));
 			sesion2.setDuration(45);
 			
+			Session sesion3 = new Session();
+			sesion3.setTitle("sesion3");
+			sesion3.setSport(SportEnum.Running);
+			sesion3.setDistance(50);
+			sesion3.setStartDate(LocalDate.of(2017, 5, 30 ));
+			sesion3.setStartTime(LocalTime.of(15, 30));
+			sesion3.setDuration(60);
+			
 			SessionDAO.getInstance().store(sesion1);
 			SessionDAO.getInstance().store(sesion2);
-			
-			User user0 = new User();
-			user0.setEmail("rebeca");
-			user0.setNickname("Rebeca");
-			user0.setTypeOfAccount(TypeOfAccount.GOOGLE);
-			user0.setBirthDate(LocalDate.of(1985, 2, 25 ));
-			user0.setWeight(86);
-			user0.setHeight(184.25);
-			user0.setMaxHeartRate(150);
-			user0.setRestHeartRate(70);
-			user0.addSession(sesion1);
-			
-			User user1 = new User();
-			user1.setEmail("sample@gmail.com");
-			user1.setNickname("buyer33");		
-			user1.setBirthDate(LocalDate.of(1989, 5, 2 ));
-			user1.setTypeOfAccount(TypeOfAccount.GOOGLE);
-			user1.setWeight(98);
-			user1.setHeight(193.50);
-			user1.setMaxHeartRate(147);
-			user1.setRestHeartRate(79);
-			user1.addSession(sesion2);
-			
-			User user2 = new User();
-			user2.setEmail("hola@deusto.es");
-			user2.setNickname("hola");		
-			user2.setBirthDate(LocalDate.of(1989, 5, 2 ));
-			user2.setTypeOfAccount(TypeOfAccount.FACEBOOK);
-			user2.setWeight(98);
-			user2.setHeight(193.50);
-			user2.setMaxHeartRate(147);
-			user2.setRestHeartRate(79);
-			
-			UserDAO.getInstance().store(user0);
-			UserDAO.getInstance().store(user1);
-			UserDAO.getInstance().store(user2);
+			SessionDAO.getInstance().store(sesion3);
 			
 			//Create Challenges
 			Challenge cycling1 = new Challenge();
@@ -118,10 +91,48 @@ public class MainProgram {
 			running1.setStartDate(LocalDate.of(2017, 5, 25 ) );
 			running1.setEndDate(LocalDate.of(2017, 6, 25 ));
 			running1.setTarget(200);
-			running1.setDistanceorTime(true); //distance
+			running1.setDistanceorTime(false); //distance
+			
+			Challenge cha = new Challenge();
+			cha.setName("ChallAccept");
+			cha.setSport(SportEnum.Running); 
+			cha.setStartDate(LocalDate.of(2017, 5, 25 ) );
+			cha.setEndDate(LocalDate.of(2017, 6, 25 ));
+			cha.setTarget(50);
+			cha.setDistanceorTime(true); //distance
 			
 			ChallengeDAO.getInstance().store(cycling1);
 			ChallengeDAO.getInstance().store(running1);
+			ChallengeDAO.getInstance().store(cha);
+			
+			
+			User user0 = new User();
+			user0.setEmail("rebeca");
+			user0.setNickname("Rebeca");
+			user0.setTypeOfAccount(TypeOfAccount.GOOGLE);
+			user0.setBirthDate(LocalDate.of(1985, 2, 25 ));
+			user0.setWeight(86);
+			user0.setHeight(184.25);
+			user0.setMaxHeartRate(150);
+			user0.setRestHeartRate(70);
+			user0.addSession(sesion1);
+			user0.addSession(sesion2);
+			user0.addSession(sesion3);
+			user0.addChallenge(cycling1);
+			
+			User user2 = new User();
+			user2.setEmail("hola@deusto.es");
+			user2.setNickname("hola");		
+			user2.setBirthDate(LocalDate.of(1989, 5, 2 ));
+			user2.setTypeOfAccount(TypeOfAccount.FACEBOOK);
+			user2.setWeight(98);
+			user2.setHeight(193.50);
+			user2.setMaxHeartRate(147);
+			user2.setRestHeartRate(79);
+			
+			UserDAO.getInstance().store(user0);
+			UserDAO.getInstance().store(user2);
+			
 		} catch (Exception e) {
 			System.out.println("\t$ Error storing data:" + e.getMessage());
 		}

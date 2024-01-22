@@ -43,7 +43,6 @@ public class AppWindow extends JFrame {
 	private static JFrame frame;
 	private int j;
 	private int i;
-	private int k;
 	private JComboBox sessions = new JComboBox();
 	private JComboBox challenges = new JComboBox();
 	private JComboBox challengesAcc = new JComboBox();
@@ -56,7 +55,6 @@ public class AppWindow extends JFrame {
 	private List<SessionDTO> dsSessionDTO = new ArrayList<>();
 	private List<String> dsChalUserDTO_s = new ArrayList<>();
 	private List<ChallengeDTO> dsChalUserDTO = new ArrayList<>();
-	private JTextArea challengeDetails;
 	private JTextArea SessionDetails;
 	private JTextArea challengeDetailsAcc;
 
@@ -110,6 +108,7 @@ public class AppWindow extends JFrame {
 					for (SessionDTO session : dsSessionDTO) {
 						dsSessionDTO_s.add(session.getTitle());
 					}
+					sessions = new JComboBox(dsSessionDTO.toArray());
 				}
 			}
 		} catch (RemoteException e1) {
@@ -121,6 +120,7 @@ public class AppWindow extends JFrame {
 			if (dsChalUserDTO != null) {
 				if (!dsChalUserDTO.isEmpty()) {
 					System.out.println("dsChalUserDTO: "+ dsChalUserDTO.size());
+					System.out.println(dsChalUserDTO);
 					for (ChallengeDTO chal : dsChalUserDTO) {
 						dsChalUserDTO_s.add(chal.getName());
 					}
@@ -129,11 +129,7 @@ public class AppWindow extends JFrame {
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
-		
-		
-		challengesAcc = new JComboBox(dsChallengeDTO_s.toArray());
-		sessions = new JComboBox(dsSessionDTO.toArray());
-		
+				
 		
 		frame.repaint();
 		frame.validate();
@@ -141,10 +137,11 @@ public class AppWindow extends JFrame {
 
 	public void Ventana(AppWindow appWind) {
 
+		
 		frame = new JFrame();
 		frame.setTitle("APP PAGE");
 		frame.setSize(425, 220);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setLayout(new GridLayout(4, 3));
 		frame.setLocationRelativeTo(null);
@@ -158,51 +155,74 @@ public class AppWindow extends JFrame {
 
 
 		// Username label constructor
-				JLabel label3 = new JLabel("ChallengesAccepted");
-				label3.setBounds(100, 68, 70, 20);
-				frame.add(label3);
-				challengedetailAcc = new String();
+		JLabel label3 = new JLabel("ChallengesAccepted");
+		label3.setBounds(100, 68, 70, 20);
+		frame.add(label3);
+		challengedetailAcc = new String();
 
-				if (dsChalUserDTO == null || dsChalUserDTO.isEmpty()) {
-					// Handle the case when dsChallengeDTO_s is null or empty
-					challengesAcc = new JComboBox();
-					// You might want to show a message or disable the JComboBox if needed
-					label3.setText("No Challenges available");
-				} else {
-					challengesAcc = new JComboBox(dsChallengeDTO_s.toArray());
-					j = challengesAcc.getSelectedIndex();
-					challengedetailAcc = "Name :           " + dsChalUserDTO.get(j).getName() + '\n' + "Sport :         "
-							+ dsChalUserDTO.get(j).getSport() + '\n' + "Start_date : " + dsChalUserDTO.get(j).getStartDate()
-							+ '\n' + "EndDate : " + dsChalUserDTO.get(j).getEndDate() + '\n' + "Target :    "
-							+ dsChalUserDTO.get(j).getTarget();
-					if (dsChalUserDTO.get(j).getDistanceorTime() == true) {
-						challengedetailAcc += " km";
-					} else {
-						challengedetailAcc += " min";
-					}
-				}
-				frame.add(challengesAcc);
+		if (dsChalUserDTO == null || dsChalUserDTO.isEmpty()) {
+		    // Handle the case when dsChallengeDTO_s is null or empty
+		    challengesAcc = new JComboBox();
+		    // You might want to show a message or disable the JComboBox if needed
+		    label3.setText("No Challenges available");
+		} else {
+			System.out.println(dsChallengeDTO_s);
+			challengesAcc = new JComboBox(dsChalUserDTO_s.toArray());
+
+
+		    challengesAcc.addActionListener(new ActionListener() {
+		        @Override
+		        public void actionPerformed(ActionEvent e) {
+		            int selectedIndex = challengesAcc.getSelectedIndex();
+		            if (selectedIndex != -1) {
+		                j = selectedIndex;
+		                challengedetailAcc = "Name :           " + dsChalUserDTO.get(j).getName() + '\n' +
+		                        "Sport :         " + dsChalUserDTO.get(j).getSport() + '\n' +
+		                        "Start_date : " + dsChalUserDTO.get(j).getStartDate() + '\n' +
+		                        "EndDate : " + dsChalUserDTO.get(j).getEndDate() + '\n' +
+		                        "Target :    " + dsChalUserDTO.get(j).getTarget();
+		                if (dsChalUserDTO.get(j).getDistanceorTime()) {
+		                    challengedetailAcc += " km";
+		                } else {
+		                    challengedetailAcc += " min";
+		                }
+		            } else {
+		                // Handle the case when no item is selected
+		                challengedetailAcc = "No challenge selected.";
+		            }
+		            challengeDetailsAcc.setText(challengedetailAcc);
+		        }
+		    });
+		}
+
+		frame.add(challengesAcc);
+
 
 				challengeDetailsAcc = new JTextArea(challengedetailAcc);
 				frame.add(challengeDetailsAcc);
 
 				challengesAcc.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("cambiando" + challengesAcc.getSelectedIndex());
-						j = challengesAcc.getSelectedIndex();
-						challengedetailAcc = "Name :           " + dsChalUserDTO.get(j).getName() + '\n' + "Sport :         "
-								+ dsChalUserDTO.get(j).getSport() + '\n' + "Start_date : " + dsChalUserDTO.get(j).getStartDate()
-								+ '\n' + "EndDate : " + dsChalUserDTO.get(j).getEndDate() + '\n' + "Target :    "
-								+ dsChalUserDTO.get(j).getTarget();
-						System.out.println(challengedetailAcc);
-						if (dsChalUserDTO.get(j).getDistanceorTime() == true) {
-							challengedetailAcc += " km";
-						} else {
-							challengedetailAcc += " min";
-						}
-						challengeDetailsAcc.setText(challengedetailAcc);
-					}
+				    @Override
+				    public void actionPerformed(ActionEvent e) {
+				        if (challengesAcc.getSelectedIndex() != -1) {
+				            j = challengesAcc.getSelectedIndex();
+				            challengedetailAcc = "Name :           " + dsChalUserDTO.get(j).getName() + '\n' + "Sport :         "
+				                    + dsChalUserDTO.get(j).getSport() + '\n' + "Start_date : " + dsChalUserDTO.get(j).getStartDate()
+				                    + '\n' + "EndDate : " + dsChalUserDTO.get(j).getEndDate() + '\n' + "Distance :    "
+						                    + dsChalUserDTO.get(j).getDistanceorTime()+ '\n' + "Target :    "
+								                    + dsChalUserDTO.get(j).getTarget();
+				            if (dsChalUserDTO.get(j).getDistanceorTime()) {
+				                challengedetailAcc += " km";
+				            } else {
+				                challengedetailAcc += " min";
+				            }
+				            challengeDetailsAcc.setText(challengedetailAcc);
+				        } else {
+				            // Handle the case when no item is selected
+				            challengedetailAcc = "No challenge selected.";
+				            challengeDetailsAcc.setText(challengedetailAcc);
+				        }
+				    }
 				});
 		
 		// Username label constructor
@@ -247,8 +267,11 @@ public class AppWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					dispose();
+					frame.setVisible(false); // Hide the window
 					new CreateChallengeDialog(loginController, controller, token);
+					getAll();
+					frame.dispose();
+					frame.repaint();
 				
 				} catch (ParseException e) {
 					e.printStackTrace();
@@ -263,9 +286,11 @@ public class AppWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					dispose();
+					frame.setVisible(false); // Hide the window
 					new CreateSessionDialog(loginController, controller, token);
-					 frame.repaint();
+					getAll();
+					frame.dispose();
+					frame.repaint();
 
 				} catch (ParseException e) {
 					e.printStackTrace();
@@ -280,9 +305,10 @@ public class AppWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO
-				dispose();
+				frame.setVisible(false); // Hide the window
 				new ChallengeFrame(loginController, controller, token);
 				getAll();
+				frame.dispose();
 				frame.repaint();
 			}
 		});
@@ -300,7 +326,7 @@ public class AppWindow extends JFrame {
 					e.printStackTrace();
 				}
 				frame.dispose();
-				LoginDialog login = new LoginDialog(loginController, controller);
+				new LoginDialog(loginController, controller);
 			}
 		});
 		frame.add(new Label(""));
